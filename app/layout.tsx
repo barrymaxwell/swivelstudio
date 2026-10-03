@@ -33,7 +33,6 @@ const schema = {
   description: "Brand identity, event design and print for Seattle organizations.",
   url: SITE,
   email: "robin@swivelstudio.com",
-  telephone: "+1-206-356-3063",
   founder: { "@type": "Person", name: "Robin Maxwell", jobTitle: "Principal and Art Director" },
   address: { "@type": "PostalAddress", addressLocality: "Seattle", addressRegion: "WA", addressCountry: "US" },
   areaServed: { "@type": "City", name: "Seattle" },

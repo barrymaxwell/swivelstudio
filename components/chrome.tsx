@@ -27,12 +27,9 @@ export function Cta() {
         <p className="mt-3 max-w-md text-ink-2">
           Tell me about your project or goals &mdash; I look forward to talking.
         </p>
-        <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+        <div className="mt-6 text-sm">
           <a className="font-medium text-crest-700 underline underline-offset-4" href="mailto:robin@swivelstudio.com">
             robin@swivelstudio.com
-          </a>
-          <a className="text-crest-700 underline underline-offset-4" href="tel:+12063563063">
-            (206) 356-3063
           </a>
         </div>
       </div>
