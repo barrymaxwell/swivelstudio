@@ -1,17 +1,51 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------
+   Swivel Studio design tokens
+   Brand blue #24AAE3 is taken from Robin's logo vector. It measures
+   2.65:1 on white, so it is a MARK and LARGE-FILL colour only.
+   Text and links use crest-700 (5.69:1). See DESIGN-SYSTEM.md.
+   --------------------------------------------------------------- */
 @theme {
-  --color-ink: #16191c;
-  --color-ink-2: #4b555f;
-  --color-ink-3: #808b95;
-  --color-ground: #fbfbfa;
-  --color-rule: #e3e5e8;
-  --color-crest: #2c6e9e;
+  --color-crest-50:  #f0f7f9;
+  --color-crest-100: #deecf2;
+  --color-crest-200: #bed9e5;
+  --color-crest-300: #77caee;
+  --color-crest-400: #41b5e7;
+  --color-crest:     #24aae3;  /* brand — mark, fills, never small text */
+  --color-crest-600: #188cbe;  /* 3.79:1 — large text / UI only */
+  --color-crest-700: #136e95;  /* 5.69:1 — links, small text on white */
+  --color-crest-800: #185067;
+  --color-crest-900: #12394a;
+  --color-crest-950: #0c2632;
 
-  --font-display: Iowan Old Style, Charter, Palatino Linotype, Palatino, Georgia, serif;
-  --font-sans: Avenir Next, Avenir, Segoe UI, system-ui, -apple-system, sans-serif;
+  /* Neutrals carry a slight crest bias so they read as chosen. */
+  --color-ground:  #fcfcfb;
+  --color-surface: #ffffff;
+  --color-ink:     #14181b;   /* 15.9:1 */
+  --color-ink-2:   #4a555d;   /* 7.7:1  */
+  --color-ink-3:   #78848d;   /* 4.1:1 — meta only, never body */
+  --color-rule:    #e2e6e9;
+  --color-rule-2:  #eef1f3;
+
+  --font-display: "Iowan Old Style", Charter, "Palatino Linotype", Palatino, Georgia, serif;
+  --font-sans: "Avenir Next", Avenir, "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --text-display: 3.25rem;
+  --text-display--line-height: 1.06;
+  --text-display--letter-spacing: -0.021em;
 }
 
-html { -webkit-font-smoothing: antialiased; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 body { background: var(--color-ground); color: var(--color-ink); }
-::selection { background: #d8e8f3; }
+::selection { background: var(--color-crest-200); }
+
+:focus-visible {
+  outline: 2px solid var(--color-crest-700);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

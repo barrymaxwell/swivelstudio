@@ -1,0 +1,30 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { Project } from "@/lib/work";
+
+export function WorkCard({ p, compact = false }: { p: Project; compact?: boolean }) {
+  return (
+    <Link href={`/work/${p.slug}`} className="group block">
+      <div className="relative aspect-4/3 overflow-hidden rounded-xs bg-rule-2">
+        <Image
+          src={p.card.src}
+          alt=""
+          fill
+          sizes={compact ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 100vw, 50vw"}
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+        />
+      </div>
+      <h3 className={`mt-4 font-semibold tracking-tight ${compact ? "text-sm" : "text-base"}`}>
+        {p.client}
+      </h3>
+      {!compact && (
+        <>
+          <p className="mt-0.5 text-[0.6875rem] uppercase tracking-[0.1em] text-ink-3">
+            {p.disciplines.slice(0, 3).join(" · ")}
+          </p>
+          <p className="mt-2 max-w-sm text-sm leading-relaxed text-ink-2">{p.blurb}</p>
+        </>
+      )}
+    </Link>
+  );
+}
