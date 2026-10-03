@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #16191c;
+  --color-ink-2: #4b555f;
+  --color-ink-3: #808b95;
+  --color-ground: #fbfbfa;
+  --color-rule: #e3e5e8;
+  --color-crest: #2c6e9e;
+
+  --font-display: Iowan Old Style, Charter, Palatino Linotype, Palatino, Georgia, serif;
+  --font-sans: Avenir Next, Avenir, Segoe UI, system-ui, -apple-system, sans-serif;
+}
+
+html { -webkit-font-smoothing: antialiased; }
+body { background: var(--color-ground); color: var(--color-ink); }
+::selection { background: #d8e8f3; }
