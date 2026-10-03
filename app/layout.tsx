@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SITE, IS_CANONICAL_HOST } from "@/lib/site";
 
-const SITE = "https://www.swivelstudio.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -21,6 +21,8 @@ export const metadata: Metadata = {
       "Two decades of brand identity, event design and print for Seattle organizations.",
   },
   twitter: { card: "summary_large_image" },
+  // Belt and braces alongside robots.ts while the vercel.app copy is live.
+  robots: IS_CANONICAL_HOST ? undefined : { index: false, follow: false },
 };
 
 // LocalBusiness, with the address the Squarespace site left empty.
