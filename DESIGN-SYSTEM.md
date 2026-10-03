@@ -10,10 +10,11 @@ Extracted from the existing brand, not invented. Source of truth is `app/globals
 | `public/brand/swivel-logo.svg` | Horizontal lockup — mark + "swivel" wordmark. Converted from the original Illustrator file. |
 | `brand-source/swivel-logo.ai` | The Illustrator original (2017). Only known copy — see `brand-source/README.md`. |
 
-The lockup is what the header uses, inlined as `<Lockup />` from
-`components/logo.tsx` at 28px tall. It reads **"swivel"** — no "studio", by
-decision. Single path, 3 KB, no clipping or transforms left in it; fill is
-`currentColor`, so it reverses white on the crest ground.
+The header uses the **mark alone**, `<Mark />` at 36px — the name is spelled
+out elsewhere on the page rather than in the corner. `<Lockup />` is the
+horizontal lockup for placements that need the wordmark; it reads "swivel",
+no "studio". Both are single paths filled with `currentColor`, so they reverse
+white on the crest ground.
 
 The Squarespace site only ever served a 300px JPG of the mark.
 
@@ -80,7 +81,7 @@ raises their default gets a bigger site.
 Nothing sits between 19 and 28, or 28 and 52 — the jumps carry the hierarchy.
 Body measure caps at 62 characters.
 
-The lockup renders at 36px tall (155px wide) in the header.
+The mark renders at 36px square in the header.
 
 ## Imagery
 
