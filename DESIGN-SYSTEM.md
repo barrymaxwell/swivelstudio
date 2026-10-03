@@ -10,7 +10,7 @@ Extracted from the existing brand, not invented. Source of truth is `app/globals
 | `public/brand/swivel-logo.svg` | Horizontal lockup — mark + "swivel" wordmark. Converted from the original Illustrator file. |
 | `brand-source/swivel-logo.ai` | The Illustrator original (2017). Only known copy — see `brand-source/README.md`. |
 
-The header uses the **mark alone**, `<Mark />` at 36px — the name is spelled
+The header uses the **mark alone**, `<Mark />` at 40px — the name is spelled
 out elsewhere on the page rather than in the corner. `<Lockup />` is the
 horizontal lockup for placements that need the wordmark; it reads "swivel",
 no "studio". Both are single paths filled with `currentColor`, so they reverse
@@ -81,7 +81,7 @@ raises their default gets a bigger site.
 Nothing sits between 19 and 28, or 28 and 52 — the jumps carry the hierarchy.
 Body measure caps at 62 characters.
 
-The mark renders at 36px square in the header.
+The mark renders at 40px square in the header, on the 4px spacing grid.
 
 ## Imagery
 
