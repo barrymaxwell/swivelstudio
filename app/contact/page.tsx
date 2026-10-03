@@ -1,4 +1,5 @@
 import { Header, Footer } from "@/components/chrome";
+import { CopyEmail } from "@/components/copy-email";
 
 export const metadata = {
   title: "Contact",
@@ -32,12 +33,7 @@ export default function Contact() {
         </p>
 
         <p className="mt-6">
-          <a
-            className="font-display text-2xl text-crest-700 underline decoration-crest-200 decoration-2 underline-offset-[6px] transition-colors hover:decoration-crest"
-            href="mailto:robin@swivelstudio.com?subject=Project%20enquiry"
-          >
-            robin@swivelstudio.com
-          </a>
+          <CopyEmail email="robin@swivelstudio.com" variant="display" />
         </p>
 
         <div className="mt-16 grid gap-12 border-t border-rule pt-10 sm:grid-cols-2">

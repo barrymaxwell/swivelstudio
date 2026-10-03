@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mark } from "./logo";
+import { CopyEmail } from "./copy-email";
 
 export function Header() {
   return (
@@ -27,10 +28,8 @@ export function Cta() {
         <p className="mt-3 max-w-md text-ink-2">
           Tell me about your project or goals &mdash; I look forward to talking.
         </p>
-        <div className="mt-6 text-sm">
-          <a className="font-medium text-crest-700 underline underline-offset-4" href="mailto:robin@swivelstudio.com">
-            robin@swivelstudio.com
-          </a>
+        <div className="mt-6">
+          <CopyEmail email="robin@swivelstudio.com" />
         </div>
       </div>
     </section>
