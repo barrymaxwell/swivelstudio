@@ -8,8 +8,8 @@ export default function Home() {
       <Header />
       <main>
         <section className="mx-auto max-w-5xl px-6 pt-20 pb-14 sm:pt-28">
-          <h1 className="max-w-[18ch] font-display text-[2.75rem] leading-[1.06] tracking-[-0.021em] text-balance sm:text-display">
-            Brand identity and event design, out of Seattle.
+          <h1 className="max-w-[26ch] font-display text-[2.75rem] leading-[1.06] tracking-[-0.021em] text-balance sm:text-display">
+            Branding and graphic design, out of Seattle.
           </h1>
           <p className="mt-7 max-w-xl text-lede text-ink-2">
             I&rsquo;m Robin Maxwell. For over two decades I&rsquo;ve helped organizations grow

@@ -6,19 +6,19 @@ import { SITE, IS_CANONICAL_HOST } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: "Swivel Studio — Brand identity and event design, Seattle",
+    default: "Swivel Studio — Branding and graphic design, Seattle",
     template: "%s — Swivel Studio",
   },
   description:
-    "Robin Maxwell designs brand identities, event campaigns and print for Seattle organizations — from Gates Ag One and Weyerhaeuser to neighborhood nonprofits.",
+    "Robin Maxwell is a Seattle graphic designer working in brand identity, events, campaigns, print and digital — for Gates Ag One, Weyerhaeuser, Philips Healthcare and neighborhood nonprofits.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: "Swivel Studio",
     url: SITE,
-    title: "Swivel Studio — Brand identity and event design, Seattle",
+    title: "Swivel Studio — Branding and graphic design, Seattle",
     description:
-      "Two decades of brand identity, event design and print for Seattle organizations.",
+      "Two decades of branding, print and digital design for Seattle organizations.",
   },
   twitter: { card: "summary_large_image" },
   // Belt and braces alongside robots.ts while the vercel.app copy is live.
@@ -30,7 +30,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Swivel Studio",
-  description: "Brand identity, event design and print for Seattle organizations.",
+  description: "Branding and graphic design for Seattle organizations.",
   url: SITE,
   email: "robin@swivelstudio.com",
   founder: { "@type": "Person", name: "Robin Maxwell", jobTitle: "Principal and Art Director" },
