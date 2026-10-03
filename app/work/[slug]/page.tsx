@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header, Cta, Footer } from "@/components/chrome";
-import { projects, bySlug } from "@/lib/work";
+import { projects, bySlug, sectionId } from "@/lib/work";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -51,7 +51,11 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
         </div>
 
         {p.sections.map((s) => (
-          <section key={s.heading} className="mx-auto max-w-5xl px-6 pb-16">
+          <section
+            key={s.heading}
+            id={sectionId(s.heading)}
+            className="mx-auto max-w-5xl scroll-mt-8 px-6 pb-16"
+          >
             <h2 className="font-display text-h2 tracking-tight">{s.heading}</h2>
             {s.body && (
               <p className="mt-4 max-w-[62ch] leading-[1.7] text-ink-2">{s.body}</p>

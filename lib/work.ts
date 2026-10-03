@@ -1,5 +1,9 @@
+export type Tag = "Branding" | "Event" | "Print & editorial" | "Digital";
+
 export type Section = {
   heading: string;
+  /** Overrides the project's tags. A bank's website is Digital, not Print. */
+  tags?: Tag[];
   body: string;
   images?: { src: string; alt: string; w: number; h: number }[];
 };
@@ -13,7 +17,7 @@ export type Project = {
   /** Card context — why click in. */
   blurb: string;
   disciplines: string[];
-  tags: ("Branding" | "Event" | "Print & editorial" | "Digital")[];
+  tags: Tag[];
   card: { src: string; w: number; h: number };
   hero: { src: string; alt: string; w: number; h: number };
   intro: string;
@@ -42,6 +46,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "Securing the elements",
+        tags: ["Branding", "Print & editorial"],
         body: "A new tagline — You’ll like what you see from the Crest™ — plus an earthy, Northwest color palette, expansive-feeling Northwest photography, a simplified mountain logo mark, and friendly typography. I created a full set of brand standards to guide them in their personable, helpful brand voice and visual identity system. The stationery suite includes a presentation folder which uses their signature blue with a pattern that echoes their logo shape and is reminiscent of the geometric patterns found on currency.",
         images: [
           { src: `${W}/pacific-crest-savings-bank/paccrest.webp`, alt: "Pacific Crest logo mark", w: 2000, h: 1000 },
@@ -52,6 +57,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Why Pacific Crest?",
+        tags: ["Digital"],
         body: "The web site was rebuilt in phases, including full-screen images of local scenery to reflect their Northwest roots, a responsive layout, employee highlights, and an easy login to mobile and business banking. A case study section — with an in-print companion — was developed to help differentiate what makes them special: the bank’s nimble and custom vetting process, funding unique loans for projects that are often overlooked by traditional institutions.",
         images: [
           { src: `${W}/pacific-crest-savings-bank/hero1.webp`, alt: "Full-screen Northwest scenery on the site", w: 2500, h: 1618 },
@@ -62,6 +68,7 @@ export const projects: Project[] = [
       },
       {
         heading: "The Crest at your fingertips",
+        tags: ["Digital"],
         body: "I designed app icons and worked with the client and their secure third-party banking app developer to customize the app framework, ensuring it seamlessly integrated with their suite of branded environments.",
         images: [
           { src: `${W}/pacific-crest-savings-bank/img-9733.webp`, alt: "Banking app", w: 1179, h: 2506 },
@@ -70,6 +77,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Observing the signs",
+        tags: ["Print & editorial"],
         body: "A series of holiday closure signs were produced for the entire year, incorporating a line-art illustration style often used on currency, which also families with the crest-shaped security pattern used as a background element throughout branding.",
         images: [
           { src: `${W}/pacific-crest-savings-bank/pcsb-holiday.webp`, alt: "Holiday closure sign", w: 974, h: 1240 },
@@ -131,6 +139,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "Noche Tropical",
+        tags: ["Event", "Branding", "Print & editorial"],
         body: "Annual dinner and fundraising auction. Design deliverables include an event poster, flyers, bid paddles, auction catalog, graphics for social media and online ticketing, sponsorship package, at-event signage, gift certificates, auction item forms, keynote auction presentation, and a school fundraising video. Most pieces are created in both English and Spanish.",
         images: [
           { src: `${W}/concord-international-school/tn-bro-ext.webp`, alt: "Auction brochure, exterior", w: 2000, h: 932 },
@@ -142,6 +151,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Other fundraisers",
+        tags: ["Event", "Print & editorial"],
         body: "Hello Spring 2018 and Spring Fling 2017. Posters, flyers, bid paddles, auction catalogs, graphics for social media and online ticketing, gift certificates, and a keynote auction presentation. Most pieces were created in both English and Spanish.",
         images: [
           { src: `${W}/concord-international-school/hellospring-postermockup.webp`, alt: "Hello Spring poster", w: 1097, h: 1509 },
@@ -150,6 +160,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Designing community",
+        tags: ["Print & editorial"],
         body: "Each year the Concord PTA puts on four community dinners — events that provide an opportunity to share a meal and celebrate community, connect, share successes and needs, and find volunteer opportunities. The goal of these posters was to increase attendance and anticipation, and to attract area nonprofits to “table” at the dinners, increasing capacity to connect school families and community to services.",
         images: [
           { src: `${W}/concord-international-school/cd1.webp`, alt: "Community dinner poster", w: 974, h: 1506 },
@@ -158,6 +169,7 @@ export const projects: Project[] = [
       },
       {
         heading: "One-off events",
+        tags: ["Print & editorial", "Digital"],
         body: "Throughout the year, the PTA sponsors several events — Day of the Dead, Teacher Appreciation Week — for which they need engagement materials, from posters and graphics to advertising on social media. Because these events are mainly one-off, or just need continuity year over year, it’s been a fun place to explore different design directions.",
         images: [
           { src: `${W}/concord-international-school/dia.webp`, alt: "Día de los Muertos poster", w: 970, h: 1502 },
@@ -186,6 +198,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "Every Tree Counts",
+        tags: ["Print & editorial"],
         body: "Under the theme “Every Tree Counts”, this report used bold numbers and infographics alongside expansive imagery from custom photoshoots of Plum Creek’s well-managed lands — underscoring the intense analytic scrutiny the company operates by in service to their three main focal points: growing healthy forests in perpetual cycles including responsible harvesting; building a strong workforce and sustaining rural communities; and creating long-term value for stakeholders.",
         images: [
           { src: `${W}/plum-creek/plumcreek-sust1.webp`, alt: "Sustainability report cover", w: 2000, h: 2150 },
@@ -195,6 +208,7 @@ export const projects: Project[] = [
       },
       {
         heading: "A year in the life",
+        tags: ["Print & editorial"],
         body: "Three annual reports, each telling the year’s story through the lens of company value, and values. “We grow value from…” emphasizes that Plum Creek’s land is valuable for its trees as well as for its other resources and uses. “True to our core” uses the metaphor of a tree’s rings to quite literally spell out Plum Creek’s values at the centre of their organization. The third uses “We see…” statements, finishing them with powerful words like “Value” and “Opportunity,” juxtaposed with inspiring nature imagery.",
         images: [
           { src: `${W}/plum-creek/plumcreek-ar13.webp`, alt: "Annual report", w: 970, h: 1264 },
@@ -222,6 +236,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "In the room",
+        tags: ["Event"],
         body: "Banners, breakout room signage and display graphics carried the conference identity through the venue.",
         images: [
           { src: `${W}/trueblue/trueblue-we-are-trueblue-banner.webp`, alt: "We Are TrueBlue banner", w: 800, h: 1760 },
@@ -232,6 +247,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Staying true",
+        tags: ["Print & editorial"],
         body: "As TrueBlue evolved and acquired new business lines, the way they described their services changed. This annual report served to reestablish their core values and clarify their business model to investors.",
         images: [
           { src: `${W}/trueblue/tbi-2015ar-1.webp`, alt: "2015 annual report", w: 970, h: 1290 },
@@ -240,6 +256,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Workforce wellness",
+        tags: ["Branding", "Print & editorial"],
         body: "Clear, clean and concise, with the front cover juxtaposing the iconic worker with an icon of health. This benefits guide also rolled out TrueBlue’s new wellness program, Stronger You, Stronger Blue, which we both named and created a corresponding wordmark for.",
         images: [
           { src: `${W}/trueblue/tb-ben1.webp`, alt: "Benefits enrollment guide", w: 970, h: 1256 },
@@ -265,6 +282,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "A care package from the road",
+        tags: ["Branding", "Print & editorial"],
         body: "Print and digital communications were dropped at strategic times to let branch employees know they were valued, set expectations, remind them of upcoming action items, cheer them on, and congratulate them throughout the process. The initial installment was introduced to branch offices by way of a care package in a cheery suitcase, complete with travel stickers, a road map containing milestones, mission and vision statements, feedback postcards for employees to “mail in” from the road, jujubes, stress dolls, tchotchkes and other items to make the journey more bearable.",
         images: [
           { src: `${W}/trueblue/trueblue-journey-atlas-cover.webp`, alt: "Journey atlas cover", w: 800, h: 1035 },
@@ -277,6 +295,49 @@ export const projects: Project[] = [
     ],
   },
 ];
+
+/** Stable anchor for a section heading, used by /work entries and prev/next. */
+export const sectionId = (heading: string) =>
+  heading.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+export type ArchiveEntry = {
+  key: string;
+  title: string;
+  client: string;
+  href: string;
+  tags: Project["tags"];
+  image: { src: string; w: number; h: number };
+};
+
+/**
+ * Every discrete piece of work, not just the six on the homepage. A project
+ * with several sections contributes one entry per section, deep-linked to it —
+ * which is how five old Squarespace pages become fifteen entries without
+ * writing anything new.
+ */
+export const archive: ArchiveEntry[] = projects.flatMap((p) =>
+  p.sections.length > 1
+    ? p.sections.map((s) => ({
+        key: `${p.slug}#${sectionId(s.heading)}`,
+        title: s.heading,
+        client: p.client,
+        href: `/work/${p.slug}#${sectionId(s.heading)}`,
+        tags: s.tags ?? p.tags,
+        image: s.images?.[0]
+          ? { src: s.images[0].src, w: s.images[0].w, h: s.images[0].h }
+          : p.card,
+      }))
+    : [{
+        key: p.slug,
+        title: p.title,
+        client: p.client,
+        href: `/work/${p.slug}`,
+        tags: p.tags,
+        image: p.card,
+      }]
+);
+
+export const allTags = ["Branding", "Event", "Print & editorial", "Digital"] as const;
 
 export const featured = projects.filter((p) => p.featured);
 export const bySlug = (slug: string) => projects.find((p) => p.slug === slug);
