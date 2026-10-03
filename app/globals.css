@@ -24,13 +24,30 @@
   --color-surface: #ffffff;
   --color-ink:     #14181b;   /* 15.9:1 */
   --color-ink-2:   #4a555d;   /* 7.7:1  */
-  --color-ink-3:   #78848d;   /* 4.1:1 — meta only, never body */
+  --color-ink-3:   #626c74;   /* 5.22:1 on ground — was #78848d at 3.73:1, which failed AA */
   --color-rule:    #e2e6e9;
   --color-rule-2:  #eef1f3;
 
   --font-display: "Iowan Old Style", Charter, "Palatino Linotype", Palatino, Georgia, serif;
   --font-sans: "Avenir Next", Avenir, "Segoe UI", system-ui, -apple-system, sans-serif;
 
+  /* Type scale. Root is the browser default 16px = 1rem; never overridden,
+     so a reader who sets a larger default gets a larger site.
+       xs   12px  eyebrows, meta (uppercase, 500)
+       sm   14px  fine print, footer
+       mid  15px  card blurbs, secondary body
+       base 16px  nav, body, capability copy
+       lede 19px  intro paragraphs
+       h2   28px  section headings
+       display 52px  page h1
+     Nothing sits between 19 and 28, or 28 and 52 — the jumps are the hierarchy. */
+  --text-mid: 0.9375rem;
+  --text-mid--line-height: 1.6;
+  --text-lede: 1.1875rem;
+  --text-lede--line-height: 1.6;
+  --text-h2: 1.75rem;
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.014em;
   --text-display: 3.25rem;
   --text-display--line-height: 1.06;
   --text-display--letter-spacing: -0.021em;

@@ -42,13 +42,13 @@ Brand blue is **#24AAE3**, taken from the logo vector.
 
 Neutrals carry a slight crest bias so they read as chosen rather than inherited:
 
-| Token | Hex | On ground | Use |
+| Token | Hex | On ground (#FCFCFB) | Use |
 |---|---|---|---|
 | `ground` | `#FCFCFB` | — | Page |
 | `surface` | `#FFFFFF` | — | Raised bands |
 | `ink` | `#14181B` | 15.9:1 | Headings, body |
 | `ink-2` | `#4A555D` | 7.7:1 | Secondary body |
-| `ink-3` | `#78848D` | 4.1:1 | Meta and eyebrows only — never body |
+| `ink-3` | `#626C74` | 5.22:1 | Meta and eyebrows |
 | `rule` | `#E2E6E9` | — | Borders |
 
 ## Type
@@ -60,11 +60,27 @@ Neutrals carry a slight crest bias so they read as chosen rather than inherited:
 
 System stacks for now — no webfont request, no layout shift, and both render
 well on macOS and iOS where most of Robin's traffic will land. **Open decision:**
-licensing a display face would give the site more voice. Candidates in
-`Swivel Studio/Architecture-and-Design-Directions.md`.
+licensing a display face would give the site more voice.
 
-Eyebrows and meta are 11px, uppercase, `0.14em` tracking. Body measure caps at
-62 characters.
+### Scale
+
+Root is the browser default **16px = 1rem**, never overridden, so a reader who
+raises their default gets a bigger site.
+
+| Token | Size | Role |
+|---|---|---|
+| `text-xs` | 12px | Eyebrows, card meta — uppercase, weight 500, `0.12em` tracking |
+| `text-sm` | 14px | Fine print, footer |
+| `text-mid` | 15px | Card blurbs, secondary body |
+| `text-base` | 16px | Nav, body, capability copy, client list |
+| `text-lede` | 19px | Intro paragraphs |
+| `text-h2` | 28px | Section headings |
+| `text-display` | 52px | Page h1 |
+
+Nothing sits between 19 and 28, or 28 and 52 — the jumps carry the hierarchy.
+Body measure caps at 62 characters.
+
+The lockup renders at 36px tall (155px wide) in the header.
 
 ## Imagery
 

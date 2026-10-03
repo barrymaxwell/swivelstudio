@@ -5,11 +5,11 @@ import { CopyEmail } from "./copy-email";
 export function Header() {
   return (
     <header className="border-b border-rule">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
         <Link href="/" className="inline-flex items-center" aria-label="Swivel Studio, home">
-          <Lockup className="h-7 w-auto text-crest" />
+          <Lockup className="h-9 w-auto text-crest" />
         </Link>
-        <nav className="flex gap-7 text-sm text-ink-2">
+        <nav className="flex gap-7 text-base text-ink-2">
           <Link className="hover:text-crest-700" href="/work">Work</Link>
           <Link className="hover:text-crest-700" href="/about">About</Link>
           <Link className="hover:text-crest-700" href="/contact">Contact</Link>
@@ -23,7 +23,7 @@ export function Cta() {
   return (
     <section className="border-t border-rule bg-surface">
       <div className="mx-auto max-w-5xl px-6 py-16">
-        <h2 className="font-display text-3xl tracking-tight">Let&rsquo;s work together.</h2>
+        <h2 className="font-display text-h2 tracking-tight">Let&rsquo;s work together.</h2>
         <p className="mt-3 max-w-md text-ink-2">
           Tell me about your project or goals &mdash; I look forward to talking.
         </p>
@@ -38,7 +38,7 @@ export function Cta() {
 export function Footer() {
   return (
     <footer className="border-t border-rule">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-xs text-ink-3">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-sm text-ink-3">
         <span>Swivel Studio &middot; Robin Maxwell, Principal &middot; Seattle, Washington</span>
         <a
           className="text-ink-3 transition-colors hover:text-crest-700"

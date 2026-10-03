@@ -33,13 +33,13 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
       <main>
         {/* Summary block — the five-second read, above the hero. */}
         <div className="mx-auto max-w-5xl px-6 pt-14 pb-10">
-          <p className="text-[0.6875rem] uppercase tracking-[0.14em] text-ink-3">
+          <p className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
             {p.client} · {p.disciplines.join(" · ")}
           </p>
           <h1 className="mt-5 max-w-[20ch] font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-balance sm:text-5xl">
             {p.title}
           </h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-2">{p.summary}</p>
+          <p className="mt-5 max-w-xl text-lede text-ink-2">{p.summary}</p>
         </div>
 
         <div className="relative aspect-21/9 w-full bg-rule-2">
@@ -47,12 +47,12 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
         </div>
 
         <div className="mx-auto max-w-5xl px-6 py-16">
-          <p className="max-w-[62ch] text-lg leading-[1.7] text-ink-2">{p.intro}</p>
+          <p className="max-w-[62ch] text-lede leading-[1.7] text-ink-2">{p.intro}</p>
         </div>
 
         {p.sections.map((s) => (
           <section key={s.heading} className="mx-auto max-w-5xl px-6 pb-16">
-            <h2 className="font-display text-2xl tracking-tight">{s.heading}</h2>
+            <h2 className="font-display text-h2 tracking-tight">{s.heading}</h2>
             {s.body && (
               <p className="mt-4 max-w-[62ch] leading-[1.7] text-ink-2">{s.body}</p>
             )}
@@ -75,7 +75,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
           </section>
         ))}
 
-        <nav className="mx-auto flex max-w-5xl justify-between gap-6 border-t border-rule px-6 py-8 text-sm">
+        <nav className="mx-auto flex max-w-5xl justify-between gap-6 border-t border-rule px-6 py-8 text-base">
           {prev ? (
             <Link className="text-crest-700 hover:underline underline-offset-4" href={`/work/${prev.slug}`}>
               &larr; {prev.client}

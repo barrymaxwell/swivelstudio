@@ -14,15 +14,15 @@ export function WorkCard({ p, compact = false }: { p: Project; compact?: boolean
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
         />
       </div>
-      <h3 className={`mt-4 font-semibold tracking-tight ${compact ? "text-sm" : "text-base"}`}>
+      <h3 className={`mt-4 font-semibold tracking-tight ${compact ? "text-mid" : "text-base"}`}>
         {p.client}
       </h3>
       {!compact && (
         <>
-          <p className="mt-0.5 text-[0.6875rem] uppercase tracking-[0.1em] text-ink-3">
+          <p className="mt-1 text-xs font-medium uppercase tracking-[0.1em] text-ink-3">
             {p.disciplines.slice(0, 3).join(" · ")}
           </p>
-          <p className="mt-2 max-w-sm text-sm leading-relaxed text-ink-2">{p.blurb}</p>
+          <p className="mt-2 max-w-sm text-mid text-ink-2">{p.blurb}</p>
         </>
       )}
     </Link>

@@ -25,7 +25,7 @@ export default function About() {
           />
           <div>
             <h1 className="font-display text-4xl tracking-tight">Robin Maxwell</h1>
-            <p className="mt-4 max-w-[58ch] text-lg leading-relaxed text-ink-2">
+            <p className="mt-4 max-w-[58ch] text-lede text-ink-2">
               I&rsquo;m principal and art director of Swivel Studio &mdash; a graphic designer
               and creative thinker working out of Seattle, Washington.
             </p>
@@ -34,7 +34,7 @@ export default function About() {
 
         <div className="mt-16 grid gap-12 sm:grid-cols-2">
           <section>
-            <h2 className="text-[0.6875rem] uppercase tracking-[0.14em] text-ink-3">Ethos</h2>
+            <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">Ethos</h2>
             <p className="mt-3 leading-[1.7] text-ink-2">
               I&rsquo;m most driven when working on projects that align with my own values of
               community, equity, and inclusivity. This doesn&rsquo;t mean that you have to be a
@@ -44,7 +44,7 @@ export default function About() {
           </section>
 
           <section>
-            <h2 className="text-[0.6875rem] uppercase tracking-[0.14em] text-ink-3">Sweet spots</h2>
+            <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">Sweet spots</h2>
             <p className="mt-3 leading-[1.7] text-ink-2">
               My two great loves are identity creation and event branding, but I work across
               naming, placemaking and environmental graphics, websites, campaigns and
@@ -54,7 +54,7 @@ export default function About() {
           </section>
 
           <section className="sm:col-span-2">
-            <h2 className="text-[0.6875rem] uppercase tracking-[0.14em] text-ink-3">How I work</h2>
+            <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">How I work</h2>
             <p className="mt-3 max-w-[62ch] leading-[1.7] text-ink-2">
               Through each stage of a project &mdash; research, strategy, creative ideation,
               execution and delivery &mdash; my goal is to craft visual design solutions that
@@ -71,8 +71,8 @@ export default function About() {
         </div>
 
         <section className="mt-16 border-t border-rule pt-10">
-          <h2 className="text-[0.6875rem] uppercase tracking-[0.14em] text-ink-3">Clients</h2>
-          <p className="mt-5 max-w-3xl text-[0.9375rem] leading-[2] text-ink-2">
+          <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">Clients</h2>
+          <p className="mt-5 max-w-3xl text-base leading-[2] text-ink-2">
             {clients.join("  ·  ")}
           </p>
         </section>
