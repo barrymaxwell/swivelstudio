@@ -80,15 +80,15 @@ export const projects: Project[] = [
   },
   {
     slug: "identities",
-    client: "Assorted clients",
+    client: "Identities",
     title: "Identities",
     summary:
       "Being a brand creative is like prepping someone for a pivotal meeting: you want to create something that feels natural, second-skin.",
     blurb:
       "Twelve logos, from a foster care nonprofit to a Neapolitan pizzeria to an Alaskan creamery.",
-    disciplines: ["Logo design", "Naming", "Identity systems"],
+    disciplines: ["Assorted clients", "Logo design", "Naming"],
     tags: ["Branding"],
-    card: { src: `${W}/identities/hero4.webp`, w: 2500, h: 1618 },
+    card: { src: `${W}/identities/contact-sheet.webp`, w: 1600, h: 1200 },
     hero: { src: `${W}/identities/hero4.webp`, alt: "Selected identity work", w: 2500, h: 1618 },
     intro:
       "Being a brand creative is like prepping someone for a pivotal meeting: you want to create something that feels natural, second-skin. When you see the client try it on, look in the mirror, light up, then go into the world with a smile and OWN IT with confidence — that is the BEST feeling.",
