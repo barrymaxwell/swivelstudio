@@ -10,16 +10,15 @@ Extracted from the existing brand, not invented. Source of truth is `app/globals
 | `public/brand/swivel-logo.svg` | Horizontal lockup — mark + "swivel" wordmark. Converted from the original Illustrator file. |
 | `brand-source/swivel-logo.ai` | The Illustrator original (2017). Only known copy — see `brand-source/README.md`. |
 
-The lockup reads **"swivel"**, not "Swivel Studio", so the site header still
-pairs the mark with typeset "Swivel Studio". Single path, 3 KB, no clipping or
-transforms left in it; recolour by swapping the `fill`, or set it to
-`currentColor` to reverse it white.
+The lockup is what the header uses, inlined as `<Lockup />` from
+`components/logo.tsx` at 28px tall. It reads **"swivel"** — no "studio", by
+decision. Single path, 3 KB, no clipping or transforms left in it; fill is
+`currentColor`, so it reverses white on the crest ground.
 
 The Squarespace site only ever served a 300px JPG of the mark.
 
-The mark is inlined as `<Mark />` from `components/logo.tsx`; fill is
-`currentColor` so it reverses to white on a crest ground. Also `app/icon.svg`
-for the favicon.
+`<Mark />` is the mark on its own, for places too small for the lockup.
+`app/icon.svg` is the favicon.
 
 The LinkedIn banner shows the mark **tiled as a background pattern** at small
 scale — an existing brand element worth rebuilding as an SVG tile later.
@@ -96,7 +95,3 @@ resolved.
    Unification campaign). They are genuinely separate engagements, but current
    work — Gates Ag One or the startup — should take one of those slots.
 3. **Display typeface.** System serif, or license something with more voice.
-4. **Header lockup.** The header currently sets "Swivel Studio" in the display
-   face next to the mark. The real lockup says "swivel" only — worth deciding
-   whether the site leads with the lockup plus typeset "studio", or keeps what
-   it has.

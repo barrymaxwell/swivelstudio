@@ -1,14 +1,13 @@
 import Link from "next/link";
-import { Mark } from "./logo";
+import { Lockup } from "./logo";
 import { CopyEmail } from "./copy-email";
 
 export function Header() {
   return (
     <header className="border-b border-rule">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-        <Link href="/" className="inline-flex items-center gap-2.5" aria-label="Swivel Studio, home">
-          <Mark className="h-7 w-7 text-crest" />
-          <span className="font-display text-[1.0625rem] tracking-tight">Swivel Studio</span>
+        <Link href="/" className="inline-flex items-center" aria-label="Swivel Studio, home">
+          <Lockup className="h-7 w-auto text-crest" />
         </Link>
         <nav className="flex gap-7 text-sm text-ink-2">
           <Link className="hover:text-crest-700" href="/work">Work</Link>
