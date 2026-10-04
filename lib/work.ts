@@ -4,6 +4,8 @@ export type Section = {
   heading: string;
   /** Overrides the project's tags. A bank's website is Digital, not Print. */
   tags?: Tag[];
+  /** Uniform cells instead of aspect-aware layout — for comparing marks. */
+  gallery?: boolean;
   body: string | string[];
   images?: { src: string; alt: string; w: number; h: number }[];
 };
@@ -97,24 +99,26 @@ export const projects: Project[] = [
     client: "Identities",
     title: "Identities",
     summary:
-      "Being a brand creative is like prepping someone for a pivotal meeting: you want to create something that feels natural, second-skin.",
+      "Twelve marks, across nonprofits, food, healthcare, furniture and real estate.",
     blurb:
       "Twelve logos, from a foster care nonprofit to a Neapolitan pizzeria to an Alaskan creamery.",
     disciplines: ["Assorted clients", "Logo design", "Naming"],
     tags: ["Branding"],
     card: { src: `${W}/identities/contact-sheet.webp`, w: 1600, h: 1200 },
-    hero: { src: `${W}/identities/hero4.webp`, alt: "Selected identity work", w: 2500, h: 1618 },
+    hero: { src: `${W}/identities/marks-hero.webp`, alt: "Eight of the identity marks", w: 2100, h: 900 },
     intro:
       "Being a brand creative is like prepping someone for a pivotal meeting: you want to create something that feels natural, second-skin. When you see the client try it on, look in the mirror, light up, then go into the world with a smile and OWN IT with confidence — that is the BEST feeling.",
     featured: true,
     sections: [
       {
         heading: "Selected marks",
+        gallery: true,
         body: "",
         images: [
           { src: `${W}/identities/mockingbird.webp`, alt: "The Mockingbird Society — transforming foster care and ending youth homelessness", w: 2004, h: 860 },
           { src: `${W}/identities/namazu.webp`, alt: "Namazu — fast, casual Japanese cuisine in San Francisco, named for the catfish of Japanese mythology", w: 2004, h: 860 },
           { src: `${W}/identities/livinglocal.webp`, alt: "Seasons, Harry Race and White’s — sister stores for medical equipment, pharmacy and gifts in Alaska", w: 2004, h: 860 },
+          { src: `${W}/concord-international-school/nochetropical.webp`, alt: "Noche Tropical — fundraising dinner and auction identity for Concord International School", w: 2000, h: 1000 },
           { src: `${W}/identities/perennial.webp`, alt: "Perennial — leadership training for social justice and nonprofit leaders. When you enrich the soil, things flourish", w: 974, h: 860 },
           { src: `${W}/identities/jjkettman.webp`, alt: "J&J Kettman — hand-crafted furniture made with the tools and techniques of the 17th and 18th centuries", w: 974, h: 860 },
           { src: `${W}/identities/queen-margherita-pizzeria.webp`, alt: "Queen Margherita Pizzeria — Neapolitan pizza", w: 1039, h: 1039 },

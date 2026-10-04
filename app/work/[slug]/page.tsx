@@ -40,9 +40,11 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
       <main>
         {/* Summary block — the five-second read, above the hero. */}
         <div className="mx-auto max-w-5xl px-6 pt-14 pb-10">
-          <p className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
-            {p.client}
-          </p>
+          {p.client !== p.title && (
+            <p className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
+              {p.client}
+            </p>
+          )}
           <h1 className="mt-4 max-w-[20ch] font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-balance sm:text-5xl">
             {p.title}
           </h1>
@@ -84,7 +86,27 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                 </div>
               </div>
 
-              {s.images && (
+              {s.images && s.gallery && (
+                <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+                  {s.images.map((img) => (
+                    <figure key={img.src}>
+                      <div className="flex aspect-4/3 items-center justify-center rounded-xs bg-surface p-6">
+                        <Image
+                          src={img.src}
+                          alt=""
+                          width={img.w}
+                          height={img.h}
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
+                          className="max-h-full w-auto object-contain"
+                        />
+                      </div>
+                      <figcaption className="mt-2.5 text-mid text-ink-3">{img.alt}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )}
+
+              {s.images && !s.gallery && (
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
                   {s.images.map((img) => (
                     <figure
