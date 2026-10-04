@@ -25,6 +25,48 @@ const paras = (body: string | string[]) => (Array.isArray(body) ? body : [body])
 const isWide = (w: number, h: number) => w / h >= 1.9;
 const isTall = (w: number, h: number) => w / h < 0.75;
 
+type Img = { src: string; alt: string; w: number; h: number };
+
+/**
+ * Group consecutive images by whether they span. A plain two-column grid
+ * stretches every row to its tallest figure, which left a 360px void under
+ * short artwork; the narrow runs are packed as masonry columns instead.
+ */
+function runs(images: Img[]) {
+  const out: { wide: boolean; items: Img[] }[] = [];
+  for (const img of images) {
+    const wide = isWide(img.w, img.h);
+    const last = out[out.length - 1];
+    if (last && last.wide === wide) last.items.push(img);
+    else out.push({ wide, items: [img] });
+  }
+  return out;
+}
+
+function Figure({ img, sizes }: { img: Img; sizes: string }) {
+  const tall = isTall(img.w, img.h);
+  return (
+    <figure className="mb-8 break-inside-avoid">
+      <div
+        className={
+          "overflow-hidden rounded-xs bg-rule-2 " +
+          (tall ? "flex max-h-[34rem] justify-center" : "")
+        }
+      >
+        <Image
+          src={img.src}
+          alt=""
+          width={img.w}
+          height={img.h}
+          sizes={sizes}
+          className={tall ? "h-auto max-h-[34rem] w-auto object-contain" : "h-auto w-full"}
+        />
+      </div>
+      <figcaption className="mt-2.5 text-mid text-ink-3">{img.alt}</figcaption>
+    </figure>
+  );
+}
+
 export default async function Project({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const p = bySlug(slug);
@@ -107,36 +149,22 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
               )}
 
               {s.images && !s.gallery && (
-                <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
-                  {s.images.map((img) => (
-                    <figure
-                      key={img.src}
-                      className={isWide(img.w, img.h) ? "sm:col-span-2" : undefined}
-                    >
-                      <div
-                        className={
-                          "overflow-hidden rounded-xs bg-rule-2 " +
-                          (isTall(img.w, img.h) ? "flex max-h-[34rem] justify-center" : "")
-                        }
-                      >
-                        <Image
-                          src={img.src}
-                          alt=""
-                          width={img.w}
-                          height={img.h}
-                          sizes={isWide(img.w, img.h)
-                            ? "(max-width: 640px) 100vw, 976px"
-                            : "(max-width: 640px) 100vw, 480px"}
-                          className={
-                            isTall(img.w, img.h)
-                              ? "h-auto max-h-[34rem] w-auto object-contain"
-                              : "h-auto w-full"
-                          }
-                        />
+                <div className="mt-10">
+                  {runs(s.images).map((run, i) =>
+                    run.wide ? (
+                      <div key={i}>
+                        {run.items.map((img) => (
+                          <Figure key={img.src} img={img} sizes="(max-width: 640px) 100vw, 976px" />
+                        ))}
                       </div>
-                      <figcaption className="mt-2.5 text-mid text-ink-3">{img.alt}</figcaption>
-                    </figure>
-                  ))}
+                    ) : (
+                      <div key={i} className="gap-x-6 sm:columns-2">
+                        {run.items.map((img) => (
+                          <Figure key={img.src} img={img} sizes="(max-width: 640px) 100vw, 480px" />
+                        ))}
+                      </div>
+                    )
+                  )}
                 </div>
               )}
             </div>

@@ -197,7 +197,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "plum-creek-sustainability-report",
+    slug: "plum-creek",
     client: "Plum Creek",
     title: "Cutting trees to grow healthy forests",
     summary:
