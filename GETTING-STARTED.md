@@ -7,7 +7,8 @@
 
 ## One-time setup (about 20 minutes)
 
-1. **Accept the GitHub invite.** Barry sends it to your GitHub account. Open the email and click Accept.
+1. **Make a GitHub account.** Go to [github.com/signup](https://github.com/signup). Enter your email, a password and a username. Confirm the code GitHub emails you. Pick the free plan and skip the questions. Send Barry your username.
+   **Accept the invite.** Barry adds you to the site. Open the email from GitHub and click Accept.
 2. **Install three apps:**
    - [GitHub Desktop](https://desktop.github.com) — saves and sends your changes.
    - [VS Code](https://code.visualstudio.com) — edits the files.
