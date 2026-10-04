@@ -46,9 +46,10 @@ export default function Contact() {
         <h1 className="font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em]">
           Let&rsquo;s work together.
         </h1>
-        <p className="mt-5 max-w-[46ch] text-lede text-ink-2">
-          Tell me about your project or goals. I read every note myself and usually
-          reply within a day or two.
+        <p className="mt-5 max-w-[48ch] text-lede text-ink-2">
+          Tell me about your project or goals. I&rsquo;m based in Seattle and work with
+          clients anywhere. I read every note myself and usually reply within a day
+          or two.
         </p>
 
         <div className="mt-8">
@@ -68,9 +69,6 @@ export default function Contact() {
           />
         </div>
 
-        <p className="mt-14 border-t border-rule pt-8 text-mid text-ink-3">
-          Swivel Studio is based in Seattle and works with clients anywhere.
-        </p>
       </main>
       <Footer />
     </>
