@@ -36,3 +36,16 @@ After editing any of them:
 
 It renames each file to `name-<sha1>.webp` and rewrites the references in
 `lib/work.ts`. Re-running when nothing changed is a no-op.
+
+## Identity marks
+
+`scripts/rebuild-identity-marks.mjs` rebuilds the logo gallery from the
+pristine Squarespace exports in one pass — strip the 2px grey export rule and
+the compression ringing behind it, find the artwork box with a noise floor
+(sharp's `trim()` keeps any row holding one stray pixel), size a 4:3 canvas
+around the artwork **at native resolution**, and encode once, lossless where
+that is not wasteful.
+
+Never scale a mark up. Squarespace's maximum for most of these is 974×860 and
+already lossy WebP, so there is no headroom; each extra encode or upscale is
+visible at gallery size. Run `scripts/hash-assets.mjs` afterwards.
