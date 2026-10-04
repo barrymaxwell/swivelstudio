@@ -141,7 +141,13 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
           <section
             key={s.heading}
             id={sectionId(s.heading)}
-            className="scroll-mt-28 border-t border-rule py-14"
+            className={
+              "scroll-mt-28 border-t border-rule py-14 " +
+              // Marks are white-backed rasters; on the off-white ground each one
+              // read as a faint rectangle. A white band removes the edge without
+              // touching the artwork.
+              (s.gallery ? "bg-surface" : "")
+            }
           >
             <div className="mx-auto max-w-5xl px-6">
               <div className="grid gap-4 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
@@ -157,7 +163,9 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
                   {s.images.map((img) => (
                     <figure key={img.src}>
-                      <div className="flex aspect-4/3 items-center justify-center overflow-hidden rounded-xs bg-surface">
+                      {/* No cell background: the marks are composited on the page ground, so a
+                          white panel would reintroduce the edge we just removed. */}
+                      <div className="flex aspect-4/3 items-center justify-center overflow-hidden">
                         <Image
                           src={img.src}
                           alt=""
