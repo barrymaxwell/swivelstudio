@@ -1,21 +1,24 @@
 import Link from "next/link";
 import { Mark } from "./logo";
 import { CopyEmail } from "./copy-email";
+import { StickyHeader } from "./sticky-header";
 
 export function Header() {
   return (
-    <header className="border-b border-rule">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
-        <Link href="/" className="inline-flex items-center" aria-label="Swivel Studio, home">
-          <Mark className="h-10 w-10 text-crest" />
-        </Link>
-        <nav className="flex gap-7 text-base text-ink-2">
-          <Link className="hover:text-crest-700" href="/work">Work</Link>
-          <Link className="hover:text-crest-700" href="/about">About</Link>
-          <Link className="hover:text-crest-700" href="/contact">Contact</Link>
-        </nav>
-      </div>
-    </header>
+    <StickyHeader>
+      <header className="border-b border-rule">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
+          <Link href="/" className="inline-flex items-center" aria-label="Swivel Studio, home">
+            <Mark className="h-10 w-10 text-crest" />
+          </Link>
+          <nav className="flex gap-7 text-base text-ink-2">
+            <Link className="hover:text-crest-700" href="/work">Work</Link>
+            <Link className="hover:text-crest-700" href="/about">About</Link>
+            <Link className="hover:text-crest-700" href="/contact">Contact</Link>
+          </nav>
+        </div>
+      </header>
+    </StickyHeader>
   );
 }
 

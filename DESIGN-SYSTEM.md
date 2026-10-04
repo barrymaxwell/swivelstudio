@@ -112,3 +112,21 @@ resolved.
    Unification campaign). They are genuinely separate engagements, but current
    work — Gates Ag One or the startup — should take one of those slots.
 3. **Display typeface.** System serif, or license something with more voice.
+
+## Header behaviour
+
+The header hides on scroll down and returns on scroll up, rather than staying
+fixed or scrolling away for good.
+
+Fixed would cost 89px — **11% of a phone viewport** — permanently, on a site
+whose job is showing work. Static was fine until `/work` started deep-linking
+into case-study sections: that drops a visitor into the middle of a 7,000px
+document with no navigation above or below them.
+
+Thresholds in `components/sticky-header.tsx`: it won't hide within the first
+120px, and ignores scrolls under 8px so a trackpad twitch can't make it
+flicker. Scroll events are rAF-throttled and passive. The global
+`prefers-reduced-motion` rule removes the transition.
+
+Case-study sections carry `scroll-mt-28` so anchored headings clear the
+revealed header.

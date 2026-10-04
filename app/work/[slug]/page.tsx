@@ -72,7 +72,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
           <section
             key={s.heading}
             id={sectionId(s.heading)}
-            className="scroll-mt-8 border-t border-rule py-14"
+            className="scroll-mt-28 border-t border-rule py-14"
           >
             <div className="mx-auto max-w-5xl px-6">
               <div className="grid gap-4 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
