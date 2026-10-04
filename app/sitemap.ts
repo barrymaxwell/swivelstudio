@@ -4,5 +4,6 @@ import { SITE } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = ["", "/work", "/about", "/contact", ...projects.map((p) => `/work/${p.slug}`)];
-  return paths.map((path) => ({ url: `${SITE}${path}`, lastModified: new Date() }));
+  // No lastModified. A build date on every page is noise Google learns to ignore.
+  return paths.map((path) => ({ url: `${SITE}${path}` }));
 }
