@@ -33,14 +33,16 @@ export function Header() {
 export function Cta() {
   return (
     <section className="border-t border-rule bg-surface">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-end justify-between gap-x-12 gap-y-6 px-6 py-12">
-        <div>
-          <h2 className="font-display text-h2 tracking-tight">Let&rsquo;s work together.</h2>
-          <p className="mt-2 max-w-md text-ink-2">
-            Tell me about your project or goals &mdash; I look forward to talking.
-          </p>
+      <div className="mx-auto max-w-5xl px-6 py-12">
+        <h2 className="font-display text-h2 tracking-tight">Let&rsquo;s work together.</h2>
+        <p className="mt-2 max-w-md text-ink-2">
+          Tell me about your project or goals &mdash; I look forward to talking.
+        </p>
+        {/* Inline, not the display size: that treatment belongs to /contact,
+            where the address is the page's main action. */}
+        <div className="mt-5">
+          <CopyEmail email="robin@swivelstudio.com" />
         </div>
-        <CopyEmail email="robin@swivelstudio.com" variant="display" />
       </div>
     </section>
   );
