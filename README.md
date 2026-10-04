@@ -20,3 +20,5 @@ Carried over from the audit: redirects for all 7 old URLs, real meta
 descriptions, generated OG image, ProfessionalService schema with the address
 Squarespace left blank, and robots.txt that allows AI crawlers.
 
+
+New to this setup? Start with `GETTING-STARTED.md`.

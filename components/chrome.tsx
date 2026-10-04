@@ -2,19 +2,27 @@ import Link from "next/link";
 import { Mark } from "./logo";
 import { CopyEmail } from "./copy-email";
 import { StickyHeader } from "./sticky-header";
+import { NavLink } from "./nav-link";
 
 export function Header() {
   return (
     <StickyHeader>
       <header className="border-b border-rule">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
-          <Link href="/" className="inline-flex items-center" aria-label="Swivel Studio, home">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:py-6">
+          <Link
+            href="/"
+            className="-m-2 inline-flex items-center p-2"
+            aria-label="Swivel Studio, home"
+          >
             <Mark className="h-10 w-10 text-crest" />
           </Link>
-          <nav className="flex gap-7 text-base text-ink-2">
-            <Link className="hover:text-crest-700" href="/work">Work</Link>
-            <Link className="hover:text-crest-700" href="/about">About</Link>
-            <Link className="hover:text-crest-700" href="/contact">Contact</Link>
+          {/* Three items fit at 375px, so no disclosure menu — hiding them behind
+              a tap would cost discoverability for nothing. The links carry
+              vertical padding instead, for a 44px target. */}
+          <nav className="-mr-3 flex items-center gap-1 text-base text-ink-2 sm:gap-3">
+            <NavLink href="/work">Work</NavLink>
+            <NavLink href="/about">About</NavLink>
+            <NavLink href="/contact">Contact</NavLink>
           </nav>
         </div>
       </header>
