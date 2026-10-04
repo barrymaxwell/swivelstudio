@@ -20,6 +20,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const paras = (body: string | string[]) => (Array.isArray(body) ? body : [body]);
 
+function Arrow({ dir }: { dir: "left" | "right" }) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={"h-4 w-4 shrink-0 " + (dir === "left" ? "rotate-180" : "")}
+    >
+      <path d="M3.5 10h13M11.5 5l5 5-5 5" />
+    </svg>
+  );
+}
+
 /** Only genuinely panoramic artwork earns the full measure. A 2:1 logo does
  *  not need 976px, and tall phone screens run away without a cap. */
 const isWide = (w: number, h: number) => w / h >= 1.9;
@@ -186,16 +203,33 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
           </section>
         ))}
 
-        <nav className="mx-auto flex max-w-5xl justify-between gap-6 border-t border-rule px-6 py-8 text-base">
+        <nav
+          aria-label="More work"
+          className="mx-auto flex max-w-5xl items-center justify-between gap-6 border-t border-rule px-6 py-6 text-mid"
+        >
           {prev ? (
-            <Link className="text-crest-700 hover:underline underline-offset-4" href={`/work/${prev.slug}`}>
-              &larr; {prev.client}
+            <Link
+              className="inline-flex max-w-[46%] items-center gap-2 text-ink-2 transition-colors hover:text-crest-700 sm:max-w-none"
+              href={`/work/${prev.slug}`}
+            >
+              <Arrow dir="left" />
+              {prev.client}
             </Link>
           ) : <span />}
-          <Link className="text-ink-2 hover:text-crest-700" href="/work">All work</Link>
+          {/* Three items don't fit at 375px; the footer nav covers this link. */}
+          <Link
+            className="hidden text-ink-3 transition-colors hover:text-crest-700 sm:inline"
+            href="/work"
+          >
+            All work
+          </Link>
           {next ? (
-            <Link className="text-crest-700 hover:underline underline-offset-4" href={`/work/${next.slug}`}>
-              {next.client} &rarr;
+            <Link
+              className="inline-flex max-w-[46%] items-center gap-2 text-ink-2 transition-colors hover:text-crest-700 sm:max-w-none"
+              href={`/work/${next.slug}`}
+            >
+              {next.client}
+              <Arrow dir="right" />
             </Link>
           ) : <span />}
         </nav>
