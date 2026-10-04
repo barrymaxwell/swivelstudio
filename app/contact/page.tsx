@@ -1,6 +1,5 @@
 import { Header, Footer } from "@/components/chrome";
 import { CopyEmail } from "@/components/copy-email";
-import { ContactForm } from "@/components/contact-form";
 
 export const metadata = {
   title: "Contact",
@@ -22,19 +21,19 @@ const fits = [
   "Overflow or embedded work alongside an in-house team",
 ];
 
-function Rail({ title, items, note }: { title: string; items: string[]; note: string }) {
+function List({ title, items, note }: { title: string; items: string[]; note: string }) {
   return (
     <section>
-      <h3 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">{title}</h3>
-      <ul className="mt-3 space-y-2">
+      <h2 className="font-display text-h2 tracking-tight">{title}</h2>
+      <ul className="mt-5 space-y-2.5">
         {items.map((t) => (
-          <li key={t} className="flex gap-3 text-mid text-ink-2">
-            <span aria-hidden="true" className="mt-2.5 h-px w-3 shrink-0 bg-crest" />
+          <li key={t} className="flex gap-3 text-base leading-relaxed text-ink-2">
+            <span aria-hidden="true" className="mt-3 h-px w-3 shrink-0 bg-crest" />
             {t}
           </li>
         ))}
       </ul>
-      <p className="mt-3 text-mid text-ink-3">{note}</p>
+      <p className="mt-5 max-w-[46ch] text-mid text-ink-3">{note}</p>
     </section>
   );
 }
@@ -52,41 +51,26 @@ export default function Contact() {
           reply within a day or two.
         </p>
 
-        <div className="mt-14 grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)]">
-          <div>
-            <h2 className="font-display text-h2 tracking-tight">Send a note</h2>
-            <div className="mt-6 max-w-[34rem]">
-              <ContactForm />
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-10 lg:border-l lg:border-rule lg:pl-10">
-            <section>
-              <h3 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
-                Or email me
-              </h3>
-              <div className="mt-3">
-                <CopyEmail email="robin@swivelstudio.com" />
-              </div>
-            </section>
-
-            <Rail
-              title="Helpful to know up front"
-              items={helpful}
-              note="None of it has to be settled. A sentence about where you're stuck is a fine place to start."
-            />
-
-            <Rail
-              title="Projects I take on"
-              items={fits}
-              note="I work solo or inside a team, and bring in copywriters, illustrators, photographers and developers as a project needs them."
-            />
-
-            <p className="text-mid text-ink-3">
-              Swivel Studio is based in Seattle and works with clients anywhere.
-            </p>
-          </div>
+        <div className="mt-8">
+          <CopyEmail email="robin@swivelstudio.com" variant="display" />
         </div>
+
+        <div className="mt-16 grid gap-12 border-t border-rule pt-12 sm:grid-cols-2 sm:gap-14">
+          <List
+            title="Helpful to know"
+            items={helpful}
+            note="None of it has to be settled. A sentence about where you're stuck is a fine place to start."
+          />
+          <List
+            title="Projects I take on"
+            items={fits}
+            note="I work solo or inside a team, and bring in copywriters, illustrators, photographers and developers as a project needs them."
+          />
+        </div>
+
+        <p className="mt-14 border-t border-rule pt-8 text-mid text-ink-3">
+          Swivel Studio is based in Seattle and works with clients anywhere.
+        </p>
       </main>
       <Footer />
     </>

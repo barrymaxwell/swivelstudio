@@ -27,9 +27,6 @@
   --color-ink-3:   #626c74;   /* 5.22:1 on ground — was #78848d at 3.73:1, which failed AA */
   --color-rule:    #e2e6e9;
 
-  /* Semantic, deliberately separate from the brand blue — an error rendered in
-     crest reads as a note, not a problem. 6.37:1 on the ground. */
-  --color-danger:  #b3261e;
   --color-rule-2:  #eef1f3;
 
   --font-display: "Iowan Old Style", Charter, "Palatino Linotype", Palatino, Georgia, serif;
