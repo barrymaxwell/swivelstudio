@@ -2,7 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/work";
 
-export function WorkCard({ p, compact = false }: { p: Project; compact?: boolean }) {
+export function WorkCard({
+  p,
+  compact = false,
+  /** Set when another featured card shares this client, so the two TrueBlue
+   *  entries don't appear as two identical headings. */
+  disambiguate = false,
+}: {
+  p: Project;
+  compact?: boolean;
+  disambiguate?: boolean;
+}) {
   return (
     <Link href={`/work/${p.slug}`} className="group block">
       <div className="relative aspect-4/3 overflow-hidden rounded-xs bg-rule-2">
@@ -16,6 +26,9 @@ export function WorkCard({ p, compact = false }: { p: Project; compact?: boolean
       </div>
       <h3 className={`mt-4 font-semibold tracking-tight ${compact ? "text-mid" : "text-base"}`}>
         {p.client}
+        {disambiguate && (
+          <span className="font-normal text-ink-2"> &mdash; {p.title}</span>
+        )}
       </h3>
       {!compact && (
         <>

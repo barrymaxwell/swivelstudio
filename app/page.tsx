@@ -1,6 +1,7 @@
 import { Header, Cta, Footer } from "@/components/chrome";
 import { WorkCard } from "@/components/work-card";
-import { featured, capabilities, clients } from "@/lib/work";
+import Link from "next/link";
+import { featured, capabilities, clients, archive } from "@/lib/work";
 
 export default function Home() {
   return (
@@ -19,10 +20,11 @@ export default function Home() {
         </section>
 
         <section className="mx-auto max-w-5xl px-6 pb-16">
+          <h2 className="sr-only">What I do</h2>
           <div className="grid gap-8 sm:grid-cols-3">
             {capabilities.map((c) => (
               <div key={c.title} className="border-t-2 border-crest pt-4">
-                <h2 className="text-base font-semibold tracking-tight">{c.title}</h2>
+                <h3 className="text-base font-semibold tracking-tight">{c.title}</h3>
                 <p className="mt-2 text-mid text-ink-2">{c.copy}</p>
               </div>
             ))}
@@ -36,9 +38,23 @@ export default function Home() {
             </h2>
             <div className="mt-8 grid gap-x-10 gap-y-12 sm:grid-cols-2">
               {featured.map((p) => (
-                <WorkCard key={p.slug} p={p} />
+                <WorkCard
+                  key={p.slug}
+                  p={p}
+                  disambiguate={
+                    featured.filter((o) => o.client === p.client).length > 1
+                  }
+                />
               ))}
             </div>
+            <p className="mt-12">
+              <Link
+                href="/work"
+                className="text-base text-crest-700 underline decoration-crest-200 underline-offset-4 transition-colors hover:decoration-crest"
+              >
+                All {archive.length} projects
+              </Link>
+            </p>
           </div>
         </section>
 

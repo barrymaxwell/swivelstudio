@@ -61,9 +61,11 @@ export function Archive() {
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
               />
             </div>
-            <p className="mt-3 text-xs font-medium uppercase tracking-[0.1em] text-ink-3">
-              {e.client}
-            </p>
+            {e.client !== e.title && (
+              <p className="mt-3 text-xs font-medium uppercase tracking-[0.1em] text-ink-3">
+                {e.client}
+              </p>
+            )}
             <h2 className="mt-1 text-mid font-semibold tracking-tight group-hover:text-crest-700">
               {e.title}
             </h2>
