@@ -4,7 +4,7 @@ export type Section = {
   heading: string;
   /** Overrides the project's tags. A bank's website is Digital, not Print. */
   tags?: Tag[];
-  body: string;
+  body: string | string[];
   images?: { src: string; alt: string; w: number; h: number }[];
 };
 
@@ -47,7 +47,10 @@ export const projects: Project[] = [
       {
         heading: "Securing the elements",
         tags: ["Branding", "Print & editorial"],
-        body: "A new tagline — You’ll like what you see from the Crest™ — plus an earthy, Northwest color palette, expansive-feeling Northwest photography, a simplified mountain logo mark, and friendly typography. I created a full set of brand standards to guide them in their personable, helpful brand voice and visual identity system. The stationery suite includes a presentation folder which uses their signature blue with a pattern that echoes their logo shape and is reminiscent of the geometric patterns found on currency.",
+        body: [
+          "A new tagline — You’ll like what you see from the Crest™ — plus an earthy, Northwest color palette, expansive-feeling Northwest photography, a simplified mountain logo mark, and friendly typography.",
+          "I created a full set of brand standards to guide them in their personable, helpful brand voice and visual identity system. The stationery suite includes a presentation folder which uses their signature blue with a pattern that echoes their logo shape and is reminiscent of the geometric patterns found on currency.",
+        ],
         images: [
           { src: `${W}/pacific-crest-savings-bank/paccrest.webp`, alt: "Pacific Crest logo mark", w: 2000, h: 1000 },
           { src: `${W}/pacific-crest-savings-bank/pcsbstationery.webp`, alt: "Stationery suite", w: 1646, h: 948 },
@@ -58,7 +61,10 @@ export const projects: Project[] = [
       {
         heading: "Why Pacific Crest?",
         tags: ["Digital"],
-        body: "The web site was rebuilt in phases, including full-screen images of local scenery to reflect their Northwest roots, a responsive layout, employee highlights, and an easy login to mobile and business banking. A case study section — with an in-print companion — was developed to help differentiate what makes them special: the bank’s nimble and custom vetting process, funding unique loans for projects that are often overlooked by traditional institutions.",
+        body: [
+          "The web site was rebuilt in phases, including full-screen images of local scenery to reflect their Northwest roots, a responsive layout, employee highlights, and an easy login to mobile and business banking.",
+          "A case study section — with an in-print companion — was developed to help differentiate what makes them special: the bank’s nimble and custom vetting process, funding unique loans for projects that are often overlooked by traditional institutions.",
+        ],
         images: [
           { src: `${W}/pacific-crest-savings-bank/hero1.webp`, alt: "Full-screen Northwest scenery on the site", w: 2500, h: 1618 },
           { src: `${W}/pacific-crest-savings-bank/pcsb-webhome.webp`, alt: "Homepage", w: 974, h: 1438 },
@@ -161,7 +167,10 @@ export const projects: Project[] = [
       {
         heading: "Designing community",
         tags: ["Print & editorial"],
-        body: "Each year the Concord PTA puts on four community dinners — events that provide an opportunity to share a meal and celebrate community, connect, share successes and needs, and find volunteer opportunities. The goal of these posters was to increase attendance and anticipation, and to attract area nonprofits to “table” at the dinners, increasing capacity to connect school families and community to services.",
+        body: [
+          "Each year the Concord PTA puts on four community dinners — events that provide an opportunity to share a meal and celebrate community, connect, share successes and needs, and find volunteer opportunities.",
+          "The goal of these posters was to increase attendance and anticipation, and to attract area nonprofits to “table” at the dinners, increasing capacity to connect school families and community to services.",
+        ],
         images: [
           { src: `${W}/concord-international-school/cd1.webp`, alt: "Community dinner poster", w: 974, h: 1506 },
           { src: `${W}/concord-international-school/cd2.webp`, alt: "Community dinner poster", w: 974, h: 1504 },
@@ -170,7 +179,10 @@ export const projects: Project[] = [
       {
         heading: "One-off events",
         tags: ["Print & editorial", "Digital"],
-        body: "Throughout the year, the PTA sponsors several events — Day of the Dead, Teacher Appreciation Week — for which they need engagement materials, from posters and graphics to advertising on social media. Because these events are mainly one-off, or just need continuity year over year, it’s been a fun place to explore different design directions.",
+        body: [
+          "Throughout the year, the PTA sponsors several events — Day of the Dead, Teacher Appreciation Week — for which they need engagement materials, from posters and graphics to advertising on social media.",
+          "Because these events are mainly one-off, or just need continuity year over year, it’s been a fun place to explore different design directions.",
+        ],
         images: [
           { src: `${W}/concord-international-school/dia.webp`, alt: "Día de los Muertos poster", w: 970, h: 1502 },
           { src: `${W}/concord-international-school/fbparticipation.webp`, alt: "Social media graphic", w: 974, h: 1504 },
@@ -209,7 +221,10 @@ export const projects: Project[] = [
       {
         heading: "A year in the life",
         tags: ["Print & editorial"],
-        body: "Three annual reports, each telling the year’s story through the lens of company value, and values. “We grow value from…” emphasizes that Plum Creek’s land is valuable for its trees as well as for its other resources and uses. “True to our core” uses the metaphor of a tree’s rings to quite literally spell out Plum Creek’s values at the centre of their organization. The third uses “We see…” statements, finishing them with powerful words like “Value” and “Opportunity,” juxtaposed with inspiring nature imagery.",
+        body: [
+          "Three annual reports, each telling the year’s story through the lens of company value, and values. “We grow value from…” emphasizes that Plum Creek’s land is valuable for its trees as well as for its other resources and uses.",
+          "“True to our core” uses the metaphor of a tree’s rings to quite literally spell out Plum Creek’s values at the centre of their organization. The third uses “We see…” statements, finishing them with powerful words like “Value” and “Opportunity,” juxtaposed with inspiring nature imagery.",
+        ],
         images: [
           { src: `${W}/plum-creek/plumcreek-ar13.webp`, alt: "Annual report", w: 970, h: 1264 },
           { src: `${W}/plum-creek/plumcreek-ar14.webp`, alt: "Annual report", w: 974, h: 1268 },
@@ -283,7 +298,10 @@ export const projects: Project[] = [
       {
         heading: "A care package from the road",
         tags: ["Branding", "Print & editorial"],
-        body: "Print and digital communications were dropped at strategic times to let branch employees know they were valued, set expectations, remind them of upcoming action items, cheer them on, and congratulate them throughout the process. The initial installment was introduced to branch offices by way of a care package in a cheery suitcase, complete with travel stickers, a road map containing milestones, mission and vision statements, feedback postcards for employees to “mail in” from the road, jujubes, stress dolls, tchotchkes and other items to make the journey more bearable.",
+        body: [
+          "Print and digital communications were dropped at strategic times to let branch employees know they were valued, set expectations, remind them of upcoming action items, cheer them on, and congratulate them throughout the process.",
+          "The initial installment was introduced to branch offices by way of a care package in a cheery suitcase, complete with travel stickers, a road map containing milestones, mission and vision statements, feedback postcards for employees to “mail in” from the road, jujubes, stress dolls, tchotchkes and other items to make the journey more bearable.",
+        ],
         images: [
           { src: `${W}/trueblue/trueblue-journey-atlas-cover.webp`, alt: "Journey atlas cover", w: 800, h: 1035 },
           { src: `${W}/trueblue/trueblue-journey-brochure-cover.webp`, alt: "Journey brochure cover", w: 600, h: 1284 },

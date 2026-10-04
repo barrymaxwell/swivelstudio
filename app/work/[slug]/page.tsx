@@ -18,6 +18,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+const paras = (body: string | string[]) => (Array.isArray(body) ? body : [body]);
+
+/** Only genuinely panoramic artwork earns the full measure. A 2:1 logo does
+ *  not need 976px, and tall phone screens run away without a cap. */
+const isWide = (w: number, h: number) => w / h >= 1.9;
+const isTall = (w: number, h: number) => w / h < 0.75;
+
 export default async function Project({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const p = bySlug(slug);
@@ -34,48 +41,83 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
         {/* Summary block — the five-second read, above the hero. */}
         <div className="mx-auto max-w-5xl px-6 pt-14 pb-10">
           <p className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
-            {p.client} · {p.disciplines.join(" · ")}
+            {p.client}
           </p>
-          <h1 className="mt-5 max-w-[20ch] font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-balance sm:text-5xl">
+          <h1 className="mt-4 max-w-[20ch] font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-balance sm:text-5xl">
             {p.title}
           </h1>
-          <p className="mt-5 max-w-xl text-lede text-ink-2">{p.summary}</p>
+          <p className="mt-5 max-w-[46ch] text-lede text-ink-2">{p.summary}</p>
         </div>
 
         <div className="relative aspect-21/9 w-full bg-rule-2">
           <Image src={p.hero.src} alt={p.hero.alt} fill priority sizes="100vw" className="object-cover" />
         </div>
 
-        <div className="mx-auto max-w-5xl px-6 py-16">
-          <p className="max-w-[62ch] text-lede leading-[1.7] text-ink-2">{p.intro}</p>
+        {/* Intro: disciplines rail on the left, the setup on the right. */}
+        <div className="mx-auto max-w-5xl px-6 py-14">
+          <div className="grid gap-6 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
+            <div>
+              <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
+                What I did
+              </h2>
+              <ul className="mt-3 flex flex-col gap-1 text-mid text-ink-2">
+                {p.disciplines.map((d) => <li key={d}>{d}</li>)}
+              </ul>
+            </div>
+            <p className="max-w-[58ch] text-lede leading-[1.65] text-ink-2">{p.intro}</p>
+          </div>
         </div>
 
         {p.sections.map((s) => (
           <section
             key={s.heading}
             id={sectionId(s.heading)}
-            className="mx-auto max-w-5xl scroll-mt-8 px-6 pb-16"
+            className="scroll-mt-8 border-t border-rule py-14"
           >
-            <h2 className="font-display text-h2 tracking-tight">{s.heading}</h2>
-            {s.body && (
-              <p className="mt-4 max-w-[62ch] leading-[1.7] text-ink-2">{s.body}</p>
-            )}
-            {s.images && (
-              <div className="mt-8 grid gap-6 sm:grid-cols-2">
-                {s.images.map((img) => (
-                  <figure key={img.src} className="overflow-hidden rounded-xs bg-rule-2">
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      width={img.w}
-                      height={img.h}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="h-auto w-full"
-                    />
-                  </figure>
-                ))}
+            <div className="mx-auto max-w-5xl px-6">
+              <div className="grid gap-4 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
+                <h2 className="font-display text-h2 tracking-tight text-balance">{s.heading}</h2>
+                <div className="flex max-w-[58ch] flex-col gap-4">
+                  {paras(s.body).filter(Boolean).map((t) => (
+                    <p key={t} className="leading-[1.7] text-ink-2">{t}</p>
+                  ))}
+                </div>
               </div>
-            )}
+
+              {s.images && (
+                <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
+                  {s.images.map((img) => (
+                    <figure
+                      key={img.src}
+                      className={isWide(img.w, img.h) ? "sm:col-span-2" : undefined}
+                    >
+                      <div
+                        className={
+                          "overflow-hidden rounded-xs bg-rule-2 " +
+                          (isTall(img.w, img.h) ? "flex max-h-[34rem] justify-center" : "")
+                        }
+                      >
+                        <Image
+                          src={img.src}
+                          alt=""
+                          width={img.w}
+                          height={img.h}
+                          sizes={isWide(img.w, img.h)
+                            ? "(max-width: 640px) 100vw, 976px"
+                            : "(max-width: 640px) 100vw, 480px"}
+                          className={
+                            isTall(img.w, img.h)
+                              ? "h-auto max-h-[34rem] w-auto object-contain"
+                              : "h-auto w-full"
+                          }
+                        />
+                      </div>
+                      <figcaption className="mt-2.5 text-mid text-ink-3">{img.alt}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )}
+            </div>
           </section>
         ))}
 
@@ -85,11 +127,12 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
               &larr; {prev.client}
             </Link>
           ) : <span />}
-          {next && (
+          <Link className="text-ink-2 hover:text-crest-700" href="/work">All work</Link>
+          {next ? (
             <Link className="text-crest-700 hover:underline underline-offset-4" href={`/work/${next.slug}`}>
               {next.client} &rarr;
             </Link>
-          )}
+          ) : <span />}
         </nav>
       </main>
       <Cta />
