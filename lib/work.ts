@@ -242,7 +242,7 @@ export const projects: Project[] = [
     client: "TrueBlue",
     title: "Stronger Together",
     summary:
-      "How conference messaging and visuals helped the sales forces of multiple umbrella companies work together and cross sell as a united team.",
+      "Conference branding, an annual report and a benefits guide, across several years with one client.",
     blurb:
       "Uniting the sales forces of multiple umbrella companies under one event identity.",
     disciplines: ["Event branding", "Environmental", "Print"],
@@ -250,13 +250,16 @@ export const projects: Project[] = [
     card: { src: `${W}/trueblue/tb-slc2013.webp`, w: 2000, h: 1334 },
     hero: { src: `${W}/trueblue/tb-slc2013.webp`, alt: "Sales Leadership Conference branding", w: 2000, h: 1334 },
     intro:
-      "TrueBlue is a workforce solutions company, connecting people and work. Each year they hold a Sales Leadership Conference for their national sales teams. Event deliverables include event branding, print and email invitations, signage, display graphics, visual aids, keynote speaker graphics, way-finding graphics, notebooks, brochures and giveaways, lanyards and name badges.",
+      "TrueBlue is a workforce solutions company, connecting people and work. The work spans several years and several kinds of project — the branding for their national sales conference, the annual report that explained a changing business to investors, and the guide that rolled out a new wellness programme to their workforce.",
     featured: true,
     sections: [
       {
         heading: "In the room",
         tags: ["Event"],
-        body: "Banners, breakout room signage and display graphics carried the conference identity through the venue.",
+        body: [
+          "Each year TrueBlue holds a Sales Leadership Conference for their national sales teams. The theme — Stronger Together — had to get the sales forces of multiple umbrella companies working as one and cross-selling across the group.",
+          "Deliverables ran from event branding, print and email invitations to signage, display graphics, visual aids, keynote speaker graphics, way-finding, notebooks, brochures and giveaways, lanyards and name badges. Banners, breakout room signage and display graphics carried the identity through the venue.",
+        ],
         images: [
           { src: `${W}/trueblue/trueblue-we-are-trueblue-banner.webp`, alt: "We Are TrueBlue banner", w: 800, h: 1760 },
           { src: `${W}/trueblue/trueblue-brand-banner.webp`, alt: "Brand banner", w: 800, h: 1760 },

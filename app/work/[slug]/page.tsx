@@ -23,7 +23,10 @@ const paras = (body: string | string[]) => (Array.isArray(body) ? body : [body])
 /** Only genuinely panoramic artwork earns the full measure. A 2:1 logo does
  *  not need 976px, and tall phone screens run away without a cap. */
 const isWide = (w: number, h: number) => w / h >= 1.9;
-const isTall = (w: number, h: number) => w / h < 0.75;
+/** Only genuinely extreme shapes - roll-up banners, phone screens. At 0.75 the
+ *  threshold split a matched pair of report spreads, capping one and not the
+ *  other. */
+const isTall = (w: number, h: number) => w / h < 0.6;
 
 type Img = { src: string; alt: string; w: number; h: number };
 
@@ -49,8 +52,8 @@ function Figure({ img, sizes }: { img: Img; sizes: string }) {
     <figure className="mb-8 break-inside-avoid">
       <div
         className={
-          "overflow-hidden rounded-xs bg-rule-2 " +
-          (tall ? "flex max-h-[34rem] justify-center" : "")
+          "overflow-hidden rounded-xs " +
+          (tall ? "flex justify-center" : "bg-rule-2")
         }
       >
         <Image
@@ -59,7 +62,11 @@ function Figure({ img, sizes }: { img: Img; sizes: string }) {
           width={img.w}
           height={img.h}
           sizes={sizes}
-          className={tall ? "h-auto max-h-[34rem] w-auto object-contain" : "h-auto w-full"}
+          className={
+            // Fixed height, not max-height: a low-res tall source was rendering
+            // at its natural 267px beside 476px siblings.
+            tall ? "h-[40rem] w-auto rounded-xs object-contain" : "h-auto w-full"
+          }
         />
       </div>
       <figcaption className="mt-2.5 text-mid text-ink-3">{img.alt}</figcaption>
@@ -160,7 +167,15 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                     ) : (
                       <div key={i} className="gap-x-6 sm:columns-2">
                         {run.items.map((img) => (
-                          <Figure key={img.src} img={img} sizes="(max-width: 640px) 100vw, 480px" />
+                          <Figure
+                            key={img.src}
+                            img={img}
+                            sizes={
+                              isTall(img.w, img.h)
+                                ? "(max-width: 640px) 70vw, 320px"
+                                : "(max-width: 640px) 100vw, 480px"
+                            }
+                          />
                         ))}
                       </div>
                     )
