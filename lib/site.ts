@@ -3,9 +3,9 @@
  * metadata, OG images and the sitemap all have to agree with wherever we
  * actually are, or link previews break and the sitemap points at Squarespace.
  *
- * At cutover: set NEXT_PUBLIC_SITE_URL=https://www.swivelstudio.com in Vercel.
+ * At cutover: set NEXT_PUBLIC_SITE_URL=https://swivelstudio.com in Vercel.
  */
-export const PRODUCTION_HOST = "www.swivelstudio.com";
+export const PRODUCTION_HOST = "swivelstudio.com";
 
 export const SITE =
   process.env.NEXT_PUBLIC_SITE_URL ??
