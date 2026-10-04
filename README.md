@@ -22,3 +22,17 @@ Squarespace left blank, and robots.txt that allows AI crawlers.
 
 
 New to this setup? Start with `GETTING-STARTED.md`.
+
+## Replacing images
+
+Image URLs are what browsers and the Next image optimizer cache against, so
+overwriting a file in place leaves stale bytes being served at the same path —
+a hard refresh does not reliably clear it.
+
+The identity marks carry a content hash in their filename for that reason.
+After editing any of them:
+
+    node scripts/hash-assets.mjs
+
+It renames each file to `name-<sha1>.webp` and rewrites the references in
+`lib/work.ts`. Re-running when nothing changed is a no-op.
