@@ -132,14 +132,14 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
                   {s.images.map((img) => (
                     <figure key={img.src}>
-                      <div className="flex aspect-4/3 items-center justify-center rounded-xs bg-surface p-6">
+                      <div className="flex aspect-4/3 items-center justify-center overflow-hidden rounded-xs bg-surface">
                         <Image
                           src={img.src}
                           alt=""
                           width={img.w}
                           height={img.h}
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
-                          className="max-h-full w-auto object-contain"
+                          className="h-full w-full object-contain"
                         />
                       </div>
                       <figcaption className="mt-2.5 text-mid text-ink-3">{img.alt}</figcaption>
