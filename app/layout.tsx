@@ -13,11 +13,9 @@ export const metadata: Metadata = {
   },
   description:
     "Robin Maxwell is a Seattle graphic designer working in brand identity, events, campaigns, print and digital — for Gates Ag One, Weyerhaeuser, Philips Healthcare and neighborhood nonprofits.",
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: "Swivel Studio",
-    url: SITE,
     title: "Swivel Studio — Branding and graphic design, Seattle",
     description:
       "Two decades of branding, print and digital design for Seattle organizations.",

@@ -4,6 +4,7 @@ import { clients } from "@/lib/work";
 
 export const metadata = {
   title: "About",
+  alternates: { canonical: "/about" },
   description:
     "Robin Maxwell is a graphic designer and art director in Seattle — brand identity, event branding, print and digital, for over twenty years.",
 };

@@ -3,6 +3,7 @@ import { CopyEmail } from "@/components/copy-email";
 
 export const metadata = {
   title: "Contact",
+  alternates: { canonical: "/contact" },
   description:
     "Start a project with Robin Maxwell — branding and graphic design, from Seattle.",
 };

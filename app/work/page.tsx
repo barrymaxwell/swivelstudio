@@ -4,6 +4,7 @@ import { archive } from "@/lib/work";
 
 export const metadata = {
   title: "Work",
+  alternates: { canonical: "/work" },
   description:
     "Every project — brand identity, event branding, annual reports, campaigns and websites for Pacific Crest Savings Bank, Plum Creek, TrueBlue, Concord International School and more.",
 };

@@ -3,6 +3,9 @@ import { WorkCard } from "@/components/work-card";
 import Link from "next/link";
 import { featured, capabilities, clients, archive } from "@/lib/work";
 
+// Each page sets its own canonical. Set it in the layout and every page inherits "/".
+export const metadata = { alternates: { canonical: "/" } };
+
 export default function Home() {
   return (
     <>
