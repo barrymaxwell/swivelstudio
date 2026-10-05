@@ -1,72 +1,74 @@
 # Getting started — for Robin
 
-> **Every time:** Pull first. Check it locally. Then commit and push.
-> Anything you push to `main` goes live in about a minute.
+> **You don't need to learn git.** Tell Claude what to change. It shows you a preview, and nothing goes live until you say so.
+> For a one-word typo, the github.com website is faster. See the end of this page.
 
 ---
 
-## One-time setup (about 20 minutes)
+## One-time setup
 
-1. **Make a GitHub account.** Go to [github.com/signup](https://github.com/signup). Enter your email, a password and a username. Confirm the code GitHub emails you. Pick the free plan and skip the questions. Send Barry your username.
-   **Accept the invite.** Barry adds you to the site. Open the email from GitHub and click Accept.
-2. **Install three apps:**
-   - [GitHub Desktop](https://desktop.github.com) — saves and sends your changes.
-   - [VS Code](https://code.visualstudio.com) — edits the files.
-   - [Node.js](https://nodejs.org) — runs the site on your Mac. Pick the LTS version.
-3. **Install pnpm.** Open Terminal and paste:
+1. **Accept the GitHub invite** from your email.
+2. **Install the Claude app** from [claude.ai/download](https://claude.ai/download) and sign in.
+3. **Open the Code tab.** When it asks for a folder, choose `Documents`.
+4. **Paste this:**
 
-   ```bash
-   npm install -g pnpm
+   ```
+   I'm Robin. I've never used git, Terminal, or a code editor.
+   Set me up to edit my website.
+
+   - The code is at github.com/barrymaxwell/swivelstudio
+   - My GitHub username is robinjmax
+   - Put the site in Documents/swivelstudio
+
+   Install whatever my Mac needs and sign me in to GitHub.
+   Tell me before you install anything, in one plain sentence.
+   When it's done, show me the site running on my Mac.
    ```
 
-   If it says "permission denied", run `sudo npm install -g pnpm` and enter your Mac password.
-4. **Sign in to GitHub Desktop** with your GitHub account.
-5. **Clone the site.** In GitHub Desktop: File → Clone Repository → pick `barrymaxwell/swivelstudio` → Clone. It lands in `Documents/GitHub/swivelstudio`.
-6. **Install the site's parts.** In GitHub Desktop: Repository → Open in Terminal. Then:
+   Claude may ask for your Mac password or open GitHub in your browser to sign in. Both are normal.
 
-   ```bash
-   pnpm install
-   ```
-
-You're set up. You won't repeat these steps.
+5. **From now on, open the `swivelstudio` folder** in the Code tab. Not `Documents`.
 
 ---
 
 ## Making a change
 
-**1. Pull.** In GitHub Desktop, click **Fetch origin**, then **Pull origin** if it appears. This gets Barry's latest changes. Always do it first.
+Open the `swivelstudio` folder in the Code tab and say what you want. For example:
 
-**2. Open the files.** Repository → Open in Visual Studio Code.
-
-**3. Start the preview.** Repository → Open in Terminal, then:
-
-```bash
-pnpm dev -p 3100
+```
+Change the first line of my About page to: …
 ```
 
-Open http://localhost:3100 in your browser. The page updates when you save a file. Only you can see this.
+```
+Add this project to my work. The images are in Downloads/new-project.
+Client: … Summary: …
+```
 
-**4. Edit and save.** Where things live:
+```
+The contact page looks crowded on my phone. Fix it.
+```
 
-| To change | Look in |
-|---|---|
-| Page text and layout | `app/` — each folder is a page (`about`, `contact`, `work`) |
-| Images | `public/` |
-| Shared pieces like the header and footer | `components/chrome.tsx` |
-| Projects in the work grid | `lib/work.ts` |
+Claude gets Barry's latest changes first, makes the edit, and shows you a preview. Say **"publish it"** when it looks right. It goes live in about a minute.
 
-**5. Commit.** Back in GitHub Desktop, your changed files show on the left. Type a short summary at the bottom left, like "Update about page bio". Click **Commit to main**.
+If you don't like it, say **"undo that"**.
 
-**6. Push.** Click **Push origin**. The site rebuilds and goes live in about a minute.
+---
 
-When you're done, click in Terminal and press `Control + C` to stop the preview.
+## Quick fixes on github.com
+
+For a typo or one sentence:
+
+1. Go to [github.com/barrymaxwell/swivelstudio](https://github.com/barrymaxwell/swivelstudio).
+2. Find the file. Page text is in `app/` (for example `app/about/page.tsx`). Project text is in `lib/work.ts`.
+3. Click the pencil icon. Make the edit.
+4. Click **Commit changes**, then **Commit changes** again.
+
+It goes live in about a minute. You get no preview, so keep these edits small.
 
 ---
 
 ## If something goes wrong
 
-- **"Pull before you push" or a conflict message.** You and Barry edited the same lines. Stop and text Barry. Nothing is lost.
-- **The preview shows a red error.** Undo your last edit (`Cmd + Z`) and save. If it stays, ask Barry before pushing.
-- **You want to throw away your changes.** In GitHub Desktop, right-click the file → Discard Changes.
-- **You pushed something wrong.** The old version is still saved. Barry can roll it back in one click.
-- **Ask Claude.** Open this folder in the Claude app and describe what you want in plain words. It can make the edit, preview it, and push it for you.
+- **Something looks broken on the live site.** Tell Claude "the last change broke the site, put it back." Or text Barry.
+- **Claude mentions a "conflict."** You and Barry changed the same thing. Tell Claude to sort it out, or ask Barry.
+- **Codex instead of Claude?** Same setup prompt and same requests. It follows the same rules.
