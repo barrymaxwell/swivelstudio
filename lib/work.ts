@@ -8,6 +8,8 @@ export type Section = {
   gallery?: boolean;
   body: string | string[];
   images?: { src: string; alt: string; w: number; h: number }[];
+  /** Optional cover art and crop used only in the work archive. */
+  archiveCover?: { src?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
 };
 
 export type Project = {
@@ -21,6 +23,8 @@ export type Project = {
   disciplines: string[];
   tags: Tag[];
   card: { src: string; w: number; h: number };
+  /** Optional cover art and crop used only in the work archive. */
+  archiveCover?: { src?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
   hero: { src: string; alt: string; w: number; h: number };
   intro: string;
   sections: Section[];
@@ -76,6 +80,7 @@ export const projects: Project[] = [
       },
       {
         heading: "The Crest at your fingertips",
+        archiveCover: { position: "50% 60%" },
         tags: ["Digital"],
         body: "I designed app icons and worked with the client and their secure third-party banking app developer to customize the app framework, ensuring it seamlessly integrated with their suite of branded environments.",
         images: [
@@ -85,6 +90,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Observing the signs",
+        archiveCover: { scale: 1.04, position: "50% 60%" },
         tags: ["Print & editorial"],
         body: "A series of holiday closure signs were produced for the entire year, incorporating a line-art illustration style often used on currency, which also families with the crest-shaped security pattern used as a background element throughout branding.",
         images: [
@@ -105,6 +111,7 @@ export const projects: Project[] = [
     disciplines: ["Assorted clients", "Logo design", "Naming"],
     tags: ["Branding"],
     card: { src: `${W}/identities/contact-sheet-83bce06d.webp`, w: 1600, h: 1200 },
+    archiveCover: { src: `${W}/identities/namazu-7268f850.webp` },
     hero: { src: `${W}/identities/marks-hero-2a3cd620.webp`, alt: "Eight of the identity marks", w: 2100, h: 900 },
     intro:
       "Being a brand creative is like prepping someone for a pivotal meeting: you want to create something that feels natural, second-skin. When you see the client try it on, look in the mirror, light up, then go into the world with a smile and OWN IT with confidence — that is the BEST feeling.",
@@ -149,6 +156,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "Noche Tropical",
+        archiveCover: { position: "100% 50%", scale: 1.8, origin: "100% 0%" },
         tags: ["Event", "Branding", "Print & editorial"],
         body: "Annual dinner and fundraising auction. Design deliverables include an event poster, flyers, bid paddles, auction catalog, graphics for social media and online ticketing, sponsorship package, at-event signage, gift certificates, auction item forms, keynote auction presentation, and a school fundraising video. Most pieces are created in both English and Spanish.",
         images: [
@@ -161,6 +169,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Other fundraisers",
+        archiveCover: { scale: 1.5, position: "50% 70%" },
         tags: ["Event", "Print & editorial"],
         body: "Hello Spring 2018 and Spring Fling 2017. Posters, flyers, bid paddles, auction catalogs, graphics for social media and online ticketing, gift certificates, and a keynote auction presentation. Most pieces were created in both English and Spanish.",
         images: [
@@ -170,6 +179,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Designing community",
+        archiveCover: { scale: 1.08, position: "50% 25%" },
         tags: ["Print & editorial"],
         body: [
           "Each year the Concord PTA puts on four community dinners — events that provide an opportunity to share a meal and celebrate community, connect, share successes and needs, and find volunteer opportunities.",
@@ -182,6 +192,7 @@ export const projects: Project[] = [
       },
       {
         heading: "One-off events",
+        archiveCover: { scale: 1.06, position: "50% 20%" },
         tags: ["Print & editorial", "Digital"],
         body: [
           "Throughout the year, the PTA sponsors several events — Day of the Dead, Teacher Appreciation Week — for which they need engagement materials, from posters and graphics to advertising on social media.",
@@ -255,6 +266,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "In the room",
+        archiveCover: { position: "50% 43%" },
         tags: ["Event"],
         body: [
           "Each year TrueBlue holds a Sales Leadership Conference for their national sales teams. The theme — Stronger Together — had to get the sales forces of multiple umbrella companies working as one and cross-selling across the group.",
@@ -278,6 +290,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Workforce wellness",
+        archiveCover: { scale: 1.18, position: "50% 110%" },
         tags: ["Branding", "Print & editorial"],
         body: "Clear, clean and concise, with the front cover juxtaposing the iconic worker with an icon of health. This benefits guide also rolled out TrueBlue’s new wellness program, Stronger You, Stronger Blue, which we both named and created a corresponding wordmark for.",
         images: [
@@ -332,6 +345,9 @@ export type ArchiveEntry = {
   href: string;
   tags: Project["tags"];
   image: { src: string; w: number; h: number };
+  imagePosition?: string;
+  imageScale?: number;
+  imageOrigin?: string;
 };
 
 /**
@@ -348,9 +364,14 @@ export const archive: ArchiveEntry[] = projects.flatMap((p) =>
         client: p.client,
         href: `/work/${p.slug}#${sectionId(s.heading)}`,
         tags: s.tags ?? p.tags,
-        image: s.images?.[0]
-          ? { src: s.images[0].src, w: s.images[0].w, h: s.images[0].h }
-          : p.card,
+        image: {
+          src: s.archiveCover?.src ?? s.images?.[0]?.src ?? p.card.src,
+          w: s.archiveCover?.w ?? s.images?.[0]?.w ?? p.card.w,
+          h: s.archiveCover?.h ?? s.images?.[0]?.h ?? p.card.h,
+        },
+        imagePosition: s.archiveCover?.position,
+        imageScale: s.archiveCover?.scale,
+        imageOrigin: s.archiveCover?.origin,
       }))
     : [{
         key: p.slug,
@@ -358,7 +379,14 @@ export const archive: ArchiveEntry[] = projects.flatMap((p) =>
         client: p.client,
         href: `/work/${p.slug}`,
         tags: p.tags,
-        image: p.card,
+        image: {
+          src: p.archiveCover?.src ?? p.card.src,
+          w: p.archiveCover?.w ?? p.card.w,
+          h: p.archiveCover?.h ?? p.card.h,
+        },
+        imagePosition: p.archiveCover?.position,
+        imageScale: p.archiveCover?.scale,
+        imageOrigin: p.archiveCover?.origin,
       }]
 );
 

@@ -58,7 +58,15 @@ export function Archive() {
                 alt=""
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                className={
+                  "object-cover transition-transform duration-500 ease-out " +
+                  (e.imageScale ? "" : "group-hover:scale-[1.03]")
+                }
+                style={{
+                  objectPosition: e.imagePosition,
+                  transform: e.imageScale ? `scale(${e.imageScale})` : undefined,
+                  transformOrigin: e.imageOrigin,
+                }}
               />
             </div>
             {e.client !== e.title && (
