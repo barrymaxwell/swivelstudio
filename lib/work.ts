@@ -6,8 +6,12 @@ export type Section = {
   tags?: Tag[];
   /** Uniform cells instead of aspect-aware layout — for comparing marks. */
   gallery?: boolean;
+  /** Preserve reading order across rows for a numbered sequence. */
+  orderedImages?: boolean;
   body: string | string[];
-  images?: { src: string; alt: string; w: number; h: number }[];
+  images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean }[];
+  imagePlaceholders?: string[];
+  subsections?: { heading: string; body: string; imagePlaceholders?: string[] }[];
   /** Optional cover art and crop used only in the work archive. */
   archiveCover?: { src?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
 };
@@ -28,12 +32,110 @@ export type Project = {
   hero: { src: string; alt: string; w: number; h: number };
   intro: string;
   sections: Section[];
+  credits?: { role: string; name: string }[];
   featured?: boolean;
 };
 
 const W = "/work";
 
 export const projects: Project[] = [
+  {
+    slug: "breakwater-special-edition",
+    client: "Songborne & Seabound Press",
+    title: "Breakwater by Vivian Wilderbridge",
+    summary:
+      "Three cover editions echo the trimesters in Vivian Wilderbridge’s story of pregnancy and rising water.",
+    blurb:
+      "A three-part special edition of Breakwater, echoing pregnancy’s trimesters through a changing South Florida landscape.",
+    disciplines: [
+      "Cover design",
+      "Interior book design",
+      "E-book design",
+      "Promotional graphics",
+      "Launch party packaging",
+    ],
+    tags: ["Print & editorial"],
+    card: {
+      src: `${W}/breakwater-special-edition/breakwater-special-edition-card.webp`,
+      w: 1500,
+      h: 1125,
+    },
+    archiveCover: {
+      src: `${W}/breakwater-special-edition/breakwater-special-edition-card.webp`,
+      w: 1500,
+      h: 1125,
+    },
+    hero: {
+      src: `${W}/breakwater-special-edition/breakwater-special-edition-hero-table-v9.webp`,
+      alt: "Breakwater paperback Books I, II and III lying side by side on a light gray table, with alligator, botanical and heron covers",
+      w: 2000,
+      h: 860,
+    },
+    intro:
+      "As floodwaters surge in South Florida and millions evacuate, middle-school music teacher Carey Marilla learns she’s pregnant. She and her world-weary mother resist leaving, alongside their aging yard man and a runaway student. Together, the unlikely family faces months of slow devastation and radical change as Carey grapples with the psychological trials of pregnancy. Meanwhile, blue herons, silver mullet and sly alligators reclaim the drowned streets. Rain, indifferent and dazzling, dances among the telephone poles.",
+    credits: [
+      { role: "Cover art and illustrations", name: "Molly Pearce" },
+      { role: "Editing", name: "Kyra Freestar" },
+    ],
+    featured: true,
+    sections: [
+      {
+        heading: "The standard edition",
+        body:
+          "The original trade edition pairs a watercolor mangrove cover with a matching back cover.",
+        images: [
+          {
+            src: `${W}/breakwater-special-edition/standard-edition-warm-v4.webp`,
+            alt: "The standard edition of Breakwater with its matching back cover and stacked copies",
+            w: 2000,
+            h: 1776,
+            breathingRoom: true,
+          },
+        ],
+        imagePlaceholders: ["Book interior design"],
+      },
+      {
+        heading: "Three editions, three trimesters",
+        orderedImages: true,
+        body:
+          "At the author’s request, the special edition is presented in three editions to echo the three trimesters of pregnancy and Carey’s journey from conception to birth. Each edition has its own cover — an alligator, branching leaves or a great blue heron — while the water-bound palette connects them as a set.",
+        images: [
+          {
+            src: `${W}/breakwater-special-edition/volume-1-original-pdf-grounded-v6.webp`,
+            alt: "Breakwater Book I with an alligator cover standing on the stacked Books II and III",
+            w: 1254,
+            h: 1254,
+          },
+          {
+            src: `${W}/breakwater-special-edition/volume-2-original-pdf-grounded-v6.webp`,
+            alt: "Breakwater Book II with a botanical cover standing on the stacked Books III and I",
+            w: 1254,
+            h: 1254,
+          },
+          {
+            src: `${W}/breakwater-special-edition/volume-3-original-pdf-grounded-v6.webp`,
+            alt: "Breakwater Book III standing on Books I and II, with its matching back cover alongside",
+            w: 1254,
+            h: 1254,
+          },
+        ],
+        subsections: [
+          {
+            heading: "A launch made for exchange",
+            body:
+              "For the launch, I designed a mangrove-motif handkerchief that bound all three books together, tied with twine and sealed with seashells. The set was placed in a natural-fiber net bag and offered by barter: no money changed hands; only creative payment in response to the book was accepted for these special editions.",
+            imagePlaceholders: ["Handkerchief detail", "Bound limited edition"],
+          },
+        ],
+      },
+      {
+        heading: "The e-book",
+        body:
+          "The e-book edition extends the book design to a digital reading format, designed alongside the print editions.",
+        imagePlaceholders: ["ePub cover", "ePub on device"],
+      },
+    ],
+  },
   {
     slug: "pacific-crest-savings-bank",
     client: "Pacific Crest Savings Bank",

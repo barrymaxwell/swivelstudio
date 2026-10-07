@@ -21,6 +21,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const paras = (body: string | string[]) => (Array.isArray(body) ? body : [body]);
 
+function bookTitle(text: string) {
+  return text.split(/(Breakwater)/g).map((part, i) =>
+    part === "Breakwater" ? <em key={i}>{part}</em> : part
+  );
+}
+
 function Arrow({ dir }: { dir: "left" | "right" }) {
   return (
     <svg
@@ -46,7 +52,7 @@ const isWide = (w: number, h: number) => w / h >= 1.9;
  *  other. */
 const isTall = (w: number, h: number) => w / h < 0.6;
 
-type Img = { src: string; alt: string; w: number; h: number };
+type Img = { src: string; alt: string; w: number; h: number; breathingRoom?: boolean };
 
 /**
  * Group consecutive images by whether they span. A plain two-column grid
@@ -71,7 +77,7 @@ function Figure({ img, sizes }: { img: Img; sizes: string }) {
       <div
         className={
           "overflow-hidden rounded-xs " +
-          (tall ? "flex justify-center" : "bg-rule-2")
+          (tall ? "flex justify-center" : img.breathingRoom ? "p-5 sm:p-8" : "bg-rule-2")
         }
       >
         <Image
@@ -87,7 +93,7 @@ function Figure({ img, sizes }: { img: Img; sizes: string }) {
           }
         />
       </div>
-      <figcaption className="mt-2.5 text-mid text-ink-3">{img.alt}</figcaption>
+      <figcaption className="mt-2.5 text-mid text-ink-3">{bookTitle(img.alt)}</figcaption>
     </figure>
   );
 }
@@ -113,7 +119,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
             </p>
           )}
           <h1 className="mt-4 max-w-[20ch] font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-balance sm:text-5xl">
-            {p.title}
+            {bookTitle(p.title)}
           </h1>
           <p className="mt-5 max-w-[46ch] text-lede text-ink-2">{p.summary}</p>
         </div>
@@ -133,7 +139,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                 {p.disciplines.map((d) => <li key={d}>{d}</li>)}
               </ul>
             </div>
-            <p className="max-w-[58ch] text-lede leading-[1.65] text-ink-2">{p.intro}</p>
+            <p className="max-w-[58ch] text-lede leading-[1.65] text-ink-2">{bookTitle(p.intro)}</p>
           </div>
         </div>
 
@@ -154,7 +160,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                 <h2 className="font-display text-h2 tracking-tight text-balance">{s.heading}</h2>
                 <div className="flex max-w-[58ch] flex-col gap-4">
                   {paras(s.body).filter(Boolean).map((t) => (
-                    <p key={t} className="leading-[1.7] text-ink-2">{t}</p>
+                    <p key={t} className="leading-[1.7] text-ink-2">{bookTitle(t)}</p>
                   ))}
                 </div>
               </div>
@@ -191,7 +197,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                         ))}
                       </div>
                     ) : (
-                      <div key={i} className="gap-x-6 sm:columns-2">
+                      <div key={i} className={s.orderedImages ? "grid gap-x-6 sm:grid-cols-2" : "gap-x-6 sm:columns-2"}>
                         {run.items.map((img) => (
                           <Figure
                             key={img.src}
@@ -208,9 +214,58 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                   )}
                 </div>
               )}
+
+              {s.imagePlaceholders && (
+                <div className="mt-10 grid gap-5 sm:grid-cols-2">
+                  {s.imagePlaceholders.map((label) => (
+                    <div key={label}>
+                      <div className="flex aspect-4/3 items-center justify-center rounded-xs border border-dashed border-rule-2 bg-rule-2/30 px-4 text-center">
+                        <span className="text-sm text-ink-3">Image placeholder</span>
+                      </div>
+                      <p className="mt-2.5 text-mid text-ink-3">{label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {s.subsections?.map((subsection) => (
+                <div key={subsection.heading} className="mt-14 border-t border-rule pt-10">
+                  <div className="grid gap-4 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
+                    <h3 className="font-display text-xl tracking-tight">{subsection.heading}</h3>
+                    <p className="max-w-[58ch] leading-[1.7] text-ink-2">{subsection.body}</p>
+                  </div>
+                  {subsection.imagePlaceholders && (
+                    <div className="mt-8 grid gap-5 sm:grid-cols-2">
+                      {subsection.imagePlaceholders.map((label) => (
+                        <div key={label}>
+                          <div className="flex aspect-4/3 items-center justify-center rounded-xs border border-dashed border-rule-2 bg-rule-2/30 px-4 text-center">
+                            <span className="text-sm text-ink-3">Image placeholder</span>
+                          </div>
+                          <p className="mt-2.5 text-mid text-ink-3">{label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </section>
         ))}
+
+        {p.credits && (
+          <section className="border-t border-rule py-12">
+            <div className="mx-auto max-w-5xl px-6">
+              <div>
+                <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">Credits</h2>
+                <ul className="mt-3 flex flex-col gap-2 text-mid text-ink-2">
+                  {p.credits.map((credit) => (
+                    <li key={credit.role}><span className="font-medium text-ink">{credit.role}:</span> {credit.name}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+        )}
 
         <nav
           aria-label="More work"
