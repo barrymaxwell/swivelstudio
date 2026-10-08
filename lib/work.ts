@@ -9,9 +9,9 @@ export type Section = {
   /** Preserve reading order across rows for a numbered sequence. */
   orderedImages?: boolean;
   body: string | string[];
-  images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean }[];
+  images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean }[];
   imagePlaceholders?: string[];
-  subsections?: { heading: string; body: string; imagePlaceholders?: string[] }[];
+  subsections?: { heading: string; body: string; imagePlaceholders?: string[]; images?: { src: string; alt: string; w: number; h: number; fullWidth?: boolean }[] }[];
   /** Optional cover art and crop used only in the work archive. */
   archiveCover?: { src?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
 };
@@ -42,17 +42,17 @@ export const projects: Project[] = [
   {
     slug: "breakwater-special-edition",
     client: "Songborne & Seabound Press",
-    title: "Breakwater by Vivian Wilderbridge",
+    title: "Bringing a story into the world",
     summary:
-      "Three cover editions echo the trimesters in Vivian Wilderbridge’s story of pregnancy and rising water.",
+      "Print, digital and a three-volume special edition for Vivian Wilderbridge’s Breakwater, with a physical form that echoes the story.",
     blurb:
       "A three-part special edition of Breakwater, echoing pregnancy’s trimesters through a changing South Florida landscape.",
     disciplines: [
-      "Cover design",
-      "Interior book design",
+      "Book cover and interior design",
+      "Special edition design",
       "E-book design",
       "Promotional graphics",
-      "Launch party packaging",
+      "Launch packaging",
     ],
     tags: ["Print & editorial"],
     card: {
@@ -72,34 +72,56 @@ export const projects: Project[] = [
       h: 860,
     },
     intro:
-      "As floodwaters surge in South Florida and millions evacuate, middle-school music teacher Carey Marilla learns she’s pregnant. She and her world-weary mother resist leaving, alongside their aging yard man and a runaway student. Together, the unlikely family faces months of slow devastation and radical change as Carey grapples with the psychological trials of pregnancy. Meanwhile, blue herons, silver mullet and sly alligators reclaim the drowned streets. Rain, indifferent and dazzling, dances among the telephone poles.",
+      "In a near-future dystopia where rising seawater is overtaking South Florida, Breakwater follows a pregnant woman weighing her ties to home against her need for safety, medical care, and survival. As she resists pressure to leave, relatives, close friends and unexpected ties redefine her family. Nature is a character in its own right, informing the colors, imagery and materials across all editions.",
     credits: [
-      { role: "Cover art and illustrations", name: "Molly Pearce" },
+      { role: "Illustrations", name: "Molly Pearce" },
       { role: "Editing", name: "Kyra Freestar" },
     ],
     featured: true,
     sections: [
       {
         heading: "The standard edition",
+        orderedImages: true,
         body:
-          "The original trade edition pairs a watercolor mangrove cover with a matching back cover.",
+          "A mangrove watercolor wraps around the cover, evoking life, resilience and complexity. Sepia contrasts with vibrant greens, blues and aquamarine, reflecting water’s power to both threaten and sustain. Inside, classic typography pairs with story illustrations and a subtle wave motif links chapter headings, section breaks and page numbers.",
         images: [
           {
             src: `${W}/breakwater-special-edition/standard-edition-warm-v4.webp`,
-            alt: "The standard edition of Breakwater with its matching back cover and stacked copies",
+            alt: "Breakwater standard edition with watercolor mangrove artwork on the front, spine and back cover, standing above stacked copies",
             w: 2000,
             h: 1776,
-            breathingRoom: true,
+            landscape: true,
+            fullWidth: true,
+          },
+          {
+            src: `${W}/breakwater-special-edition/standard-interior-acknowledgments-gray-v1.webp`,
+            alt: "Breakwater interior design: a botanical illustration beside the acknowledgments",
+            w: 1086,
+            h: 1448,
+          },
+          {
+            src: `${W}/breakwater-special-edition/standard-interior-alligator-gray-v1.webp`,
+            alt: "Breakwater interior design: the alligator illustration and acknowledgments typography",
+            w: 1086,
+            h: 1448,
           },
         ],
-        imagePlaceholders: ["Book interior design"],
       },
       {
-        heading: "Three editions, three trimesters",
+        heading: "The limited edition",
         orderedImages: true,
-        body:
-          "At the author’s request, the special edition is presented in three editions to echo the three trimesters of pregnancy and Carey’s journey from conception to birth. Each edition has its own cover — an alligator, branching leaves or a great blue heron — while the water-bound palette connects them as a set.",
+        body: [
+          "Echoing the three trimesters of pregnancy, the story was divided into three volumes, each following a stage. Alligator, mangrove and heron illustrations distinguish the covers and connect to the content of each volume.",
+          "Fifty limited edition sets were wrapped by hand in a bandana printed with the cover’s mangrove watercolor, finished with twine, seashells and a natural-fiber net bag. Offered in exchange for creative responses to the book, the sets invited readers to contribute something of their own.",
+        ],
         images: [
+          {
+            src: `${W}/breakwater-special-edition/launch-materials-soft-print-v4.webp`,
+            alt: "Breakwater Limited Edition set: alligator, mangrove and heron books with a teal mangrove-print bandana on buff fabric, a natural net bag, hemp twine and two seashells",
+            w: 1448,
+            h: 1086,
+            fullWidth: true,
+          },
           {
             src: `${W}/breakwater-special-edition/volume-1-original-pdf-grounded-v6.webp`,
             alt: "Breakwater Book I with an alligator cover standing on the stacked Books II and III",
@@ -108,31 +130,45 @@ export const projects: Project[] = [
           },
           {
             src: `${W}/breakwater-special-edition/volume-2-original-pdf-grounded-v6.webp`,
-            alt: "Breakwater Book II with a botanical cover standing on the stacked Books III and I",
+            alt: "Breakwater Book II with a mangrove-leaf cover standing on the stacked Books III and I",
             w: 1254,
             h: 1254,
           },
           {
             src: `${W}/breakwater-special-edition/volume-3-original-pdf-grounded-v6.webp`,
-            alt: "Breakwater Book III standing on Books I and II, with its matching back cover alongside",
+            alt: "Breakwater Book III with a great blue heron cover standing on Books I and II, with its matching back cover alongside",
             w: 1254,
             h: 1254,
           },
-        ],
-        subsections: [
           {
-            heading: "A launch made for exchange",
-            body:
-              "For the launch, I designed a mangrove-motif handkerchief that bound all three books together, tied with twine and sealed with seashells. The set was placed in a natural-fiber net bag and offered by barter: no money changed hands; only creative payment in response to the book was accepted for these special editions.",
-            imagePlaceholders: ["Handkerchief detail", "Bound limited edition"],
+            src: `${W}/breakwater-special-edition/launch-bandana-worn-matched-color-v7.webp`,
+            alt: "Teal mangrove artwork printed on a buff fabric bandana with a plain unprinted border, draped over shoulders and viewed from behind",
+            w: 1448,
+            h: 1086,
+            square: true,
           },
         ],
       },
       {
         heading: "The e-book",
         body:
-          "The e-book edition extends the book design to a digital reading format, designed alongside the print editions.",
-        imagePlaceholders: ["ePub cover", "ePub on device"],
+          "The e-book preserves the print edition’s visual character while allowing the text to adapt across phones, tablets, desktop computers and e-readers in full-color or grayscale models.",
+        images: [
+          {
+            src: `${W}/breakwater-special-edition/ebook-cover-phone-and-mono-reader-v7.webp`,
+            alt: "Breakwater mangrove cover displayed in color on a mint-cased mobile phone beside its original grayscale e-ink cover on a chartreuse-cased reader, on a light gray table",
+            w: 1448,
+            h: 1086,
+            fullWidth: true,
+          },
+          {
+            src: `${W}/breakwater-special-edition/ebook-b-refined-cases-centered-phone-v12.webp`,
+            alt: "Breakwater across three devices on a light gray table: Chapter 8 as a two-page landscape tablet spread, the First Edition copyright page on a smaller turquoise-cased mobile phone beside the sage tablet’s center gutter, and acknowledgments with an alligator illustration on a chartreuse e-reader",
+            w: 1448,
+            h: 1086,
+            fullWidth: true,
+          },
+        ],
       },
     ],
   },

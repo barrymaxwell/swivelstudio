@@ -52,7 +52,7 @@ const isWide = (w: number, h: number) => w / h >= 1.9;
  *  other. */
 const isTall = (w: number, h: number) => w / h < 0.6;
 
-type Img = { src: string; alt: string; w: number; h: number; breathingRoom?: boolean };
+type Img = { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean };
 
 /**
  * Group consecutive images by whether they span. A plain two-column grid
@@ -62,7 +62,7 @@ type Img = { src: string; alt: string; w: number; h: number; breathingRoom?: boo
 function runs(images: Img[]) {
   const out: { wide: boolean; items: Img[] }[] = [];
   for (const img of images) {
-    const wide = isWide(img.w, img.h);
+    const wide = img.fullWidth || isWide(img.w, img.h);
     const last = out[out.length - 1];
     if (last && last.wide === wide) last.items.push(img);
     else out.push({ wide, items: [img] });
@@ -70,30 +70,30 @@ function runs(images: Img[]) {
   return out;
 }
 
-function Figure({ img, sizes }: { img: Img; sizes: string }) {
+function Figure({ img, sizes, hideCaption = false }: { img: Img; sizes: string; hideCaption?: boolean }) {
   const tall = isTall(img.w, img.h);
   return (
     <figure className="mb-8 break-inside-avoid">
       <div
         className={
           "overflow-hidden rounded-xs " +
-          (tall ? "flex justify-center" : img.breathingRoom ? "p-5 sm:p-8" : "bg-rule-2")
+          (img.landscape ? "aspect-4/3 bg-rule-2" : tall ? "flex justify-center" : img.breathingRoom ? "p-5 sm:p-8" : "bg-rule-2")
         }
       >
         <Image
           src={img.src}
-          alt=""
+          alt={img.alt}
           width={img.w}
           height={img.h}
           sizes={sizes}
           className={
             // Fixed height, not max-height: a low-res tall source was rendering
             // at its natural 267px beside 476px siblings.
-            tall ? "h-[40rem] w-auto rounded-xs object-contain" : "h-auto w-full"
+            img.landscape ? "h-full w-full object-cover" : img.square ? "aspect-square w-full object-cover" : tall ? "h-[40rem] w-auto rounded-xs object-contain" : "h-auto w-full"
           }
         />
       </div>
-      <figcaption className="mt-2.5 text-mid text-ink-3">{bookTitle(img.alt)}</figcaption>
+      {!hideCaption && <figcaption className="mt-2.5 text-mid text-ink-3">{bookTitle(img.alt)}</figcaption>}
     </figure>
   );
 }
@@ -103,6 +103,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
   const p = bySlug(slug);
   if (!p) notFound();
 
+  const hideCaptions = slug === "breakwater-special-edition";
   const i = projects.findIndex((x) => x.slug === slug);
   const prev = projects[i - 1];
   const next = projects[i + 1];
@@ -121,7 +122,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
           <h1 className="mt-4 max-w-[20ch] font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-balance sm:text-5xl">
             {bookTitle(p.title)}
           </h1>
-          <p className="mt-5 max-w-[46ch] text-lede text-ink-2">{p.summary}</p>
+          <p className="mt-5 max-w-[46ch] text-lede text-ink-2">{bookTitle(p.summary)}</p>
         </div>
 
         <div className="relative aspect-21/9 w-full bg-rule-2">
@@ -157,7 +158,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
           >
             <div className="mx-auto max-w-5xl px-6">
               <div className="grid gap-4 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
-                <h2 className="font-display text-h2 tracking-tight text-balance">{s.heading}</h2>
+                <h2 className="font-display text-h2 tracking-tight text-balance">{bookTitle(s.heading)}</h2>
                 <div className="flex max-w-[58ch] flex-col gap-4">
                   {paras(s.body).filter(Boolean).map((t) => (
                     <p key={t} className="leading-[1.7] text-ink-2">{bookTitle(t)}</p>
@@ -174,14 +175,14 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                       <div className="flex aspect-4/3 items-center justify-center overflow-hidden">
                         <Image
                           src={img.src}
-                          alt=""
+                          alt={img.alt}
                           width={img.w}
                           height={img.h}
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
                           className="h-full w-full object-contain"
                         />
                       </div>
-                      <figcaption className="mt-2.5 text-mid text-ink-3">{img.alt}</figcaption>
+                      {!hideCaptions && <figcaption className="mt-2.5 text-mid text-ink-3">{img.alt}</figcaption>}
                     </figure>
                   ))}
                 </div>
@@ -193,7 +194,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                     run.wide ? (
                       <div key={i}>
                         {run.items.map((img) => (
-                          <Figure key={img.src} img={img} sizes="(max-width: 640px) 100vw, 976px" />
+                          <Figure key={img.src} hideCaption={hideCaptions} img={img} sizes="(max-width: 640px) 100vw, 976px" />
                         ))}
                       </div>
                     ) : (
@@ -201,6 +202,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                         {run.items.map((img) => (
                           <Figure
                             key={img.src}
+                            hideCaption={hideCaptions}
                             img={img}
                             sizes={
                               isTall(img.w, img.h)
@@ -234,6 +236,15 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                     <h3 className="font-display text-xl tracking-tight">{subsection.heading}</h3>
                     <p className="max-w-[58ch] leading-[1.7] text-ink-2">{subsection.body}</p>
                   </div>
+                  {subsection.images && (
+                    <div className="mt-8 grid gap-x-6 sm:grid-cols-2">
+                      {subsection.images.map((img) => (
+                        <div key={img.src} className={img.fullWidth === false ? undefined : "sm:col-span-2"}>
+                          <Figure hideCaption={hideCaptions} img={img} sizes={img.fullWidth === false ? "(min-width: 640px) 480px, 100vw" : "(min-width: 1024px) 976px, 100vw"} />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   {subsection.imagePlaceholders && (
                     <div className="mt-8 grid gap-5 sm:grid-cols-2">
                       {subsection.imagePlaceholders.map((label) => (
