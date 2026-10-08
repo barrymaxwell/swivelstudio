@@ -52,7 +52,7 @@ const isWide = (w: number, h: number) => w / h >= 1.9;
  *  other. */
 const isTall = (w: number, h: number) => w / h < 0.6;
 
-type Img = { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean };
+type Img = { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean };
 
 /**
  * Group consecutive images by whether they span. A plain two-column grid
@@ -76,7 +76,7 @@ function Figure({ img, sizes, hideCaption = false }: { img: Img; sizes: string; 
     <figure className="mb-8 break-inside-avoid">
       <div
         className={
-          "overflow-hidden rounded-xs " +
+          "overflow-hidden " + (img.keyline ? "" : "rounded-xs ") +
           (img.landscape ? "aspect-4/3 bg-rule-2" : tall ? "flex justify-center" : img.breathingRoom ? "p-5 sm:p-8" : "bg-rule-2")
         }
       >
@@ -89,7 +89,8 @@ function Figure({ img, sizes, hideCaption = false }: { img: Img; sizes: string; 
           className={
             // Fixed height, not max-height: a low-res tall source was rendering
             // at its natural 267px beside 476px siblings.
-            img.landscape ? "h-full w-full object-cover" : img.square ? "aspect-square w-full object-cover" : tall ? "h-[40rem] w-auto rounded-xs object-contain" : "h-auto w-full"
+            (img.landscape ? "h-full w-full object-cover" : img.square ? "aspect-square w-full object-cover" : tall ? "h-[40rem] w-auto object-contain" : "h-auto w-full") +
+            (img.keyline ? " border border-black" : tall ? " rounded-xs" : "")
           }
         />
       </div>
@@ -125,8 +126,9 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
           <p className="mt-5 max-w-[46ch] text-lede text-ink-2">{bookTitle(p.summary)}</p>
         </div>
 
-        <div className="relative aspect-21/9 w-full bg-rule-2">
-          <Image src={p.hero.src} alt={p.hero.alt} fill priority sizes="100vw" className="object-cover" />
+        <div className="relative aspect-21/9 w-full overflow-hidden bg-rule-2">
+          <Image src={p.hero.src} alt={p.hero.alt} fill priority sizes="100vw" className="object-cover"
+            style={{ objectPosition: p.hero.position, transform: p.hero.scale ? `scale(${p.hero.scale})` : undefined }} />
         </div>
 
         {/* Intro: disciplines rail on the left, the setup on the right. */}

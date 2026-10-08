@@ -9,7 +9,7 @@ export type Section = {
   /** Preserve reading order across rows for a numbered sequence. */
   orderedImages?: boolean;
   body: string | string[];
-  images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean }[];
+  images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean }[];
   imagePlaceholders?: string[];
   subsections?: { heading: string; body: string; imagePlaceholders?: string[]; images?: { src: string; alt: string; w: number; h: number; fullWidth?: boolean }[] }[];
   /** Optional cover art and crop used only in the work archive. */
@@ -29,7 +29,7 @@ export type Project = {
   card: { src: string; w: number; h: number };
   /** Optional cover art and crop used only in the work archive. */
   archiveCover?: { src?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
-  hero: { src: string; alt: string; w: number; h: number };
+  hero: { src: string; alt: string; w: number; h: number; position?: string; scale?: number };
   intro: string;
   sections: Section[];
   credits?: { role: string; name: string }[];
@@ -56,9 +56,9 @@ export const projects: Project[] = [
     ],
     tags: ["Print & editorial"],
     card: {
-      src: `${W}/breakwater-special-edition/breakwater-special-edition-card.webp`,
-      w: 1500,
-      h: 1125,
+      src: `${W}/breakwater-special-edition/launch-materials-soft-print-v4.webp`,
+      w: 1448,
+      h: 1086,
     },
     archiveCover: {
       src: `${W}/breakwater-special-edition/breakwater-special-edition-card.webp`,
@@ -445,27 +445,30 @@ export const projects: Project[] = [
     summary: "How a road trip helped quell acquisition anxiety.",
     blurb:
       "A retro road-trip campaign — launched with a care package in a cheery suitcase — to calm a newly acquired workforce.",
-    disciplines: ["Campaign", "Illustration", "Internal comms"],
+    disciplines: ["Name & Concept", "Campaign Identity", "Collage", "Email Communications", "Rollout Collateral", "Packaging"],
     tags: ["Branding", "Print & editorial"],
     card: { src: `${W}/trueblue/trueblue-journey-postcard-1.webp`, w: 1236, h: 800 },
-    hero: { src: `${W}/trueblue/trueblue-journey-postcard-1.webp`, alt: "Journey to Unification postcard", w: 1236, h: 800 },
+    hero: { src: `${W}/trueblue/trueblue-journey-postcard-1.webp`, alt: "Journey to Unification postcard combining desert photography, a training-complete illustration and a roadrunner", w: 1236, h: 800, position: "50% 80%", scale: 1.052 },
     intro:
       "To get a newly acquired business ready for the milestones to unification and assuage employee anxiety, we ideated and branded the transition as a retro-style “Journey to Unification”, complete with custom illustrations.",
     featured: true,
+    credits: [{ role: "Illustrations", name: "Peter Hoey" }],
     sections: [
       {
         heading: "A care package from the road",
+        orderedImages: true,
         tags: ["Branding", "Print & editorial"],
         body: [
           "Print and digital communications were dropped at strategic times to let branch employees know they were valued, set expectations, remind them of upcoming action items, cheer them on, and congratulate them throughout the process.",
           "The initial installment was introduced to branch offices by way of a care package in a cheery suitcase, complete with travel stickers, a road map containing milestones, mission and vision statements, feedback postcards for employees to “mail in” from the road, jujubes, stress dolls, tchotchkes and other items to make the journey more bearable.",
+          "As the journey progressed, visually corresponding print and digital communications were sent at each mile marker along the map.",
         ],
         images: [
-          { src: `${W}/trueblue/trueblue-journey-atlas-cover.webp`, alt: "Journey atlas cover", w: 800, h: 1035 },
-          { src: `${W}/trueblue/trueblue-journey-brochure-cover.webp`, alt: "Journey brochure cover", w: 600, h: 1284 },
-          { src: `${W}/trueblue/trueblue-journey-postcard-2.webp`, alt: "Feedback postcard", w: 1236, h: 800 },
           { src: `${W}/trueblue/tb-unifimap1.webp`, alt: "Unification road map", w: 974, h: 1526 },
-          { src: `${W}/trueblue/tb-unifimap2.webp`, alt: "Unification road map detail", w: 970, h: 620 },
+          { src: `${W}/trueblue/trueblue-journey-atlas-cover.webp`, alt: "Journey atlas cover", w: 800, h: 1035 },
+          { src: `${W}/trueblue/tb-unifimap2.webp`, alt: "Unification road map detail", w: 970, h: 620, fullWidth: true },
+          { src: `${W}/trueblue/trueblue-journey-brochure-cover.webp`, alt: "Journey brochure cover", w: 600, h: 1284, keyline: true },
+          { src: `${W}/trueblue/trueblue-journey-postcard-2.webp`, alt: "Feedback postcard", w: 1236, h: 800, keyline: true },
         ],
       },
     ],
@@ -534,9 +537,9 @@ export const featured = projects.filter((p) => p.featured);
 export const bySlug = (slug: string) => projects.find((p) => p.slug === slug);
 
 export const capabilities = [
-  { title: "Brand Identity & Systems", copy: "Naming, marks, visual systems, standards, voice." },
-  { title: "Digital", copy: "Websites, campaigns, social, product, decks." },
-  { title: "Print & Environmental", copy: "Reports, publications, packaging, signage." },
+  { title: "Brand & Event Identity Systems", copy: "Naming, logos and marks, visual systems, standards." },
+  { title: "Digital", copy: "Websites, campaigns, social, decks." },
+  { title: "Print & Environmental", copy: "Collateral, reports, exhibits, signage, packaging." },
 ];
 
 export const clients = [
