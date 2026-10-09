@@ -11,11 +11,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const p = bySlug((await params).slug);
   if (!p) return {};
+  // "Identities — Identities" when the client and title match.
+  const title = p.client === p.title ? p.title : `${p.client} — ${p.title}`;
   return {
-    title: `${p.client} — ${p.title}`,
+    title,
     description: p.summary,
     alternates: { canonical: `/work/${p.slug}` },
-    openGraph: { title: `${p.client} — ${p.title}`, description: p.summary, images: [p.hero.src] },
+    // JPG cards from scripts/og-images.mjs. LinkedIn won't show the WebP heroes.
+    openGraph: { title, description: p.summary, images: [{ url: `/og/${p.slug}.jpg`, width: 1200, height: 630 }] },
   };
 }
 
