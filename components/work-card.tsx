@@ -34,9 +34,15 @@ export function WorkCard({
       {!compact && (
         <>
           <p className="mt-1 text-xs font-medium uppercase tracking-[0.1em] text-ink-3">
-            {p.disciplines.slice(0, 3).join(" · ")}
+            {p.cardCaption ?? p.disciplines.slice(0, 3).join(" · ")}
           </p>
-          <p className="mt-2 max-w-sm text-mid text-ink-2">{p.blurb}</p>
+          <p className="mt-2 max-w-sm text-mid text-ink-2">
+            {p.blurb.split(/(\*[^*]+\*)/g).map((part, index) =>
+              part.startsWith("*") && part.endsWith("*")
+                ? <em key={index}>{part.slice(1, -1)}</em>
+                : part
+            )}
+          </p>
         </>
       )}
     </Link>

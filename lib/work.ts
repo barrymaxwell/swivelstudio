@@ -24,6 +24,8 @@ export type Project = {
   summary: string;
   /** Card context — why click in. */
   blurb: string;
+  /** Optional homepage card caption in place of the discipline list. */
+  cardCaption?: string;
   disciplines: string[];
   tags: Tag[];
   card: { src: string; w: number; h: number; alt?: string; position?: string };
@@ -49,7 +51,8 @@ export const projects: Project[] = [
     summary:
       "Print, digital and a three-volume special edition for Vivian Wilderbridge’s Breakwater, with a physical form that echoes the story.",
     blurb:
-      "A three-part special edition of Breakwater, echoing pregnancy’s trimesters through a changing South Florida landscape.",
+      "Print, digital and a three-volume special edition for Vivian Wilderbridge’s *Breakwater*, with a physical form that echoes the story.",
+    cardCaption: "Book, e-book, and launch package design",
     disciplines: [
       "Book cover and interior design",
       "Special edition design",
@@ -189,7 +192,7 @@ export const projects: Project[] = [
       "How investing in a brand overhaul bought a local Northwest bank some modern-day currency.",
     blurb:
       "A community bank’s full overhaul — logo, standards, collateral, website, apps and in-branch signage.",
-    disciplines: ["Brand identity", "Collateral", "Website", "App", "Signage"],
+    disciplines: ["Brand identity", "Voice and Style Guidelines", "Collateral", "Website", "App", "Signage"],
     tags: ["Branding", "Digital", "Print & editorial"],
     card: { src: `${W}/pacific-crest-savings-bank/pcsbstationery.webp`, w: 1646, h: 948 },
     hero: { src: `${W}/pacific-crest-savings-bank/paccrest.webp`, alt: "Pacific Crest Savings Bank identity", w: 2000, h: 1000 },
@@ -199,14 +202,15 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "Securing the elements",
+        orderedImages: true,
+        archiveCover: { src: `${W}/pacific-crest-savings-bank/paccrest.webp`, w: 2000, h: 1000 },
         tags: ["Branding", "Print & editorial"],
         body: [
-          "A new tagline — You’ll like what you see from the Crest™ — plus an earthy, Northwest color palette, expansive-feeling Northwest photography, a simplified mountain logo mark, and friendly typography.",
-          "I created a full set of brand standards to guide them in their personable, helpful brand voice and visual identity system. The stationery suite includes a presentation folder which uses their signature blue with a pattern that echoes their logo shape and is reminiscent of the geometric patterns found on currency.",
+          "A new tagline — You’ll like what you see from the Crest™ — plus an earthy, Northwest color palette, expansive-feeling Northwest photography, a simplified overhaul of their mountain logo mark, and friendlier typography.",
+          "I created a full suite of templates and brand standards to guide them in their personable, helpful brand voice and visual identity system. The stationery suite includes a presentation folder which uses their signature blue with a pattern that echoes their logo shape and is reminiscent of the geometric security patterns found on currency.",
         ],
         images: [
-          { src: `${W}/pacific-crest-savings-bank/paccrest.webp`, alt: "Pacific Crest logo mark", w: 2000, h: 1000 },
-          { src: `${W}/pacific-crest-savings-bank/pcsbstationery.webp`, alt: "Stationery suite", w: 1646, h: 948 },
+          { src: `${W}/pacific-crest-savings-bank/pcsbstationery.webp`, alt: "Stationery suite", w: 1646, h: 948, fullWidth: true },
           { src: `${W}/pacific-crest-savings-bank/pcsb-pres.webp`, alt: "Presentation folder", w: 970, h: 1290 },
           { src: `${W}/pacific-crest-savings-bank/pcsb-form.webp`, alt: "Branded forms", w: 974, h: 1260 },
         ],
@@ -231,8 +235,7 @@ export const projects: Project[] = [
         tags: ["Digital"],
         body: "I designed app icons and worked with the client and their secure third-party banking app developer to customize the app framework, ensuring it seamlessly integrated with their suite of branded environments.",
         images: [
-          { src: `${W}/pacific-crest-savings-bank/img-9733.webp`, alt: "Banking app", w: 1179, h: 2506 },
-          { src: `${W}/pacific-crest-savings-bank/img-9727.webp`, alt: "Business banking app", w: 1179, h: 2453 },
+          { src: `${W}/pacific-crest-savings-bank/banking-app-two-phones-v1.webp`, alt: "Pacific Crest mobile and business banking apps on two angled phones", w: 1448, h: 1086, fullWidth: true },
         ],
       },
       {
@@ -254,7 +257,7 @@ export const projects: Project[] = [
     summary:
       "Twelve marks, across nonprofits, food, healthcare, furniture and real estate.",
     blurb:
-      "Twelve logos, from a foster care nonprofit to a Neapolitan pizzeria to an Alaskan creamery.",
+      "Branding work across nonprofits, food, healthcare, furniture, real estate and more.",
     disciplines: ["Assorted clients", "Logo design", "Naming"],
     tags: ["Branding"],
     card: { src: `${W}/identities/ams-fabric-hero-v1.webp`, alt: "AMS identity printed on navy fabric with a multicolored chevron symbol", w: 2000, h: 1295, position: "0% 50%" },
@@ -453,7 +456,7 @@ export const projects: Project[] = [
     title: "Are we there yet?",
     summary: "How a road trip helped quell acquisition anxiety.",
     blurb:
-      "A retro road-trip campaign — launched with a care package in a cheery suitcase — to calm a newly acquired workforce.",
+      "A retro road-trip campaign — launched with a care package in a travel suitcase — to help guide a newly acquired workforce.",
     disciplines: ["Name & Concept", "Campaign Identity", "Collage", "Email Communications", "Rollout Collateral", "Packaging"],
     tags: ["Branding", "Print & editorial"],
     card: { src: `${W}/trueblue/trueblue-journey-postcard-1.webp`, w: 1236, h: 800 },
