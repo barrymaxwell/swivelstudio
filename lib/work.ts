@@ -231,11 +231,13 @@ export const projects: Project[] = [
       },
       {
         heading: "The Crest at your fingertips",
+        orderedImages: true,
         archiveCover: { position: "50% 60%" },
         tags: ["Digital"],
         body: "I designed app icons and worked with the client and their secure third-party banking app developer to customize the app framework, ensuring it seamlessly integrated with their suite of branded environments.",
         images: [
           { src: `${W}/pacific-crest-savings-bank/banking-app-two-phones-v1.webp`, alt: "Pacific Crest mobile and business banking apps on two angled phones", w: 1448, h: 1086, fullWidth: true },
+          { src: `${W}/pacific-crest-savings-bank/app-icons-rose-gold-iphone-v1.webp`, alt: "Consumer and business app icons", w: 1536, h: 1024 },
         ],
       },
       {
