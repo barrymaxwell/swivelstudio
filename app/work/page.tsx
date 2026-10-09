@@ -1,6 +1,5 @@
 import { Header, Cta, Footer } from "@/components/chrome";
 import { Archive } from "./archive";
-import { archive } from "@/lib/work";
 
 export const metadata = {
   title: "Work",
@@ -18,8 +17,10 @@ export default function Work() {
           All work
         </h1>
         <p className="mt-4 max-w-[52ch] text-lede text-ink-2">
-          {archive.length} pieces of work across branding, events, print and digital.
-          The homepage has the longer stories.
+          Branding, events, logos, websites, campaigns, brochures, and environments.
+          For over two decades, I’ve designed for organizations across sectors,
+          from nonprofits to Fortune 500 companies. These case studies are a small
+          selection; more work is available upon request.
         </p>
         <Archive />
       </main>

@@ -26,7 +26,9 @@ export type Project = {
   blurb: string;
   disciplines: string[];
   tags: Tag[];
-  card: { src: string; w: number; h: number };
+  card: { src: string; w: number; h: number; alt?: string; position?: string };
+  /** A title here consolidates all sections into one work archive card. */
+  archiveTitle?: string;
   /** Optional cover art and crop used only in the work archive. */
   archiveCover?: { src?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
   hero: { src: string; alt: string; w: number; h: number; position?: string; scale?: number };
@@ -41,6 +43,7 @@ const W = "/work";
 export const projects: Project[] = [
   {
     slug: "breakwater-special-edition",
+    archiveTitle: "Book, e-book, & launch graphics",
     client: "Songborne & Seabound Press",
     title: "Bringing a story into the world",
     summary:
@@ -56,14 +59,15 @@ export const projects: Project[] = [
     ],
     tags: ["Print & editorial"],
     card: {
-      src: `${W}/breakwater-special-edition/launch-materials-soft-print-v4.webp`,
+      src: `${W}/breakwater-special-edition/heron-book-shell-card-v1.webp`,
+      alt: "Close-up of the tilted aqua Breakwater Book III with heron and mangrove artwork, beside a small seashell",
       w: 1448,
       h: 1086,
     },
     archiveCover: {
-      src: `${W}/breakwater-special-edition/breakwater-special-edition-card.webp`,
-      w: 1500,
-      h: 1125,
+      src: `${W}/breakwater-special-edition/heron-book-shell-card-v1.webp`,
+      w: 1448,
+      h: 1086,
     },
     hero: {
       src: `${W}/breakwater-special-edition/breakwater-special-edition-hero-table-v9.webp`,
@@ -109,6 +113,11 @@ export const projects: Project[] = [
       },
       {
         heading: "The limited edition",
+        archiveCover: {
+          src: `${W}/breakwater-special-edition/heron-book-shell-card-v1.webp`,
+          w: 1448,
+          h: 1086,
+        },
         orderedImages: true,
         body: [
           "Echoing the three trimesters of pregnancy, the story was divided into three volumes, each following a stage. Alligator, mangrove and heron illustrations distinguish the covers and connect to the content of each volume.",
@@ -248,9 +257,9 @@ export const projects: Project[] = [
       "Twelve logos, from a foster care nonprofit to a Neapolitan pizzeria to an Alaskan creamery.",
     disciplines: ["Assorted clients", "Logo design", "Naming"],
     tags: ["Branding"],
-    card: { src: `${W}/identities/contact-sheet-83bce06d.webp`, w: 1600, h: 1200 },
-    archiveCover: { src: `${W}/identities/namazu-7268f850.webp` },
-    hero: { src: `${W}/identities/marks-hero-2a3cd620.webp`, alt: "Eight of the identity marks", w: 2100, h: 900 },
+    card: { src: `${W}/identities/ams-fabric-hero-v1.webp`, alt: "AMS identity printed on navy fabric with a multicolored chevron symbol", w: 2000, h: 1295, position: "0% 50%" },
+    archiveCover: { src: `${W}/identities/ams-fabric-hero-v1.webp`, w: 2000, h: 1295, position: "0% 50%" },
+    hero: { src: `${W}/identities/ams-fabric-hero-v1.webp`, alt: "White AMS wordmark and multicolored chevron symbol printed on navy fabric", w: 2000, h: 1295, position: "50% 50%" },
     intro:
       "Being a brand creative is like prepping someone for a pivotal meeting: you want to create something that feels natural, second-skin. When you see the client try it on, look in the mirror, light up, then go into the world with a smile and OWN IT with confidence — that is the BEST feeling.",
     featured: true,
@@ -498,7 +507,7 @@ export type ArchiveEntry = {
  * writing anything new.
  */
 export const archive: ArchiveEntry[] = projects.flatMap((p) =>
-  p.sections.length > 1
+  p.sections.length > 1 && !p.archiveTitle
     ? p.sections.map((s) => ({
         key: `${p.slug}#${sectionId(s.heading)}`,
         title: s.heading,
@@ -516,10 +525,12 @@ export const archive: ArchiveEntry[] = projects.flatMap((p) =>
       }))
     : [{
         key: p.slug,
-        title: p.title,
+        title: p.archiveTitle ?? p.title,
         client: p.client,
         href: `/work/${p.slug}`,
-        tags: p.tags,
+        tags: p.archiveTitle
+          ? [...new Set([...p.tags, ...p.sections.flatMap((s) => s.tags ?? [])])]
+          : p.tags,
         image: {
           src: p.archiveCover?.src ?? p.card.src,
           w: p.archiveCover?.w ?? p.card.w,
@@ -548,5 +559,6 @@ export const clients = [
   "Gates Notes", "Dendreon", "SightLife", "Vera Whole Health",
   "Accelerator Corporation", "Life Science Washington", "First Sound Bank",
   "Pacific Crest Savings Bank", "Visit Bellevue", "Microclimates",
+  "Breakthrough Energy", "Old Growth Industries",
   "Concord International School", "YWCA",
 ];

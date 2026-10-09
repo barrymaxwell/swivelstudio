@@ -18,10 +18,11 @@ export function WorkCard({
       <div className="relative aspect-4/3 overflow-hidden rounded-xs bg-rule-2">
         <Image
           src={p.card.src}
-          alt=""
+          alt={p.card.alt ?? ""}
           fill
           sizes={compact ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 100vw, 50vw"}
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          style={{ objectPosition: p.card.position }}
         />
       </div>
       <h3 className={`mt-4 font-semibold tracking-tight ${compact ? "text-mid" : "text-base"}`}>

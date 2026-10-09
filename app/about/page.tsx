@@ -14,7 +14,7 @@ const sections = [
     heading: "What I do best",
     body: [
       "Identity creation and event branding are my two great loves. I also work in naming, placemaking and environmental graphics, websites, campaigns, brochures, packaging and reports.",
-      "I've done it for banking, biomedical and technology, and for action sports, education, hospitality and other creatives. Most recently, more of it in ag tech and the nonprofit world.",
+      "I've done it for banking, biomedical and technology, and for action sports, education, hospitality, architects, therapists and other creatives. More recently, I've worked in ag tech, sustainable products and nonprofits.",
     ],
   },
   {
@@ -28,7 +28,7 @@ const sections = [
   {
     heading: "What I care about",
     body: [
-      "I do my best work with people who care about community, equity and inclusivity. You don't have to be a nonprofit for us to be a good fit. It helps if those things matter to you too.",
+      "I do my best work with people who care about community, equity, inclusivity, and the planet. You don't have to be a nonprofit for us to be a good fit. It helps if those things matter to you too.",
     ],
   },
 ];
@@ -41,10 +41,10 @@ export default function About() {
         <section className="mx-auto max-w-5xl px-6 pt-16 pb-14">
           <div className="grid items-start gap-10 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
             <Image
-              src="/work/_studio/robinmaxwell-2f.webp"
+              src="/work/_studio/robinmaxwell-color-corrected-v1.webp"
               alt="Robin Maxwell"
-              width={967}
-              height={972}
+              width={1247}
+              height={1261}
               sizes="(max-width: 640px) 60vw, 240px"
               className="w-40 rounded-xs object-cover sm:w-full"
               priority
@@ -54,8 +54,8 @@ export default function About() {
                 Robin Maxwell
               </h1>
               <p className="mt-5 max-w-[46ch] text-lede text-ink-2">
-                I&rsquo;m principal and art director of Swivel Studio &mdash; a graphic
-                designer working out of Seattle. For more than twenty years I&rsquo;ve
+                I&rsquo;m principal and art director of Swivel Studio, based in Seattle.
+                For more than twenty years, I&rsquo;ve
                 helped organizations grow through design.
               </p>
             </div>
