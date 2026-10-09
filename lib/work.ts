@@ -49,9 +49,9 @@ export const projects: Project[] = [
     client: "Songborne & Seabound Press",
     title: "Bringing a story into the world",
     summary:
-      "Print, digital and a three-volume special edition for Vivian Wilderbridge’s Breakwater, with a physical form that echoes the story.",
+      "Print, digital, and a three-volume special edition for Vivian Wilderbridge’s Breakwater, with a physical form that echoes the story.",
     blurb:
-      "Print, digital and a three-volume special edition for Vivian Wilderbridge’s *Breakwater*, with a physical form that echoes the story.",
+      "Print, digital, and a three-volume special edition for Vivian Wilderbridge’s *Breakwater*, with a physical form that echoes the story.",
     cardCaption: "Book, e-book, and launch package design",
     disciplines: [
       "Book cover and interior design",
@@ -74,12 +74,12 @@ export const projects: Project[] = [
     },
     hero: {
       src: `${W}/breakwater-special-edition/breakwater-special-edition-hero-table-v9.webp`,
-      alt: "Breakwater paperback Books I, II and III lying side by side on a light gray table, with alligator, botanical and heron covers",
+      alt: "Breakwater paperback Books I, II, and III lying side by side on a light gray table, with alligator, botanical, and heron covers",
       w: 2000,
       h: 860,
     },
     intro:
-      "In a near-future dystopia where rising seawater is overtaking South Florida, Breakwater follows a pregnant woman weighing her ties to home against her need for safety, medical care, and survival. As she resists pressure to leave, relatives, close friends and unexpected ties redefine her family. Nature is a character in its own right, informing the colors, imagery and materials across all editions.",
+      "In a near-future dystopia where rising seawater is overtaking South Florida, Breakwater follows a pregnant woman weighing her ties to home against her need for safety, medical care, and survival. As she resists pressure to leave, relatives, close friends, and unexpected ties redefine her family. Nature is a character in its own right, informing the colors, imagery, and materials across all editions.",
     credits: [
       { role: "Illustrations", name: "Molly Pearce" },
       { role: "Editing", name: "Kyra Freestar" },
@@ -90,11 +90,11 @@ export const projects: Project[] = [
         heading: "The standard edition",
         orderedImages: true,
         body:
-          "A mangrove watercolor wraps around the cover, evoking life, resilience and complexity. Sepia contrasts with vibrant greens, blues and aquamarine, reflecting water’s power to both threaten and sustain. Inside, classic typography pairs with story illustrations and a subtle wave motif links chapter headings, section breaks and page numbers.",
+          "A mangrove watercolor wraps around the cover, evoking life, resilience, and complexity. Sepia contrasts with vibrant greens, blues, and aquamarine, reflecting water’s power to both threaten and sustain. Inside, classic typography pairs with story illustrations and a subtle wave motif links chapter headings, section breaks, and page numbers.",
         images: [
           {
             src: `${W}/breakwater-special-edition/standard-edition-warm-v4.webp`,
-            alt: "Breakwater standard edition with watercolor mangrove artwork on the front, spine and back cover, standing above stacked copies",
+            alt: "Breakwater standard edition with watercolor mangrove artwork on the front, spine, and back cover, standing above stacked copies",
             w: 2000,
             h: 1776,
             landscape: true,
@@ -123,13 +123,13 @@ export const projects: Project[] = [
         },
         orderedImages: true,
         body: [
-          "Echoing the three trimesters of pregnancy, the story was divided into three volumes, each following a stage. Alligator, mangrove and heron illustrations distinguish the covers and connect to the content of each volume.",
-          "Fifty limited edition sets were wrapped by hand in a bandana printed with the cover’s mangrove watercolor, finished with twine, seashells and a natural-fiber net bag. Offered in exchange for creative responses to the book, the sets invited readers to contribute something of their own.",
+          "Echoing the three trimesters of pregnancy, the story was divided into three volumes, each following a stage. Alligator, mangrove, and heron illustrations distinguish the covers and connect to the content of each volume.",
+          "Fifty limited edition sets were wrapped by hand in a bandana printed with the cover’s mangrove watercolor, finished with twine, seashells, and a natural-fiber net bag. Offered in exchange for creative responses to the book, the sets invited readers to contribute something of their own.",
         ],
         images: [
           {
             src: `${W}/breakwater-special-edition/launch-materials-soft-print-v4.webp`,
-            alt: "Breakwater Limited Edition set: alligator, mangrove and heron books with a teal mangrove-print bandana on buff fabric, a natural net bag, hemp twine and two seashells",
+            alt: "Breakwater Limited Edition set: alligator, mangrove, and heron books with a teal mangrove-print bandana on buff fabric, a natural net bag, hemp twine, and two seashells",
             w: 1448,
             h: 1086,
             fullWidth: true,
@@ -164,7 +164,7 @@ export const projects: Project[] = [
       {
         heading: "The e-book",
         body:
-          "The e-book preserves the print edition’s visual character while allowing the text to adapt across phones, tablets, desktop computers and e-readers in full-color or grayscale models.",
+          "The e-book preserves the print edition’s visual character while allowing the text to adapt across phones, tablets, desktop computers, and e-readers in full-color or grayscale models.",
         images: [
           {
             src: `${W}/breakwater-special-edition/ebook-cover-phone-and-mono-reader-v7.webp`,
@@ -191,7 +191,7 @@ export const projects: Project[] = [
     summary:
       "How investing in a brand overhaul bought a local Northwest bank some modern-day currency.",
     blurb:
-      "A community bank’s full overhaul — logo, standards, collateral, website, apps and in-branch signage.",
+      "A community bank’s full overhaul — logo, standards, collateral, website, apps, and in-branch signage.",
     disciplines: ["Brand identity", "Voice and Style Guidelines", "Collateral", "Website", "App", "Signage"],
     tags: ["Branding", "Digital", "Print & editorial"],
     card: { src: `${W}/pacific-crest-savings-bank/pcsbstationery.webp`, w: 1646, h: 948 },
@@ -257,16 +257,16 @@ export const projects: Project[] = [
     client: "Identities",
     title: "Identities",
     summary:
-      "Selected marks across nonprofits, food, healthcare, furniture, real estate and creative agencies.",
+      "Selected marks across nonprofits, food, healthcare, furniture, real estate, and creative agencies.",
     blurb:
-      "Branding work across nonprofits, food, healthcare, furniture, real estate and more.",
+      "Branding work across nonprofits, food, healthcare, furniture, real estate, and more.",
     disciplines: ["Assorted clients", "Logo design", "Naming"],
     tags: ["Branding"],
     card: { src: `${W}/identities/ams-fabric-hero-v1.webp`, alt: "AMS identity printed on navy fabric with a multicolored chevron symbol", w: 2000, h: 1295, position: "0% 50%" },
     archiveCover: { src: `${W}/identities/ams-fabric-hero-v1.webp`, w: 2000, h: 1295, position: "0% 50%" },
     hero: { src: `${W}/identities/ams-fabric-hero-v1.webp`, alt: "White AMS wordmark and multicolored chevron symbol printed on navy fabric", w: 2000, h: 1295, position: "50% 50%" },
     intro:
-      "Being a brand creative is like prepping someone for a pivotal meeting: you want to create something that feels natural, second-skin. When you see the client try it on, look in the mirror, light up, then go into the world with a smile and OWN IT with confidence — that is the BEST feeling.",
+      "An identity should feel familiar to the people behind it and distinctive to the people they want to reach. These marks grew from each organization’s character, purpose, and audience.",
     featured: true,
     sections: [
       {
@@ -408,7 +408,7 @@ export const projects: Project[] = [
     client: "TrueBlue",
     title: "Stronger Together",
     summary:
-      "Conference branding, an annual report and a benefits guide, across several years with one client.",
+      "Conference branding, an annual report, and a benefits guide, across several years with one client.",
     blurb:
       "Uniting the sales forces of multiple umbrella companies under one event identity.",
     disciplines: ["Event branding", "Environmental", "Print"],
@@ -425,7 +425,7 @@ export const projects: Project[] = [
         tags: ["Event"],
         body: [
           "Each year TrueBlue holds a Sales Leadership Conference for their national sales teams. The theme — Stronger Together — had to get the sales forces of multiple umbrella companies working as one and cross-selling across the group.",
-          "Deliverables ran from event branding, print and email invitations to signage, display graphics, visual aids, keynote speaker graphics, way-finding, notebooks, brochures and giveaways, lanyards and name badges. Banners, breakout room signage and display graphics carried the identity through the venue.",
+          "Deliverables ran from event branding, print and email invitations to signage, display graphics, visual aids, keynote speaker graphics, way-finding, notebooks, brochures and giveaways, lanyards, and name badges. Banners, breakout room signage, and display graphics carried the identity through the venue.",
         ],
         images: [
           { src: `${W}/trueblue/trueblue-we-are-trueblue-banner.webp`, alt: "We Are TrueBlue banner", w: 800, h: 1760 },
@@ -447,7 +447,7 @@ export const projects: Project[] = [
         heading: "Workforce wellness",
         archiveCover: { scale: 1.18, position: "50% 110%" },
         tags: ["Branding", "Print & editorial"],
-        body: "Clear, clean and concise, with the front cover juxtaposing the iconic worker with an icon of health. This benefits guide also rolled out TrueBlue’s new wellness program, Stronger You, Stronger Blue, which we both named and created a corresponding wordmark for.",
+        body: "Clear, clean, and concise, with the front cover juxtaposing the iconic worker with an icon of health. This benefits guide also rolled out TrueBlue’s new wellness program, Stronger You, Stronger Blue, which we both named and created a corresponding wordmark for.",
         images: [
           { src: `${W}/trueblue/tb-ben1.webp`, alt: "Benefits enrollment guide", w: 970, h: 1256 },
           { src: `${W}/trueblue/tb-ben2.webp`, alt: "Benefits enrollment guide spread", w: 970, h: 1256 },
@@ -465,7 +465,7 @@ export const projects: Project[] = [
     disciplines: ["Name & Concept", "Campaign Identity", "Collage", "Email Communications", "Rollout Collateral", "Packaging"],
     tags: ["Branding", "Print & editorial"],
     card: { src: `${W}/trueblue/trueblue-journey-postcard-1.webp`, w: 1236, h: 800 },
-    hero: { src: `${W}/trueblue/trueblue-journey-postcard-1.webp`, alt: "Journey to Unification postcard combining desert photography, a training-complete illustration and a roadrunner", w: 1236, h: 800, position: "50% 80%", scale: 1.052 },
+    hero: { src: `${W}/trueblue/trueblue-journey-postcard-1.webp`, alt: "Journey to Unification postcard combining desert photography, a training-complete illustration, and a roadrunner", w: 1236, h: 800, position: "50% 80%", scale: 1.052 },
     intro:
       "To get a newly acquired business ready for the milestones to unification and assuage employee anxiety, we ideated and branded the transition as a retro-style “Journey to Unification”, complete with custom illustrations.",
     featured: true,
@@ -477,7 +477,7 @@ export const projects: Project[] = [
         tags: ["Branding", "Print & editorial"],
         body: [
           "Print and digital communications were dropped at strategic times to let branch employees know they were valued, set expectations, remind them of upcoming action items, cheer them on, and congratulate them throughout the process.",
-          "The initial installment was introduced to branch offices by way of a care package in a cheery suitcase, complete with travel stickers, a road map containing milestones, mission and vision statements, feedback postcards for employees to “mail in” from the road, jujubes, stress dolls, tchotchkes and other items to make the journey more bearable.",
+          "The initial installment was introduced to branch offices by way of a care package in a cheery suitcase, complete with travel stickers, a road map containing milestones, mission and vision statements, feedback postcards for employees to “mail in” from the road, jujubes, stress dolls, tchotchkes, and other items to make the journey more bearable.",
           "As the journey progressed, visually corresponding print and digital communications were sent at each mile marker along the map.",
         ],
         images: [

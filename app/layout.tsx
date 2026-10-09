@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     template: "%s — Swivel Studio",
   },
   description:
-    "Robin Maxwell is a Seattle graphic designer working in brand identity, events, campaigns, print and digital — for Gates Ag One, Weyerhaeuser, Philips Healthcare and neighborhood nonprofits.",
+    "Robin Maxwell is a Seattle graphic designer working in brand identity, events, campaigns, print, and digital — for Gates Ag One, Weyerhaeuser, Philips Healthcare, and neighborhood nonprofits.",
   openGraph: {
     type: "website",
     siteName: "Swivel Studio",
     title: "Swivel Studio — Branding and graphic design, Seattle",
     description:
-      "Two decades of branding, print and digital design for Seattle organizations.",
+      "Two decades of branding, print, and digital design for Seattle organizations.",
   },
   twitter: { card: "summary_large_image" },
   // Belt and braces alongside robots.ts while the vercel.app copy is live.

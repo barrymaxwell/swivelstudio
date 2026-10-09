@@ -13,16 +13,16 @@ const sections = [
   {
     heading: "What I do best",
     body: [
-      "Identity creation and event branding are my two great loves. I also work in naming, placemaking and environmental graphics, websites, campaigns, brochures, packaging and reports.",
-      "I've done it for banking, biomedical and technology, and for action sports, education, hospitality, architects, therapists and other creatives. More recently, I've worked in ag tech, sustainable products and nonprofits.",
+      "Identity creation and event branding are my two great loves. I also work in naming, placemaking and environmental graphics, websites, campaigns, brochures, packaging, and reports.",
+      "I've done it for banking, biomedical, and technology, and for action sports, education, hospitality, architects, therapists, and other creatives. More recently, I've worked in ag tech, sustainable products, and nonprofits.",
     ],
   },
   {
     heading: "How I work",
     body: [
-      "You get me at every stage — research, strategy, ideation, execution and delivery. Nobody hands your project to someone else once the work is won.",
+      "You get me at every stage — research, strategy, ideation, execution, and delivery. Nobody hands your project to someone else once the work is won.",
       "I ask a lot of questions. Understanding your world is usually what makes the design work, and I'm told things run more smoothly when I'm involved.",
-      "I work on my own or inside your team, and bring in copywriters, illustrators, photographers and developers when a project needs them.",
+      "I work on my own or inside your team, and bring in copywriters, illustrators, photographers, and developers when a project needs them.",
     ],
   },
   {

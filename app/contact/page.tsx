@@ -17,7 +17,7 @@ const helpful = [
 
 const fits = [
   "Identity work, from a single mark to a full system with standards",
-  "Events and campaigns that hold together across print, signage and social",
+  "Events and campaigns that hold together across print, signage, and social",
   "Reports and publications where the information has to do the convincing",
   "Overflow or embedded work alongside an in-house team",
 ];
@@ -66,7 +66,7 @@ export default function Contact() {
           <List
             title="Projects I take on"
             items={fits}
-            note="I work solo or inside a team, and bring in copywriters, illustrators, photographers and developers as a project needs them."
+            note="I work solo or inside a team, and bring in copywriters, illustrators, photographers, and developers as a project needs them."
           />
         </div>
 
