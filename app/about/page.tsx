@@ -79,7 +79,7 @@ export default function About() {
           ))}
         </div>
 
-        <section className="mx-auto max-w-5xl px-6 py-12">
+        <section id="clients" className="mx-auto max-w-5xl scroll-mt-28 px-6 py-12">
           <div className="grid gap-4 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
             <h2 className="font-display text-h2 tracking-tight">Clients</h2>
             <div>

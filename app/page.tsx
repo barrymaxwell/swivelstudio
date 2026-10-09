@@ -1,7 +1,8 @@
 import { Header, Cta, Footer } from "@/components/chrome";
 import { WorkCard } from "@/components/work-card";
+import { ClientLogos } from "@/components/client-logos";
 import Link from "next/link";
-import { featured, capabilities, clients, archive } from "@/lib/work";
+import { featured, capabilities } from "@/lib/work";
 
 // Each page sets its own canonical. Set it in the layout and every page inherits "/".
 export const metadata = { alternates: { canonical: "/" } };
@@ -55,7 +56,7 @@ export default function Home() {
                 href="/work"
                 className="text-base text-crest-700 underline decoration-crest-200 underline-offset-4 transition-colors hover:decoration-crest"
               >
-                All {archive.length} projects
+                All projects
               </Link>
             </p>
           </div>
@@ -65,8 +66,14 @@ export default function Home() {
           <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
             Twenty years of clients
           </h2>
-          <p className="mt-5 max-w-3xl text-base leading-[2] text-ink-2">
-            {clients.join("  ·  ")}
+          <ClientLogos />
+          <p className="mt-8">
+            <Link
+              href="/about#clients"
+              className="text-base text-crest-700 underline decoration-crest-200 underline-offset-4 transition-colors hover:decoration-crest"
+            >
+              See more clients
+            </Link>
           </p>
         </section>
       </main>
