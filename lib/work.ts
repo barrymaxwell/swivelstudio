@@ -9,7 +9,7 @@ export type Section = {
   /** Preserve reading order across rows for a numbered sequence. */
   orderedImages?: boolean;
   body: string | string[];
-  images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean }[];
+  images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean; galleryScale?: number; caption?: string; credits?: { role: string; name: string }[] }[];
   imagePlaceholders?: string[];
   subsections?: { heading: string; body: string; imagePlaceholders?: string[]; images?: { src: string; alt: string; w: number; h: number; fullWidth?: boolean }[] }[];
   /** Optional cover art and crop used only in the work archive. */
@@ -257,7 +257,7 @@ export const projects: Project[] = [
     client: "Identities",
     title: "Identities",
     summary:
-      "Twelve marks, across nonprofits, food, healthcare, furniture and real estate.",
+      "Selected marks across nonprofits, food, healthcare, furniture, real estate and creative agencies.",
     blurb:
       "Branding work across nonprofits, food, healthcare, furniture, real estate and more.",
     disciplines: ["Assorted clients", "Logo design", "Naming"],
@@ -274,18 +274,21 @@ export const projects: Project[] = [
         gallery: true,
         body: "",
         images: [
-          { src: `${W}/identities/mockingbird-48ffe1f4.webp`, alt: "The Mockingbird Society — transforming foster care and ending youth homelessness", w: 1600, h: 1200 },
-          { src: `${W}/identities/namazu-7268f850.webp`, alt: "Namazu — fast, casual Japanese cuisine in San Francisco, named for the catfish of Japanese mythology", w: 1600, h: 1200 },
-          { src: `${W}/identities/livinglocal-991ab2ea.webp`, alt: "Seasons, Harry Race and White’s — sister stores for medical equipment, pharmacy and gifts in Alaska", w: 1600, h: 1200 },
-          { src: `${W}/concord-international-school/nochetropical.webp`, alt: "Noche Tropical — fundraising dinner and auction identity for Concord International School", w: 2000, h: 1000 },
-          { src: `${W}/identities/perennial-58a343d1.webp`, alt: "Perennial — leadership training for social justice and nonprofit leaders. When you enrich the soil, things flourish", w: 907, h: 680 },
-          { src: `${W}/identities/jjkettman-c5ebbf77.webp`, alt: "J&J Kettman — hand-crafted furniture made with the tools and techniques of the 17th and 18th centuries", w: 920, h: 690 },
-          { src: `${W}/identities/queen-margherita-pizzeria-9a357823.webp`, alt: "Queen Margherita Pizzeria — Neapolitan pizza", w: 1014, h: 761 },
-          { src: `${W}/identities/alaskan-creamery-1-8a626f00.webp`, alt: "Alaskan Creamery — ice cream shop in Alaska", w: 1181, h: 886 },
-          { src: `${W}/identities/philips-7a826c65.webp`, alt: "Philips — 21 years of multi-vendor service excellence", w: 1214, h: 911 },
+          { src: `${W}/identities/mockingbird-wide-v2.webp`, alt: "The Mockingbird Society — transforming foster care and ending youth homelessness", w: 1600, h: 600, fullWidth: true },
+          { src: `${W}/identities/nofsinger-group-1-71c4d01b.webp`, alt: "Nofsinger Group — leadership consultants", w: 871, h: 653, galleryScale: 0.85 },
           { src: `${W}/identities/redwood-dd2db8ea.webp`, alt: "Redwood — California real estate", w: 1157, h: 868 },
+          { src: `${W}/identities/eques-logo-v1.webp`, alt: "Eques — Hyatt Regency Bellevue’s award-winning breakfast restaurant", w: 1600, h: 1200, galleryScale: 0.85 },
+          { src: `${W}/identities/jjkettman-c5ebbf77.webp`, alt: "J&J Kettman — hand-crafted furniture made with centuries-old tools and techniques", w: 920, h: 690 },
+          { src: `${W}/identities/namazu-wide-v2.webp`, alt: "Namazu — fast, casual Japanese cuisine in San Francisco, named for the catfish of Japanese mythology", w: 1600, h: 600, fullWidth: true, galleryScale: 0.85 },
+          { src: `${W}/identities/old-growth-industries-logo-v2.webp`, alt: "Old Growth Industries — luxury furniture made from Northwest old growth fir", w: 1600, h: 1200 },
           { src: `${W}/identities/ams-e5e21869.webp`, alt: "AMS — medical accounts receivable", w: 903, h: 677 },
-          { src: `${W}/identities/nofsinger-group-1-71c4d01b.webp`, alt: "Nofsinger Group — consultants", w: 871, h: 653 },
+          { src: `${W}/identities/philips-7a826c65.webp`, alt: "Philips — 21 years of multi-vendor service excellence", w: 1214, h: 911 },
+          { src: `${W}/identities/graphica-g-v1.webp`, alt: "Graphica — award-winning design firm", w: 1600, h: 1200, credits: [{ role: "Creative director", name: "Craig Terrones" }], galleryScale: 0.85 },
+          { src: `${W}/identities/seasons-harry-race-whites-wide-v2.webp`, alt: "Seasons, Harry Race and White’s — sister stores for medical equipment, pharmacy, and gifts emphasizing “living local” in Alaska", w: 1600, h: 600, fullWidth: true },
+          { src: `${W}/identities/alaskan-creamery-1-8a626f00.webp`, alt: "Alaskan Creamery — ice cream shop in Alaska", w: 1181, h: 886 },
+          { src: `${W}/concord-international-school/nochetropical.webp`, alt: "Noche Tropical — fundraising dinner and auction for Concord International School", w: 2000, h: 1000 },
+          { src: `${W}/identities/hotaru-logo-v2.webp`, alt: "Hotaru — creative agency", w: 1600, h: 1200, credits: [{ role: "Creative direction", name: "Erica\u00a0Goldsmith and Peter\u00a0Gaučys" }], galleryScale: 0.85 },
+          { src: `${W}/identities/queen-margherita-pizzeria-9a357823.webp`, alt: "Queen Margherita Pizzeria — Neapolitan-style pizza", w: 1014, h: 761 },
         ],
       },
     ],

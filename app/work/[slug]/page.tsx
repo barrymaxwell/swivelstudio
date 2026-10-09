@@ -55,7 +55,7 @@ const isWide = (w: number, h: number) => w / h >= 1.9;
  *  other. */
 const isTall = (w: number, h: number) => w / h < 0.6;
 
-type Img = { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean };
+type Img = { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean; credits?: { role: string; name: string }[] };
 
 /**
  * Group consecutive images by whether they span. A plain two-column grid
@@ -174,20 +174,30 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
               {s.images && s.gallery && (
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
                   {s.images.map((img) => (
-                    <figure key={img.src}>
+                    <figure key={img.src} className={img.fullWidth ? "sm:col-span-2" : undefined}>
                       {/* No cell background: the marks are composited on the page ground, so a
                           white panel would reintroduce the edge we just removed. */}
-                      <div className="flex aspect-4/3 items-center justify-center overflow-hidden">
+                      <div className={"flex items-center justify-center overflow-hidden " + (img.fullWidth ? "aspect-8/3" : "aspect-4/3")}>
                         <Image
                           src={img.src}
                           alt={img.alt}
                           width={img.w}
                           height={img.h}
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
+                          sizes={img.fullWidth ? "(max-width: 1024px) 100vw, 650px" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"}
                           className="h-full w-full object-contain"
+                          style={img.galleryScale ? { transform: `scale(${img.galleryScale})` } : undefined}
                         />
                       </div>
-                      {!hideCaptions && <figcaption className="mt-2.5 text-mid text-ink-3">{img.alt}</figcaption>}
+                      {!hideCaptions && (
+                        <figcaption className="mt-2.5 text-center text-mid text-ink-3">
+                          {img.caption ?? img.alt}
+                          {img.credits?.map((credit) => (
+                            <span key={`${credit.role}-${credit.name}`} className="mt-1 block text-sm">
+                              {credit.role}: {credit.name}
+                            </span>
+                          ))}
+                        </figcaption>
+                      )}
                     </figure>
                   ))}
                 </div>
