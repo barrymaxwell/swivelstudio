@@ -12,6 +12,8 @@ export type Section = {
   orderedImages?: boolean;
   /** Keep a fixed image count in the left column instead of balancing columns. */
   leftColumnImages?: number;
+  /** Arrange images in explicit rows, with one column on small screens. */
+  imageRows?: number[];
   body: string | string[];
   images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean | "subtle"; galleryScale?: number; caption?: string; credits?: { role: string; name: string }[] }[];
   imagePlaceholders?: string[];
@@ -433,6 +435,8 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "In the room",
+        hideCaptions: true,
+        imageRows: [3, 2],
         archiveCover: { position: "50% 43%" },
         tags: ["Event"],
         body: [
@@ -440,14 +444,16 @@ export const projects: Project[] = [
           "Deliverables ran from event branding, print and email invitations to signage, display graphics, visual aids, keynote speaker graphics, way-finding, notebooks, brochures and giveaways, lanyards, and name badges. Banners, breakout room signage, and display graphics carried the identity through the venue.",
         ],
         images: [
-          { src: `${W}/trueblue/trueblue-we-are-trueblue-banner.webp`, alt: "We Are TrueBlue banner", w: 800, h: 1760 },
-          { src: `${W}/trueblue/trueblue-brand-banner.webp`, alt: "Brand banner", w: 800, h: 1760 },
-          { src: `${W}/trueblue/trueblue-attribute-banner.webp`, alt: "Attribute banner", w: 800, h: 1760 },
-          { src: `${W}/trueblue/trueblue-breakout-room-sign.webp`, alt: "Breakout room sign", w: 800, h: 1067 },
+          { src: `${W}/trueblue/trueblue-we-are-trueblue-banner.webp`, alt: "We Are TrueBlue banner", w: 800, h: 1760, keyline: "subtle" },
+          { src: `${W}/trueblue/trueblue-brand-banner.webp`, alt: "Brand banner", w: 800, h: 1760, keyline: "subtle" },
+          { src: `${W}/trueblue/trueblue-attribute-banner.webp`, alt: "Attribute banner", w: 800, h: 1760, keyline: "subtle" },
+          { src: `${W}/trueblue/trueblue-breakout-room-sign.webp`, alt: "Breakout room sign", w: 800, h: 1067, keyline: "subtle" },
+          { src: `${W}/trueblue/sales-conference-badge-lanyard-v1.webp`, alt: "TrueBlue Sales Leadership Conference name badge and blue branded lanyard", w: 1500, h: 2000 },
         ],
       },
       {
         heading: "Staying true",
+        hideCaptions: true,
         tags: ["Print & editorial"],
         body: "As TrueBlue evolved and acquired new business lines, the way they described their services changed. This annual report served to reestablish their core values and clarify their business model to investors.",
         images: [
@@ -457,6 +463,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Workforce wellness",
+        hideCaptions: true,
         archiveCover: { scale: 1.18, position: "50% 110%" },
         tags: ["Branding", "Print & editorial"],
         body: "Clear, clean, and concise, with the front cover juxtaposing the iconic worker with an icon of health. This benefits guide also rolled out TrueBlue’s new wellness program, Stronger You, Stronger Blue, which we both named and created a corresponding wordmark for.",

@@ -73,8 +73,8 @@ function runs(images: Img[]) {
   return out;
 }
 
-function Figure({ img, sizes, hideCaption = false }: { img: Img; sizes: string; hideCaption?: boolean }) {
-  const tall = isTall(img.w, img.h);
+function Figure({ img, sizes, hideCaption = false, fitCell = false }: { img: Img; sizes: string; hideCaption?: boolean; fitCell?: boolean }) {
+  const tall = !fitCell && isTall(img.w, img.h);
   const caption = img.caption ?? img.alt;
   return (
     <figure className="mb-8 break-inside-avoid">
@@ -204,7 +204,23 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                 </div>
               )}
 
-              {s.images && !s.gallery && (
+              {s.images && !s.gallery && s.imageRows && (
+                <div className="mt-10">
+                  {s.imageRows.map((count, rowIndex) => {
+                    const start = s.imageRows!.slice(0, rowIndex).reduce((sum, size) => sum + size, 0);
+                    return (
+                      <div key={rowIndex} className={"grid grid-cols-1 gap-x-6 " + (count === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2")}>
+                        {s.images!.slice(start, start + count).map((img) => (
+                          <Figure key={img.src} img={img} fitCell hideCaption={hideCaptions || s.hideCaptions}
+                            sizes={count === 3 ? "(max-width: 640px) 100vw, 310px" : "(max-width: 640px) 100vw, 480px"} />
+                        ))}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+
+              {s.images && !s.gallery && !s.imageRows && (
                 <div className="mt-10">
                   {runs(s.images).map((run, i) =>
                     run.wide ? (
