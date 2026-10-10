@@ -12,8 +12,8 @@ export type Section = {
   orderedImages?: boolean;
   /** Keep a fixed image count in the left column instead of balancing columns. */
   leftColumnImages?: number;
-  /** Arrange images in explicit rows, with one column on small screens. */
-  imageRows?: number[];
+  /** Row image counts or column spans, with one column on small screens. */
+  imageRows?: (number | number[])[];
   body: string | string[];
   images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean | "subtle"; galleryScale?: number; caption?: string; credits?: { role: string; name: string }[] }[];
   imagePlaceholders?: string[];
@@ -493,6 +493,8 @@ export const projects: Project[] = [
       {
         heading: "A care package from the road",
         orderedImages: true,
+        hideCaptions: true,
+        imageRows: [2, 1, [1, 2]],
         tags: ["Branding", "Print & editorial"],
         body: [
           "Print and digital communications were dropped at strategic times to let branch employees know they were valued, set expectations, remind them of upcoming action items, cheer them on, and congratulate them throughout the process.",
@@ -500,11 +502,11 @@ export const projects: Project[] = [
           "As the journey progressed, visually corresponding print and digital communications were sent at each mile marker along the map.",
         ],
         images: [
-          { src: `${W}/trueblue/tb-unifimap1.webp`, alt: "Unification road map", w: 974, h: 1526 },
+          { src: `${W}/trueblue/tb-unifimap1.webp`, alt: "Unification road map", w: 974, h: 1526, keyline: "subtle" },
           { src: `${W}/trueblue/trueblue-journey-atlas-cover.webp`, alt: "Journey atlas cover", w: 800, h: 1035 },
-          { src: `${W}/trueblue/tb-unifimap2.webp`, alt: "Unification road map detail", w: 970, h: 620, fullWidth: true },
-          { src: `${W}/trueblue/trueblue-journey-brochure-cover.webp`, alt: "Journey brochure cover", w: 600, h: 1284, keyline: true },
-          { src: `${W}/trueblue/trueblue-journey-postcard-2.webp`, alt: "Feedback postcard", w: 1236, h: 800, keyline: true },
+          { src: `${W}/trueblue/tb-unifimap2.webp`, alt: "Unification road map detail", w: 970, h: 620, fullWidth: true, keyline: "subtle" },
+          { src: `${W}/trueblue/trueblue-journey-brochure-cover.webp`, alt: "Journey brochure cover", w: 600, h: 1284, keyline: "subtle" },
+          { src: `${W}/trueblue/trueblue-journey-postcard-2.webp`, alt: "Feedback postcard", w: 1236, h: 800, keyline: "subtle" },
         ],
       },
     ],

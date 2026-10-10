@@ -73,11 +73,11 @@ function runs(images: Img[]) {
   return out;
 }
 
-function Figure({ img, sizes, hideCaption = false, fitCell = false }: { img: Img; sizes: string; hideCaption?: boolean; fitCell?: boolean }) {
+function Figure({ img, sizes, hideCaption = false, fitCell = false, columnSpan = 1 }: { img: Img; sizes: string; hideCaption?: boolean; fitCell?: boolean; columnSpan?: number }) {
   const tall = !fitCell && isTall(img.w, img.h);
   const caption = img.caption ?? img.alt;
   return (
-    <figure className="mb-8 break-inside-avoid">
+    <figure className={"mb-8 break-inside-avoid" + (columnSpan === 2 ? " sm:col-span-2" : "")}>
       <div
         className={
           "overflow-hidden " + (img.keyline ? "" : "rounded-xs ") +
@@ -206,13 +206,15 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
 
               {s.images && !s.gallery && s.imageRows && (
                 <div className="mt-10">
-                  {s.imageRows.map((count, rowIndex) => {
-                    const start = s.imageRows!.slice(0, rowIndex).reduce((sum, size) => sum + size, 0);
+                  {s.imageRows.map((row, rowIndex) => {
+                    const spans = typeof row === "number" ? Array.from({ length: row }, () => 1) : row;
+                    const columns = spans.reduce((sum, span) => sum + span, 0);
+                    const start = s.imageRows!.slice(0, rowIndex).reduce<number>((sum, size) => sum + (typeof size === "number" ? size : size.length), 0);
                     return (
-                      <div key={rowIndex} className={"grid grid-cols-1 gap-x-6 " + (count === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2")}>
-                        {s.images!.slice(start, start + count).map((img) => (
-                          <Figure key={img.src} img={img} fitCell hideCaption={hideCaptions || s.hideCaptions}
-                            sizes={count === 3 ? "(max-width: 640px) 100vw, 310px" : "(max-width: 640px) 100vw, 480px"} />
+                      <div key={rowIndex} className={"grid grid-cols-1 gap-x-6 " + (columns === 3 ? "sm:grid-cols-3" : columns === 2 ? "sm:grid-cols-2" : "sm:grid-cols-1")}>
+                        {s.images!.slice(start, start + spans.length).map((img, imageIndex) => (
+                          <Figure key={img.src} img={img} fitCell columnSpan={spans[imageIndex]} hideCaption={hideCaptions || s.hideCaptions}
+                            sizes={`(max-width: 640px) 100vw, ${columns === 1 ? 976 : columns === 2 ? 480 : spans[imageIndex] === 2 ? 643 : 310}px`} />
                         ))}
                       </div>
                     );
