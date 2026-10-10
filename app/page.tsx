@@ -18,7 +18,7 @@ export default function Home() {
           </h1>
           <p className="mt-7 max-w-xl text-lede text-ink-2">
             I&rsquo;m Robin Maxwell. For over two decades I&rsquo;ve helped organizations grow
-            through design &mdash; for Fortune 500s, biotech and banks, and the nonprofits
+            through design &mdash; from Fortune 500s, biotechs and banks, to the nonprofits
             doing the hardest work in the city.
           </p>
         </section>
