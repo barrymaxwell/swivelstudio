@@ -206,6 +206,7 @@ export const projects: Project[] = [
     blurb:
       "A community bank’s full overhaul — logo, standards, collateral, website, apps, and in-branch signage.",
     disciplines: ["Brand identity", "Voice and Style Guidelines", "Campaigns and Collateral", "Website", "App", "Signage"],
+    cardCaption: "Brand identity · Web Site · Signage",
     tags: ["Branding", "Digital", "Print & editorial"],
     card: { src: `${W}/pacific-crest-savings-bank/pcsbstationery.webp`, w: 1646, h: 948 },
     hero: { src: `${W}/pacific-crest-savings-bank/paccrest.webp`, alt: "Pacific Crest Savings Bank identity", w: 2000, h: 1000 },
@@ -391,6 +392,7 @@ export const projects: Project[] = [
     blurb:
       "Making the case for responsible forestry across 6.6 million acres, in numbers and photography.",
     disciplines: ["Editorial design", "Infographics", "Annual reports"],
+    cardCaption: "Editorial design · Infographics · Reports",
     tags: ["Print & editorial"],
     card: { src: `${W}/plum-creek/plumcreek-sust2.webp`, w: 970, h: 776 },
     hero: { src: `${W}/plum-creek/sustainability-original-numbers-neutral-paper-v8.webp`, alt: "Forest-filled numbers from Plum Creek’s sustainability report cover against pale warm gray paper", w: 996, h: 429 },
@@ -436,6 +438,7 @@ export const projects: Project[] = [
     blurb:
       "Uniting the sales forces of multiple umbrella companies under one event identity.",
     disciplines: ["Event branding", "Environmental graphics", "Presentations", "Event coordination", "Annual reports", "Campaign branding"],
+    cardCaption: "Event Branding · Annual Reports · Campaigns",
     tags: ["Event", "Print & editorial"],
     card: { src: `${W}/trueblue/tb-slc2013.webp`, w: 2000, h: 1334 },
     hero: { src: `${W}/trueblue/tb-slc2013.webp`, alt: "Sales Leadership Conference branding", w: 2000, h: 1334 },
@@ -493,6 +496,7 @@ export const projects: Project[] = [
     blurb:
       "A retro road-trip campaign — launched with a care package in a travel suitcase — to help guide a newly acquired workforce.",
     disciplines: ["Name & Concept", "Campaign Identity", "Collage", "Email Communications", "Rollout Collateral", "Packaging"],
+    cardCaption: "Campaign Concept · Collage · Collateral",
     tags: ["Branding", "Print & editorial"],
     card: { src: `${W}/trueblue/trueblue-journey-postcard-1.webp`, w: 1236, h: 800 },
     hero: { src: `${W}/trueblue/trueblue-journey-postcard-1.webp`, alt: "Journey to Unification postcard combining desert photography, a training-complete illustration, and a roadrunner", w: 1236, h: 800, position: "50% 80%", scale: 1.052 },
