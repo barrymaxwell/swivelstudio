@@ -6,6 +6,8 @@ export type Section = {
   tags?: Tag[];
   /** Uniform cells instead of aspect-aware layout — for comparing marks. */
   gallery?: boolean;
+  /** Omit visible image captions while preserving alt text. */
+  hideCaptions?: boolean;
   /** Preserve reading order across rows for a numbered sequence. */
   orderedImages?: boolean;
   /** Keep a fixed image count in the left column instead of balancing columns. */
@@ -319,15 +321,16 @@ export const projects: Project[] = [
         tags: ["Event", "Branding", "Print & editorial"],
         body: "Annual dinner and fundraising auction. Design deliverables include an event poster, flyers, bid paddles, auction catalog, graphics for social media and online ticketing, sponsorship package, at-event signage, gift certificates, auction item forms, keynote auction presentation, and a school fundraising video. Most pieces are created in both English and Spanish.",
         images: [
-          { src: `${W}/concord-international-school/tn-bro-ext.webp`, alt: "Auction brochure, exterior", w: 2000, h: 932 },
-          { src: `${W}/concord-international-school/tn-bro-int.webp`, alt: "Auction brochure, interior", w: 2000, h: 934 },
+          { src: `${W}/concord-international-school/tn-bro-ext.webp`, alt: "Auction brochure, exterior", caption: "", w: 2000, h: 932, keyline: "subtle" },
+          { src: `${W}/concord-international-school/tn-bro-int.webp`, alt: "Auction brochure, interior", caption: "Three-panel auction brochure", w: 2000, h: 934, keyline: "subtle" },
           { src: `${W}/concord-international-school/tn-poster.webp`, alt: "Event poster", w: 970, h: 1500 },
           { src: `${W}/concord-international-school/tn-flyer.webp`, alt: "Event flyer", w: 974, h: 1260 },
-          { src: `${W}/concord-international-school/tn-sponsorshippkg.webp`, alt: "Sponsorship package", w: 2000, h: 1296 },
+          { src: `${W}/concord-international-school/tn-sponsorshippkg.webp`, alt: "Sponsorship package", w: 2000, h: 1296, keyline: "subtle" },
         ],
       },
       {
         heading: "Other fundraisers",
+        hideCaptions: true,
         archiveCover: { scale: 1.5, position: "50% 70%" },
         tags: ["Event", "Print & editorial"],
         body: "Hello Spring 2018 and Spring Fling 2017. Posters, flyers, bid paddles, auction catalogs, graphics for social media and online ticketing, gift certificates, and a keynote auction presentation. Most pieces were created in both English and Spanish.",
@@ -338,6 +341,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Designing community",
+        hideCaptions: true,
         archiveCover: { scale: 1.08, position: "50% 25%" },
         tags: ["Print & editorial"],
         body: [
@@ -351,6 +355,7 @@ export const projects: Project[] = [
       },
       {
         heading: "One-off events",
+        hideCaptions: true,
         archiveCover: { scale: 1.06, position: "50% 20%" },
         tags: ["Print & editorial", "Digital"],
         body: [
@@ -361,7 +366,7 @@ export const projects: Project[] = [
           { src: `${W}/concord-international-school/dia.webp`, alt: "Día de los Muertos poster", w: 970, h: 1502 },
           { src: `${W}/concord-international-school/fbparticipation.webp`, alt: "Social media graphic", w: 974, h: 1504 },
           { src: `${W}/concord-international-school/cies-2019-carnival-masthead.webp`, alt: "Carnival masthead", w: 1710, h: 660 },
-          { src: `${W}/concord-international-school/cies-socialemo.webp`, alt: "Social-emotional learning graphic", w: 1710, h: 660 },
+          { src: `${W}/concord-international-school/cies-socialemo.webp`, alt: "Social-emotional learning graphic", w: 1710, h: 660, keyline: "subtle" },
         ],
       },
     ],

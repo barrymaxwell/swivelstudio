@@ -55,7 +55,7 @@ const isWide = (w: number, h: number) => w / h >= 1.9;
  *  other. */
 const isTall = (w: number, h: number) => w / h < 0.6;
 
-type Img = { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean | "subtle"; credits?: { role: string; name: string }[] };
+type Img = { src: string; alt: string; caption?: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean | "subtle"; credits?: { role: string; name: string }[] };
 
 /**
  * Group consecutive images by whether they span. A plain two-column grid
@@ -75,6 +75,7 @@ function runs(images: Img[]) {
 
 function Figure({ img, sizes, hideCaption = false }: { img: Img; sizes: string; hideCaption?: boolean }) {
   const tall = isTall(img.w, img.h);
+  const caption = img.caption ?? img.alt;
   return (
     <figure className="mb-8 break-inside-avoid">
       <div
@@ -97,7 +98,7 @@ function Figure({ img, sizes, hideCaption = false }: { img: Img; sizes: string; 
           }
         />
       </div>
-      {!hideCaption && <figcaption className="mt-2.5 text-mid text-ink-3">{bookTitle(img.alt)}</figcaption>}
+      {!hideCaption && caption && <figcaption className="mt-2.5 text-mid text-ink-3">{bookTitle(caption)}</figcaption>}
     </figure>
   );
 }
@@ -188,7 +189,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                           style={img.galleryScale ? { transform: `scale(${img.galleryScale})` } : undefined}
                         />
                       </div>
-                      {!hideCaptions && (
+                      {!hideCaptions && !s.hideCaptions && (
                         <figcaption className="mt-2.5 text-center text-mid text-ink-3">
                           {img.caption ?? img.alt}
                           {img.credits?.map((credit) => (
@@ -209,7 +210,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                     run.wide ? (
                       <div key={i}>
                         {run.items.map((img) => (
-                          <Figure key={img.src} hideCaption={hideCaptions} img={img} sizes="(max-width: 640px) 100vw, 976px" />
+                          <Figure key={img.src} hideCaption={hideCaptions || s.hideCaptions} img={img} sizes="(max-width: 640px) 100vw, 976px" />
                         ))}
                       </div>
                     ) : s.leftColumnImages ? (
@@ -217,7 +218,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                         {[run.items.slice(0, s.leftColumnImages), run.items.slice(s.leftColumnImages)].map((column, columnIndex) => (
                           <div key={columnIndex} className="min-w-0">
                             {column.map((img) => (
-                              <Figure key={img.src} hideCaption={hideCaptions} img={img} sizes="(max-width: 640px) 100vw, 480px" />
+                              <Figure key={img.src} hideCaption={hideCaptions || s.hideCaptions} img={img} sizes="(max-width: 640px) 100vw, 480px" />
                             ))}
                           </div>
                         ))}
@@ -227,7 +228,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                         {run.items.map((img) => (
                           <Figure
                             key={img.src}
-                            hideCaption={hideCaptions}
+                            hideCaption={hideCaptions || s.hideCaptions}
                             img={img}
                             sizes={
                               isTall(img.w, img.h)
@@ -265,7 +266,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                     <div className="mt-8 grid gap-x-6 sm:grid-cols-2">
                       {subsection.images.map((img) => (
                         <div key={img.src} className={img.fullWidth === false ? undefined : "sm:col-span-2"}>
-                          <Figure hideCaption={hideCaptions} img={img} sizes={img.fullWidth === false ? "(min-width: 640px) 480px, 100vw" : "(min-width: 1024px) 976px, 100vw"} />
+                          <Figure hideCaption={hideCaptions || s.hideCaptions} img={img} sizes={img.fullWidth === false ? "(min-width: 640px) 480px, 100vw" : "(min-width: 1024px) 976px, 100vw"} />
                         </div>
                       ))}
                     </div>
