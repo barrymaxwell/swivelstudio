@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 const paras = (body: string | string[]) => (Array.isArray(body) ? body : [body]);
 
 function bookTitle(text: string) {
-  return text.split(/(Breakwater)/g).map((part, i) =>
-    part === "Breakwater" ? <em key={i}>{part}</em> : part
+  return text.split(/(Breakwater|Stronger You, Stronger Blue)/g).map((part, i) =>
+    part === "Breakwater" || part === "Stronger You, Stronger Blue" ? <em key={i}>{part}</em> : part
   );
 }
 
@@ -307,16 +307,23 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
           </section>
         ))}
 
-        {p.credits && (
+        {(p.credits?.length || p.creditNote) && (
           <section className="border-t border-rule py-12">
             <div className="mx-auto max-w-5xl px-6">
               <div>
-                <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">Credits</h2>
-                <ul className="mt-3 flex flex-col gap-2 text-mid text-ink-2">
-                  {p.credits.map((credit) => (
-                    <li key={credit.role}><span className="font-medium text-ink">{credit.role}:</span> {credit.name}</li>
-                  ))}
-                </ul>
+                {p.credits?.length ? (
+                  <>
+                    <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">Credits</h2>
+                    <ul className="mt-3 flex flex-col gap-2 text-mid text-ink-2">
+                      {p.credits.map((credit) => (
+                        <li key={credit.role}><span className="font-medium text-ink">{credit.role}:</span> {credit.name}</li>
+                      ))}
+                    </ul>
+                  </>
+                ) : null}
+                {p.creditNote && (
+                  <p className={`${p.credits?.length ? "mt-4 " : ""}text-mid text-ink-2`}>{p.creditNote}</p>
+                )}
               </div>
             </div>
           </section>

@@ -43,6 +43,7 @@ export type Project = {
   intro: string;
   sections: Section[];
   credits?: { role: string; name: string }[];
+  creditNote?: string;
   featured?: boolean;
 };
 
@@ -204,6 +205,7 @@ export const projects: Project[] = [
     hero: { src: `${W}/pacific-crest-savings-bank/paccrest.webp`, alt: "Pacific Crest Savings Bank identity", w: 2000, h: 1000 },
     intro:
       "Pacific Crest Savings Bank is a local, independently owned community bank who wanted to build out their brand but first needed to bring it up to date. They wanted their logo, collateral materials, and web site modernized to reflect current best design practices and trends, and to support the new financial technologies they were embracing and offering to their clients.",
+    creditNote: "Work completed at Graphica, Inc.",
     featured: true,
     sections: [
       {
@@ -387,6 +389,7 @@ export const projects: Project[] = [
     hero: { src: `${W}/plum-creek/sustainability-original-numbers-neutral-paper-v8.webp`, alt: "Forest-filled numbers from Plum Creek’s sustainability report cover against pale warm gray paper", w: 996, h: 429 },
     intro:
       "Plum Creek (since merged with Weyerhaeuser) owned and sustainably managed 6.6 million acres of highly productive forest land in 19 U.S. states. Perceptions of land management and, in particular, forests, can be fraught. Stakeholders were beginning to require that companies prove their leadership in stewardship, responsibility, and ethics — an area where Plum Creek shone.",
+    creditNote: "Work completed at Graphica, Inc.",
     featured: true,
     sections: [
       {
@@ -422,15 +425,16 @@ export const projects: Project[] = [
     client: "TrueBlue",
     title: "Stronger Together",
     summary:
-      "Conference branding, an annual report, and a benefits guide, across several years with one client.",
+      "Helping TrueBlue bring its people together through years of design collaboration.",
     blurb:
       "Uniting the sales forces of multiple umbrella companies under one event identity.",
-    disciplines: ["Event branding", "Environmental", "Print"],
+    disciplines: ["Event branding", "Environmental graphics", "Presentations", "Event coordination", "Annual reports", "Campaign branding"],
     tags: ["Event", "Print & editorial"],
     card: { src: `${W}/trueblue/tb-slc2013.webp`, w: 2000, h: 1334 },
     hero: { src: `${W}/trueblue/tb-slc2013.webp`, alt: "Sales Leadership Conference branding", w: 2000, h: 1334 },
     intro:
-      "TrueBlue is a workforce solutions company, connecting people and work. The work spans several years and several kinds of project — the branding for their national sales conference, the annual report that explained a changing business to investors, and the guide that rolled out a new wellness programme to their workforce.",
+      "Over many years, our team worked as an extension of TrueBlue’s in-house design team, supporting the company and its family of brands. The projects shown here are a small selection from that relationship, spanning recurring conferences, annual reports, and employee communications.",
+    creditNote: "Work completed at Graphica, Inc.",
     featured: true,
     sections: [
       {
@@ -440,8 +444,8 @@ export const projects: Project[] = [
         archiveCover: { position: "50% 43%" },
         tags: ["Event"],
         body: [
-          "Each year TrueBlue holds a Sales Leadership Conference for their national sales teams. The theme — Stronger Together — had to get the sales forces of multiple umbrella companies working as one and cross-selling across the group.",
-          "Deliverables ran from event branding, print and email invitations to signage, display graphics, visual aids, keynote speaker graphics, way-finding, notebooks, brochures and giveaways, lanyards, and name badges. Banners, breakout room signage, and display graphics carried the identity through the venue.",
+          "“We are TrueBlue” gave sales teams from TrueBlue’s family of companies a shared focus: working together and cross-selling across the group. One of several conferences developed over successive years, it involved developing the theme and visual identity, then carrying them through banners, wayfinding, brochures, email invitations, keynote speaker graphics, lanyards, name badges, breakout-room materials, table arrangements, and everything in between.",
+          "Work continued behind the scenes, coordinating presentations, deliveries, and setup, then supporting the client on site as last-minute needs arose.",
         ],
         images: [
           { src: `${W}/trueblue/trueblue-we-are-trueblue-banner.webp`, alt: "We Are TrueBlue banner", w: 800, h: 1760, keyline: "subtle" },
@@ -455,7 +459,7 @@ export const projects: Project[] = [
         heading: "Staying true",
         hideCaptions: true,
         tags: ["Print & editorial"],
-        body: "As TrueBlue evolved and acquired new business lines, the way they described their services changed. This annual report served to reestablish their core values and clarify their business model to investors.",
+        body: "Annual reports were another recurring part of the relationship. As TrueBlue evolved and acquired new business lines, the way they described their services changed. This annual report served to reestablish their core values and clarify their business model to investors.",
         images: [
           { src: `${W}/trueblue/tbi-2015ar-1.webp`, alt: "2015 annual report", w: 970, h: 1290 },
           { src: `${W}/trueblue/tbi-2015ar-2.webp`, alt: "2015 annual report spread", w: 970, h: 1458 },
@@ -466,7 +470,7 @@ export const projects: Project[] = [
         hideCaptions: true,
         archiveCover: { scale: 1.18, position: "50% 110%" },
         tags: ["Branding", "Print & editorial"],
-        body: "Clear, clean, and concise, with the front cover juxtaposing the iconic worker with an icon of health. This benefits guide also rolled out TrueBlue’s new wellness program, Stronger You, Stronger Blue, which we both named and created a corresponding wordmark for.",
+        body: "Employee communications ranged from everyday updates to new programs. This benefits guide helped roll out TrueBlue’s new company-wide wellness campaign, Stronger You, Stronger Blue. We named the program and developed its visual identity. The guide’s cover pairs the iconic worker with an icon of health.",
         images: [
           { src: `${W}/trueblue/tb-ben1.webp`, alt: "Benefits enrollment guide", w: 970, h: 1256 },
           { src: `${W}/trueblue/tb-ben2.webp`, alt: "Benefits enrollment guide spread", w: 970, h: 1256 },
@@ -489,6 +493,7 @@ export const projects: Project[] = [
       "To get a newly acquired business ready for the milestones to unification and assuage employee anxiety, we ideated and branded the transition as a retro-style “Journey to Unification”, complete with custom illustrations.",
     featured: true,
     credits: [{ role: "Illustrations", name: "Peter Hoey" }],
+    creditNote: "Work completed at Graphica, Inc.",
     sections: [
       {
         heading: "A care package from the road",
