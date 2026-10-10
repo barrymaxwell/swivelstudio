@@ -55,7 +55,7 @@ const isWide = (w: number, h: number) => w / h >= 1.9;
  *  other. */
 const isTall = (w: number, h: number) => w / h < 0.6;
 
-type Img = { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean; credits?: { role: string; name: string }[] };
+type Img = { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean | "subtle"; credits?: { role: string; name: string }[] };
 
 /**
  * Group consecutive images by whether they span. A plain two-column grid
@@ -93,7 +93,7 @@ function Figure({ img, sizes, hideCaption = false }: { img: Img; sizes: string; 
             // Fixed height, not max-height: a low-res tall source was rendering
             // at its natural 267px beside 476px siblings.
             (img.landscape ? "h-full w-full object-cover" : img.square ? "aspect-square w-full object-cover" : tall ? "h-[40rem] w-auto object-contain" : "h-auto w-full") +
-            (img.keyline ? " border border-black" : tall ? " rounded-xs" : "")
+            (img.keyline ? (img.keyline === "subtle" ? " border border-[#a6a6a6]" : " border border-black") : tall ? " rounded-xs" : "")
           }
         />
       </div>
@@ -107,7 +107,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
   const p = bySlug(slug);
   if (!p) notFound();
 
-  const hideCaptions = slug === "breakwater-special-edition";
+  const hideCaptions = slug === "breakwater-special-edition" || slug === "pacific-crest-savings-bank";
   const i = projects.findIndex((x) => x.slug === slug);
   const prev = projects[i - 1];
   const next = projects[i + 1];
@@ -210,6 +210,16 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                       <div key={i}>
                         {run.items.map((img) => (
                           <Figure key={img.src} hideCaption={hideCaptions} img={img} sizes="(max-width: 640px) 100vw, 976px" />
+                        ))}
+                      </div>
+                    ) : s.leftColumnImages ? (
+                      <div key={i} className="grid gap-x-6 sm:grid-cols-2">
+                        {[run.items.slice(0, s.leftColumnImages), run.items.slice(s.leftColumnImages)].map((column, columnIndex) => (
+                          <div key={columnIndex} className="min-w-0">
+                            {column.map((img) => (
+                              <Figure key={img.src} hideCaption={hideCaptions} img={img} sizes="(max-width: 640px) 100vw, 480px" />
+                            ))}
+                          </div>
                         ))}
                       </div>
                     ) : (

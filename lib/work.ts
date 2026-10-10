@@ -8,8 +8,10 @@ export type Section = {
   gallery?: boolean;
   /** Preserve reading order across rows for a numbered sequence. */
   orderedImages?: boolean;
+  /** Keep a fixed image count in the left column instead of balancing columns. */
+  leftColumnImages?: number;
   body: string | string[];
-  images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean; galleryScale?: number; caption?: string; credits?: { role: string; name: string }[] }[];
+  images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean | "subtle"; galleryScale?: number; caption?: string; credits?: { role: string; name: string }[] }[];
   imagePlaceholders?: string[];
   subsections?: { heading: string; body: string; imagePlaceholders?: string[]; images?: { src: string; alt: string; w: number; h: number; fullWidth?: boolean }[] }[];
   /** Optional cover art and crop used only in the work archive. */
@@ -192,7 +194,7 @@ export const projects: Project[] = [
       "How investing in a brand overhaul bought a local Northwest bank some modern-day currency.",
     blurb:
       "A community bank’s full overhaul — logo, standards, collateral, website, apps, and in-branch signage.",
-    disciplines: ["Brand identity", "Voice and Style Guidelines", "Collateral", "Website", "App", "Signage"],
+    disciplines: ["Brand identity", "Voice and Style Guidelines", "Campaigns and Collateral", "Website", "App", "Signage"],
     tags: ["Branding", "Digital", "Print & editorial"],
     card: { src: `${W}/pacific-crest-savings-bank/pcsbstationery.webp`, w: 1646, h: 948 },
     hero: { src: `${W}/pacific-crest-savings-bank/paccrest.webp`, alt: "Pacific Crest Savings Bank identity", w: 2000, h: 1000 },
@@ -211,22 +213,24 @@ export const projects: Project[] = [
         ],
         images: [
           { src: `${W}/pacific-crest-savings-bank/pcsbstationery.webp`, alt: "Stationery suite", w: 1646, h: 948, fullWidth: true },
-          { src: `${W}/pacific-crest-savings-bank/pcsb-pres.webp`, alt: "Presentation folder", w: 970, h: 1290 },
+          { src: `${W}/pacific-crest-savings-bank/arsene-case-study-page-one-rust-v2.webp`, alt: "First page of the Pacific Crest Savings Bank printed case study featuring Arsene Construction", w: 1546, h: 2000, keyline: "subtle" },
           { src: `${W}/pacific-crest-savings-bank/pcsb-form.webp`, alt: "Branded forms", w: 974, h: 1260 },
         ],
       },
       {
         heading: "Why Pacific Crest?",
+        leftColumnImages: 3,
         tags: ["Digital"],
         body: [
           "The web site was rebuilt in phases, including full-screen images of local scenery to reflect their Northwest roots, a responsive layout, employee highlights, and an easy login to mobile and business banking.",
           "A case study section — with an in-print companion — was developed to help differentiate what makes them special: the bank’s nimble and custom vetting process, funding unique loans for projects that are often overlooked by traditional institutions.",
         ],
         images: [
-          { src: `${W}/pacific-crest-savings-bank/hero1.webp`, alt: "Full-screen Northwest scenery on the site", w: 2500, h: 1618 },
-          { src: `${W}/pacific-crest-savings-bank/pcsb-webhome.webp`, alt: "Homepage", w: 974, h: 1438 },
-          { src: `${W}/pacific-crest-savings-bank/pcsb-webcase.webp`, alt: "Case study section", w: 974, h: 1438 },
-          { src: `${W}/pacific-crest-savings-bank/pcsb-webpers.webp`, alt: "Personal banking", w: 2000, h: 2450 },
+          { src: `${W}/pacific-crest-savings-bank/hero1.webp`, alt: "Full-screen Northwest scenery on the site", w: 2500, h: 1618, keyline: "subtle" },
+          { src: `${W}/pacific-crest-savings-bank/homepage-single-keyline-v2.webp`, alt: "Homepage", w: 970, h: 1434, keyline: "subtle" },
+          { src: `${W}/pacific-crest-savings-bank/contact-webpage-map-crop-v1.webp`, alt: "Pacific Crest Savings Bank Contact Us webpage, cropped after its location and map with the top of the next panel visible", w: 1721, h: 1204, keyline: "subtle" },
+          { src: `${W}/pacific-crest-savings-bank/about-webpage-financial-highlights-v1.webp`, alt: "Pacific Crest Savings Bank About webpage showing Northwest scenery, client meetings, the mission statement, and financial highlights", w: 1610, h: 2000, keyline: "subtle" },
+          { src: `${W}/pacific-crest-savings-bank/pcsb-webpers.webp`, alt: "Personal banking", w: 2000, h: 2450, keyline: "subtle" },
         ],
       },
       {
