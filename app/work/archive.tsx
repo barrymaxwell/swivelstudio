@@ -16,7 +16,9 @@ export function Archive() {
     return c;
   }, []);
 
-  const shown = filter === "All" ? archive : archive.filter((e) => e.tags.includes(filter));
+  const shown = filter === "All"
+    ? archive
+    : archive.filter((e) => e.tags.includes(filter)).map((e) => e.filterViews?.[filter] ?? e);
 
   return (
     <>

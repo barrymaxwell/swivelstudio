@@ -1,4 +1,4 @@
-export type Tag = "Branding" | "Event" | "Print & editorial" | "Digital";
+export type Tag = "Branding" | "Event" | "Environmental" | "Print & editorial" | "Digital";
 
 export type Section = {
   heading: string;
@@ -37,6 +37,8 @@ export type Project = {
   card: { src: string; w: number; h: number; alt?: string; position?: string };
   /** A title here consolidates all sections into one work archive card. */
   archiveTitle?: string;
+  /** Show a specific section of a consolidated project under a category. */
+  archiveFilterSections?: Partial<Record<Tag, { heading: string; title?: string }>>;
   /** Optional cover art and crop used only in the work archive. */
   archiveCover?: { src?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
   hero: { src: string; alt: string; w: number; h: number; position?: string; scale?: number };
@@ -53,6 +55,7 @@ export const projects: Project[] = [
   {
     slug: "breakwater-special-edition",
     archiveTitle: "Book, e-book, & launch graphics",
+    archiveFilterSections: { Digital: { heading: "The e-book", title: "Breakwater e-book" } },
     client: "Songborne & Seabound Press",
     title: "Bringing a story into the world",
     summary:
@@ -170,6 +173,7 @@ export const projects: Project[] = [
       },
       {
         heading: "The e-book",
+        tags: ["Digital", "Print & editorial"],
         body:
           "The e-book preserves the print edition’s visual character while allowing the text to adapt across phones, tablets, desktop computers, and e-readers in full-color or grayscale models.",
         images: [
@@ -253,7 +257,7 @@ export const projects: Project[] = [
       {
         heading: "Observing the signs",
         archiveCover: { scale: 1.04, position: "50% 60%" },
-        tags: ["Print & editorial"],
+        tags: ["Environmental", "Print & editorial"],
         body: "A series of holiday closure signs were produced for the entire year, incorporating a line-art illustration style often used on currency, which also families with the crest-shaped security pattern used as a background element throughout branding.",
         images: [
           { src: `${W}/pacific-crest-savings-bank/pcsb-holiday.webp`, alt: "Holiday closure sign", w: 974, h: 1240 },
@@ -322,7 +326,7 @@ export const projects: Project[] = [
       {
         heading: "Noche Tropical",
         archiveCover: { position: "100% 50%", scale: 1.8, origin: "100% 0%" },
-        tags: ["Event", "Branding", "Print & editorial"],
+        tags: ["Event", "Branding", "Environmental", "Print & editorial"],
         body: "Annual dinner and fundraising auction. Design deliverables include an event poster, flyers, bid paddles, auction catalog, graphics for social media and online ticketing, sponsorship package, at-event signage, gift certificates, auction item forms, keynote auction presentation, and a school fundraising video. Most pieces are created in both English and Spanish.",
         images: [
           { src: `${W}/concord-international-school/tn-bro-ext.webp`, alt: "Auction brochure, exterior", caption: "", w: 2000, h: 932, keyline: "subtle" },
@@ -336,7 +340,7 @@ export const projects: Project[] = [
         heading: "Other fundraisers",
         hideCaptions: true,
         archiveCover: { scale: 1.5, position: "50% 70%" },
-        tags: ["Event", "Print & editorial"],
+        tags: ["Event", "Environmental", "Print & editorial"],
         body: "Hello Spring 2018 and Spring Fling 2017. Posters, flyers, bid paddles, auction catalogs, graphics for social media and online ticketing, gift certificates, and a keynote auction presentation. Most pieces were created in both English and Spanish.",
         images: [
           { src: `${W}/concord-international-school/hellospring-postermockup.webp`, alt: "Hello Spring poster", w: 1097, h: 1509 },
@@ -347,7 +351,7 @@ export const projects: Project[] = [
         heading: "Designing community",
         hideCaptions: true,
         archiveCover: { scale: 1.08, position: "50% 25%" },
-        tags: ["Print & editorial"],
+        tags: ["Event", "Environmental", "Print & editorial"],
         body: [
           "Each year the Concord PTA puts on four community dinners — events that provide an opportunity to share a meal and celebrate community, connect, share successes and needs, and find volunteer opportunities.",
           "The goal of these posters was to increase attendance and anticipation, and to attract area nonprofits to “table” at the dinners, increasing capacity to connect school families and community to services.",
@@ -361,7 +365,7 @@ export const projects: Project[] = [
         heading: "One-off events",
         hideCaptions: true,
         archiveCover: { scale: 1.06, position: "50% 20%" },
-        tags: ["Print & editorial", "Digital"],
+        tags: ["Event", "Environmental", "Print & editorial"],
         body: [
           "Throughout the year, the PTA sponsors several events — Day of the Dead, Teacher Appreciation Week — for which they need engagement materials, from posters and graphics to advertising on social media.",
           "Because these events are mainly one-off, or just need continuity year over year, it’s been a fun place to explore different design directions.",
@@ -442,7 +446,7 @@ export const projects: Project[] = [
         hideCaptions: true,
         imageRows: [3, 2],
         archiveCover: { position: "50% 43%" },
-        tags: ["Event"],
+        tags: ["Branding", "Event", "Environmental"],
         body: [
           "“We are TrueBlue” gave sales teams from TrueBlue’s family of companies a shared focus: working together and cross-selling across the group. One of several conferences developed over successive years, it involved developing the theme and visual identity, then carrying them through banners, wayfinding, brochures, email invitations, keynote speaker graphics, lanyards, name badges, breakout-room materials, table arrangements, and everything in between.",
           "Work continued behind the scenes, coordinating presentations, deliveries, and setup, then supporting the client on site as last-minute needs arose.",
@@ -458,7 +462,7 @@ export const projects: Project[] = [
       {
         heading: "Staying true",
         hideCaptions: true,
-        tags: ["Print & editorial"],
+        tags: ["Branding", "Print & editorial"],
         body: "Annual reports were another recurring part of the relationship. As TrueBlue evolved and acquired new business lines, the way they described their services changed. This annual report served to reestablish their core values and clarify their business model to investors.",
         images: [
           { src: `${W}/trueblue/tbi-2015ar-1.webp`, alt: "2015 annual report", w: 970, h: 1290 },
@@ -532,7 +536,26 @@ export type ArchiveEntry = {
   imagePosition?: string;
   imageScale?: number;
   imageOrigin?: string;
+  filterViews?: Partial<Record<Tag, ArchiveEntry>>;
 };
+
+function archiveSection(p: Project, s: Section): ArchiveEntry {
+  return {
+    key: `${p.slug}#${sectionId(s.heading)}`,
+    title: s.heading,
+    client: p.client,
+    href: `/work/${p.slug}#${sectionId(s.heading)}`,
+    tags: s.tags ?? p.tags,
+    image: {
+      src: s.archiveCover?.src ?? s.images?.[0]?.src ?? p.card.src,
+      w: s.archiveCover?.w ?? s.images?.[0]?.w ?? p.card.w,
+      h: s.archiveCover?.h ?? s.images?.[0]?.h ?? p.card.h,
+    },
+    imagePosition: s.archiveCover?.position,
+    imageScale: s.archiveCover?.scale,
+    imageOrigin: s.archiveCover?.origin,
+  };
+}
 
 /**
  * Every discrete piece of work, not just the six on the homepage. A project
@@ -542,21 +565,7 @@ export type ArchiveEntry = {
  */
 export const archive: ArchiveEntry[] = projects.flatMap((p) =>
   p.sections.length > 1 && !p.archiveTitle
-    ? p.sections.map((s) => ({
-        key: `${p.slug}#${sectionId(s.heading)}`,
-        title: s.heading,
-        client: p.client,
-        href: `/work/${p.slug}#${sectionId(s.heading)}`,
-        tags: s.tags ?? p.tags,
-        image: {
-          src: s.archiveCover?.src ?? s.images?.[0]?.src ?? p.card.src,
-          w: s.archiveCover?.w ?? s.images?.[0]?.w ?? p.card.w,
-          h: s.archiveCover?.h ?? s.images?.[0]?.h ?? p.card.h,
-        },
-        imagePosition: s.archiveCover?.position,
-        imageScale: s.archiveCover?.scale,
-        imageOrigin: s.archiveCover?.origin,
-      }))
+    ? p.sections.map((s) => archiveSection(p, s))
     : [{
         key: p.slug,
         title: p.archiveTitle ?? p.title,
@@ -573,10 +582,17 @@ export const archive: ArchiveEntry[] = projects.flatMap((p) =>
         imagePosition: p.archiveCover?.position,
         imageScale: p.archiveCover?.scale,
         imageOrigin: p.archiveCover?.origin,
+        filterViews: Object.fromEntries(
+          Object.entries(p.archiveFilterSections ?? {}).map(([tag, view]) => {
+            const section = p.sections.find((s) => s.heading === view.heading);
+            if (!section) throw new Error(`Missing archive section: ${p.slug}/${view.heading}`);
+            return [tag, { ...archiveSection(p, section), title: view.title ?? section.heading }];
+          })
+        ),
       }]
 );
 
-export const allTags = ["Branding", "Event", "Print & editorial", "Digital"] as const;
+export const allTags = ["Branding", "Event", "Environmental", "Print & editorial", "Digital"] as const;
 
 export const featured = projects.filter((p) => p.featured);
 export const bySlug = (slug: string) => projects.find((p) => p.slug === slug);
