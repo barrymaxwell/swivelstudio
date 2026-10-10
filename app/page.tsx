@@ -13,8 +13,11 @@ export default function Home() {
       <Header />
       <main>
         <section className="mx-auto max-w-5xl px-6 pt-20 pb-14 sm:pt-28">
+          <p className="mb-4 text-[0.833333rem] font-medium uppercase tracking-[0.12em] text-crest">
+            Swivel Studio &mdash; Turning details into ideas
+          </p>
           <h1 className="max-w-[26ch] font-display text-[2.75rem] leading-[1.06] tracking-[-0.021em] text-balance sm:text-display">
-            Swivel Studio &mdash; <span className="whitespace-nowrap">Seattle-based</span> brand and visual design
+            Branding and visual design, based in Seattle
           </h1>
           <p className="mt-7 max-w-xl text-lede text-ink-2">
             I&rsquo;m Robin Maxwell. For over two decades I&rsquo;ve helped organizations grow
