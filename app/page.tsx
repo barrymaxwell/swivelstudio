@@ -18,7 +18,7 @@ export default function Home() {
             <span className="font-normal">Turning details into ideas</span>
           </p>
           <h1 className="max-w-[26ch] font-display text-[2.75rem] leading-[1.06] tracking-[-0.021em] text-balance sm:text-display">
-            Branding and visual design, based in Seattle
+            Branding &amp; visual design out of Seattle
           </h1>
           <p className="mt-7 max-w-xl text-lede text-ink-2">
             I&rsquo;m Robin Maxwell. For over two decades I&rsquo;ve helped organizations grow
