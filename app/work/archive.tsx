@@ -55,21 +55,20 @@ export function Archive() {
         {shown.map((e) => (
           <Link key={e.key} href={e.href} className="group block">
             <div className="relative aspect-4/3 overflow-hidden rounded-xs bg-rule-2">
-              <Image
-                src={e.image.src}
-                alt=""
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className={
-                  "object-cover transition-transform duration-500 ease-out " +
-                  (e.imageScale ? "" : "group-hover:scale-[1.03]")
-                }
-                style={{
-                  objectPosition: e.imagePosition,
-                  transform: e.imageScale ? `scale(${e.imageScale})` : undefined,
-                  transformOrigin: e.imageOrigin,
-                }}
-              />
+              <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-[1.03]">
+                <Image
+                  src={e.image.src}
+                  alt=""
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                  style={{
+                    objectPosition: e.imagePosition,
+                    transform: e.imageScale ? `scale(${e.imageScale})` : undefined,
+                    transformOrigin: e.imageOrigin,
+                  }}
+                />
+              </div>
             </div>
             {(e.eyebrow || e.client !== e.title) && (
               <p className="mt-3 text-xs font-medium uppercase tracking-[0.1em] text-ink-3">
