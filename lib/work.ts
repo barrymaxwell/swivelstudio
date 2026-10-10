@@ -2,6 +2,8 @@ export type Tag = "Branding" | "Event" | "Environmental" | "Print & editorial" |
 
 export type Section = {
   heading: string;
+  /** Optional card title used only in the work archive. */
+  archiveTitle?: string;
   /** Overrides the project's tags. A bank's website is Digital, not Print. */
   tags?: Tag[];
   /** Uniform cells instead of aspect-aware layout — for comparing marks. */
@@ -232,6 +234,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Why Pacific Crest?",
+        archiveTitle: "You’ll like what you see from the Crest",
         leftColumnImages: 3,
         tags: ["Digital"],
         body: [
@@ -329,6 +332,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "Noche Tropical",
+        archiveTitle: "Noche Tropical fundraiser",
         archiveCover: { position: "100% 50%", scale: 1.8, origin: "100% 0%" },
         tags: ["Event", "Branding", "Environmental", "Print & editorial"],
         body: "Annual dinner and fundraising auction. Design deliverables include an event poster, flyers, bid paddles, auction catalog, graphics for social media and online ticketing, sponsorship package, at-event signage, gift certificates, auction item forms, keynote auction presentation, and a school fundraising video. Most pieces are created in both English and Spanish.",
@@ -342,6 +346,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Other fundraisers",
+        archiveTitle: "Fundraising auctions",
         hideCaptions: true,
         archiveCover: { scale: 1.5, position: "50% 70%" },
         tags: ["Event", "Environmental", "Print & editorial"],
@@ -367,6 +372,7 @@ export const projects: Project[] = [
       },
       {
         heading: "One-off events",
+        archiveTitle: "Events and initiatives",
         hideCaptions: true,
         archiveCover: { scale: 1.06, position: "50% 20%" },
         tags: ["Event", "Environmental", "Print & editorial"],
@@ -403,6 +409,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "Every Tree Counts",
+        archiveTitle: "Every tree counts",
         hideCaptions: true,
         tags: ["Print & editorial"],
         body: "Under the theme “Every Tree Counts”, this report used bold numbers and infographics alongside expansive imagery from custom photoshoots of Plum Creek’s well-managed lands — underscoring the intense analytic scrutiny the company operates by in service to their three main focal points: growing healthy forests in perpetual cycles including responsible harvesting; building a strong workforce and sustaining rural communities; and creating long-term value for stakeholders.",
@@ -449,6 +456,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "In the room",
+        archiveTitle: "Stronger together",
         hideCaptions: true,
         imageRows: [3, 2],
         archiveCover: { position: "50% 43%" },
@@ -550,7 +558,7 @@ export type ArchiveEntry = {
 function archiveSection(p: Project, s: Section): ArchiveEntry {
   return {
     key: `${p.slug}#${sectionId(s.heading)}`,
-    title: s.heading,
+    title: s.archiveTitle ?? s.heading,
     client: p.client,
     eyebrow: p.eyebrow,
     href: `/work/${p.slug}#${sectionId(s.heading)}`,
