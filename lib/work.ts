@@ -382,23 +382,26 @@ export const projects: Project[] = [
     disciplines: ["Editorial design", "Infographics", "Annual reports"],
     tags: ["Print & editorial"],
     card: { src: `${W}/plum-creek/plumcreek-sust2.webp`, w: 970, h: 776 },
-    hero: { src: `${W}/plum-creek/plumcreek-sust4.webp`, alt: "Plum Creek sustainability report, letter to stakeholders", w: 2004, h: 1308 },
+    hero: { src: `${W}/plum-creek/sustainability-original-numbers-neutral-paper-v8.webp`, alt: "Forest-filled numbers from Plum Creek’s sustainability report cover against pale warm gray paper", w: 996, h: 429 },
     intro:
       "Plum Creek (since merged with Weyerhaeuser) owned and sustainably managed 6.6 million acres of highly productive forest land in 19 U.S. states. Perceptions of land management and, in particular, forests, can be fraught. Stakeholders were beginning to require that companies prove their leadership in stewardship, responsibility, and ethics — an area where Plum Creek shone.",
     featured: true,
     sections: [
       {
         heading: "Every Tree Counts",
+        hideCaptions: true,
         tags: ["Print & editorial"],
         body: "Under the theme “Every Tree Counts”, this report used bold numbers and infographics alongside expansive imagery from custom photoshoots of Plum Creek’s well-managed lands — underscoring the intense analytic scrutiny the company operates by in service to their three main focal points: growing healthy forests in perpetual cycles including responsible harvesting; building a strong workforce and sustaining rural communities; and creating long-term value for stakeholders.",
         images: [
-          { src: `${W}/plum-creek/plumcreek-sust1.webp`, alt: "Sustainability report cover", w: 2000, h: 2150 },
-          { src: `${W}/plum-creek/plumcreek-sust3.webp`, alt: "Internal pages", w: 970, h: 776 },
-          { src: `${W}/plum-creek/plumcreek-sust2.webp`, alt: "Managed forest land photography", w: 970, h: 776 },
+          { src: `${W}/plum-creek/sustainability-cover-photo-v1.webp`, alt: "Sustainability report cover", w: 1860, h: 2000 },
+          { src: `${W}/plum-creek/sustainability-interior-photo-v1.webp`, alt: "Internal pages", w: 970, h: 776 },
+          { src: `${W}/plum-creek/sustainability-forestry-photo-v1.webp`, alt: "Open sustainability report showing forest management photography and seedling, GMO, and survival rate infographics", w: 1000, h: 800 },
+          { src: `${W}/plum-creek/sustainability-opening-spread-v1.webp`, alt: "Plum Creek sustainability report opening spread, with forest photography, tree planting statistics, and a letter to stakeholders", w: 1000, h: 652 },
         ],
       },
       {
         heading: "A year in the life",
+        hideCaptions: true,
         tags: ["Print & editorial"],
         body: [
           "Three annual reports, each telling the year’s story through the lens of company value, and values. “We grow value from…” emphasizes that Plum Creek’s land is valuable for its trees as well as for its other resources and uses.",
