@@ -25,6 +25,8 @@ export type Section = {
 export type Project = {
   slug: string;
   client: string;
+  /** Optional label above the project title on its page and archive card. */
+  eyebrow?: string;
   title: string;
   /** One line. The five-second read. */
   summary: string;
@@ -269,6 +271,7 @@ export const projects: Project[] = [
   {
     slug: "identities",
     client: "Identities",
+    eyebrow: "Assorted Clients",
     title: "Identities",
     summary:
       "Brand marks spanning nonprofits, food, healthcare, furniture, real estate, creative agencies, and more.",
@@ -511,9 +514,9 @@ export const projects: Project[] = [
           "As the journey progressed, visually corresponding print and digital communications were sent at each mile marker along the map.",
         ],
         images: [
-          { src: `${W}/trueblue/tb-unifimap1.webp`, alt: "Unification road map", w: 974, h: 1526, keyline: "subtle" },
+          { src: `${W}/trueblue/tb-unifimap1.webp`, alt: "Unification road map", w: 974, h: 1526 },
           { src: `${W}/trueblue/trueblue-journey-atlas-cover.webp`, alt: "Journey atlas cover", w: 800, h: 1035 },
-          { src: `${W}/trueblue/tb-unifimap2.webp`, alt: "Unification road map detail", w: 970, h: 620, fullWidth: true, keyline: "subtle" },
+          { src: `${W}/trueblue/tb-unifimap2.webp`, alt: "Unification road map detail", w: 970, h: 620, fullWidth: true },
           { src: `${W}/trueblue/trueblue-journey-brochure-cover.webp`, alt: "Journey brochure cover", w: 600, h: 1284, keyline: "subtle" },
           { src: `${W}/trueblue/trueblue-journey-postcard-2.webp`, alt: "Feedback postcard", w: 1236, h: 800, keyline: "subtle" },
         ],
@@ -530,6 +533,7 @@ export type ArchiveEntry = {
   key: string;
   title: string;
   client: string;
+  eyebrow?: string;
   href: string;
   tags: Project["tags"];
   image: { src: string; w: number; h: number };
@@ -544,6 +548,7 @@ function archiveSection(p: Project, s: Section): ArchiveEntry {
     key: `${p.slug}#${sectionId(s.heading)}`,
     title: s.heading,
     client: p.client,
+    eyebrow: p.eyebrow,
     href: `/work/${p.slug}#${sectionId(s.heading)}`,
     tags: s.tags ?? p.tags,
     image: {
@@ -570,6 +575,7 @@ export const archive: ArchiveEntry[] = projects.flatMap((p) =>
         key: p.slug,
         title: p.archiveTitle ?? p.title,
         client: p.client,
+        eyebrow: p.eyebrow,
         href: `/work/${p.slug}`,
         tags: p.archiveTitle
           ? [...new Set([...p.tags, ...p.sections.flatMap((s) => s.tags ?? [])])]

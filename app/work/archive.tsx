@@ -71,9 +71,9 @@ export function Archive() {
                 }}
               />
             </div>
-            {e.client !== e.title && (
+            {(e.eyebrow || e.client !== e.title) && (
               <p className="mt-3 text-xs font-medium uppercase tracking-[0.1em] text-ink-3">
-                {e.client}
+                {e.eyebrow ?? e.client}
               </p>
             )}
             <h2 className="mt-1 text-mid font-semibold tracking-tight group-hover:text-crest-700">

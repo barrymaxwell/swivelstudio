@@ -119,9 +119,9 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
       <main>
         {/* Summary block — the five-second read, above the hero. */}
         <div className="mx-auto max-w-5xl px-6 pt-14 pb-10">
-          {p.client !== p.title && (
+          {(p.eyebrow || p.client !== p.title) && (
             <p className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
-              {p.client}
+              {p.eyebrow ?? p.client}
             </p>
           )}
           <h1 className="mt-4 max-w-[20ch] font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-balance sm:text-5xl">
