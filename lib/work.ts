@@ -283,7 +283,7 @@ export const projects: Project[] = [
           { src: `${W}/identities/old-growth-industries-logo-v2.webp`, alt: "Old Growth Industries — luxury furniture made from Northwest old growth fir", w: 1600, h: 1200 },
           { src: `${W}/identities/ams-e5e21869.webp`, alt: "AMS — medical accounts receivable", w: 903, h: 677 },
           { src: `${W}/identities/graphica-g-v1.webp`, alt: "Graphica — award-winning design firm", w: 1600, h: 1200, credits: [{ role: "Creative director", name: "Craig Terrones" }], galleryScale: 0.8075 },
-          { src: `${W}/identities/microclimates-envos-logo-v1.webp`, alt: "Microclimates EnvOS — environmental operating system flagship product", w: 1600, h: 1200, galleryScale: 0.85 },
+          { src: `${W}/identities/woodland-park-zoo-jungle-party-v1.webp`, alt: "Woodland Park Zoo Jungle Party — annual fundraiser and auction", w: 1600, h: 1200, galleryScale: 0.973165 },
           { src: `${W}/identities/seasons-harry-race-whites-wide-v2.webp`, alt: "Seasons, Harry Race and White’s — sister stores for medical equipment, pharmacy, and gifts emphasizing “living local” in Alaska", w: 1600, h: 600, fullWidth: true },
           { src: `${W}/identities/alaskan-creamery-1-8a626f00.webp`, alt: "Alaskan Creamery — ice cream shop in Alaska", w: 1181, h: 886 },
           { src: `${W}/identities/noche-tropical-mark-v1.webp`, alt: "Noche Tropical — fundraising dinner and auction for Concord International School", w: 1418, h: 950, galleryScale: 0.95 },
