@@ -13,17 +13,17 @@ export default function Home() {
       <Header />
       <main>
         <section className="mx-auto max-w-5xl px-6 pt-20 pb-14 sm:pt-28">
-          <p className="mb-4 text-[0.833333rem] uppercase tracking-[0.12em] text-crest">
+          <p className="mb-4 text-[0.833333rem] uppercase tracking-[0.12em] text-crest-700">
             <span className="mr-3 font-semibold">Swivel Studio</span>{" "}
-            <span className="font-normal">Turning details into ideas</span>
+            <span className="font-normal">SEATTLE, WA</span>
           </p>
           <h1 className="max-w-[26ch] font-display text-[2.75rem] leading-[1.06] tracking-[-0.021em] text-balance sm:text-display">
-            Branding &amp; visual design out of Seattle
+            Branding &amp; visual&nbsp;design
           </h1>
           <p className="mt-7 max-w-xl text-lede text-ink-2">
             I&rsquo;m Robin Maxwell. For over two decades I&rsquo;ve helped organizations grow
             through design &mdash; from Fortune 500s, biotechs and banks, to the nonprofits
-            doing the hardest work in the city.
+            doing some of the hardest work in the city.
           </p>
         </section>
 
