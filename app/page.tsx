@@ -14,7 +14,7 @@ export default function Home() {
       <main>
         <section className="mx-auto max-w-5xl px-6 pt-20 pb-14 sm:pt-28">
           <p className="mb-4 text-[0.833333rem] uppercase tracking-[0.12em] text-crest-700">
-            <span className="mr-3 font-semibold">Swivel Studio</span>{" "}
+            <span className="mr-3 font-semibold text-crest">Swivel Studio</span>{" "}
             <span className="font-normal">SEATTLE, WA</span>
           </p>
           <h1 className="max-w-[26ch] font-display text-[2.75rem] leading-[1.06] tracking-[-0.021em] text-balance sm:text-display">
