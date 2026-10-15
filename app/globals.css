@@ -3,10 +3,10 @@
 /* ---------------------------------------------------------------
    Swivel Studio design tokens
    Brand blue #24AAE3 is taken from Robin's logo vector. It measures
-   2.65:1 on white, so it is a MARK and LARGE-FILL colour only.
+   2.65:1 on white, so it is a MARK and LARGE-FILL color only.
    Text and links use crest-700 (5.69:1). See DESIGN-SYSTEM.md.
    --------------------------------------------------------------- */
-@theme {
+@theme static {
   --color-crest-50:  #f0f7f9;
   --color-crest-100: #deecf2;
   --color-crest-200: #bed9e5;

@@ -24,12 +24,12 @@ The Squarespace site only ever served a 300px JPG of the mark.
 The LinkedIn banner shows the mark **tiled as a background pattern** at small
 scale — an existing brand element worth rebuilding as an SVG tile later.
 
-## Colour
+## Color
 
 Brand blue is **#24AAE3**, taken from the logo vector.
 
 > It measures **2.65:1 on white** — below the 4.5:1 AA threshold for body text.
-> So it is a **mark and large-fill colour only**. Links and small text use
+> So it is a **mark and large-fill color only**. Links and small text use
 > `crest-700`.
 
 | Token | Hex | On white | Use |
@@ -113,7 +113,7 @@ resolved.
    work — Gates Ag One or the startup — should take one of those slots.
 3. **Display typeface.** System serif, or license something with more voice.
 
-## Header behaviour
+## Header behavior
 
 The header hides on scroll down and returns on scroll up, rather than staying
 fixed or scrolling away for good.

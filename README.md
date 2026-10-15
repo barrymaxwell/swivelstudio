@@ -40,7 +40,7 @@ It renames each file to `name-<sha1>.webp` and rewrites the references in
 ## Identity marks
 
 `scripts/rebuild-identity-marks.mjs` rebuilds the logo gallery from the
-pristine Squarespace exports in one pass — strip the 2px grey export rule and
+pristine Squarespace exports in one pass — strip the 2px gray export rule and
 the compression ringing behind it, find the artwork box with a noise floor
 (sharp's `trim()` keeps any row holding one stray pixel), size a 4:3 canvas
 around the artwork **at native resolution**, and encode once, lossless where

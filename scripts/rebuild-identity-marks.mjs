@@ -10,15 +10,15 @@ for (const f of (await readdir(SRC)).filter(f => f.endsWith(".src"))) {
   const base = f.replace(".src", "");
   const img = sharp(`${SRC}/${f}`).flatten({ background: "#ffffff" });
 
-  // 1. strip the Squarespace export border. It is a 2px grey rule sitting
-  //    *inside* a white outer row, so trim() clears the white, meets the grey,
+  // 1. strip the Squarespace export border. It is a 2px gray rule sitting
+  //    *inside* a white outer row, so trim() clears the white, meets the gray,
   //    and stops - leaving the line as the artwork edge. Scan past it instead.
   const { data, info } = await img.clone().raw().toBuffer({ resolveWithObject: true });
   const ch = info.channels;
   const px = (x, y) => { const i = (y * info.width + x) * ch; return [data[i], data[i+1], data[i+2]]; };
   const ruleAt = (vals) => {
-    const grey = vals.filter(p => p[0] < 246 && Math.abs(p[0]-p[1]) < 6 && Math.abs(p[1]-p[2]) < 6);
-    return grey.length / vals.length > 0.9;          // a continuous flat line
+    const gray = vals.filter(p => p[0] < 246 && Math.abs(p[0]-p[1]) < 6 && Math.abs(p[1]-p[2]) < 6);
+    return gray.length / vals.length > 0.9;          // a continuous flat line
   };
   const sampleRow = y => Array.from({ length: 24 }, (_, k) => px(Math.round((k + 1) * info.width / 25), y));
   const sampleCol = x => Array.from({ length: 24 }, (_, k) => px(x, Math.round((k + 1) * info.height / 25)));
@@ -66,7 +66,7 @@ for (const f of (await readdir(SRC)).filter(f => f.endsWith(".src"))) {
     placed = r.data; pw = r.info.width; ph = r.info.height;
   }
 
-  // 4. one encode, lossless — these are flat-colour marks, not photographs
+  // 4. one encode, lossless — these are flat-color marks, not photographs
   const out = await sharp({ create: { width: cw, height: ch2, channels: 3, background: "#ffffff" } })
     .composite([{ input: placed, left: Math.round((cw - pw) / 2), top: Math.round((ch2 - ph) / 2) }])
     .webp({ lossless: true, effort: 6 }).toBuffer();

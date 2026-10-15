@@ -426,7 +426,7 @@ export const projects: Project[] = [
         tags: ["Print & editorial"],
         body: [
           "Three annual reports, each telling the year’s story through the lens of company value, and values. “We grow value from…” emphasizes that Plum Creek’s land is valuable for its trees as well as for its other resources and uses.",
-          "“True to our core” uses the metaphor of a tree’s rings to quite literally spell out Plum Creek’s values at the centre of their organization. The third uses “We see…” statements, finishing them with powerful words like “Value” and “Opportunity,” juxtaposed with inspiring nature imagery.",
+          "“True to our core” uses the metaphor of a tree’s rings to quite literally spell out Plum Creek’s values at the center of their organization. The third uses “We see…” statements, finishing them with powerful words like “Value” and “Opportunity,” juxtaposed with inspiring nature imagery.",
         ],
         images: [
           { src: `${W}/plum-creek/plumcreek-ar13.webp`, alt: "Annual report", w: 970, h: 1264 },

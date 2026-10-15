@@ -12,7 +12,7 @@ await mkdir(out, { recursive: true });
 
 for (const p of projects) {
   const { w, h, src, position = "50% 50%" } = p.hero;
-  // Cover-crop, honouring the hero's object-position.
+  // Cover-crop, honoring the hero's object-position.
   const scale = Math.max(W / w, H / h);
   const rw = Math.round(w * scale), rh = Math.round(h * scale);
   const [px, py] = position.split(" ").map((v) => Math.min(1, Math.max(0, parseFloat(v) / 100)));
