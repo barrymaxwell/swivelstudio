@@ -13,11 +13,11 @@ export default function Home() {
       <Header />
       <main>
         <section className="mx-auto max-w-5xl px-6 pt-20 pb-14 sm:pt-28">
-          <p className="mb-4 text-[0.833333rem] uppercase tracking-[0.12em] text-crest-700">
+          <p className="mb-4 eyebrow text-crest-700">
             <span className="mr-3 font-semibold text-crest">Swivel Studio</span>{" "}
             <span className="font-normal">SEATTLE, WA</span>
           </p>
-          <h1 className="max-w-[26ch] font-display text-[2.75rem] leading-[1.06] tracking-[-0.021em] text-balance sm:text-display">
+          <h1 className="max-w-[26ch] font-display text-display text-balance">
             Branding &amp; visual&nbsp;design
           </h1>
           <p className="mt-7 max-w-xl text-lede text-ink-2">
@@ -32,7 +32,7 @@ export default function Home() {
           <div className="grid gap-8 sm:grid-cols-3">
             {capabilities.map((c) => (
               <div key={c.title} className="border-t-2 border-crest pt-4">
-                <h3 className="text-base font-semibold tracking-tight">{c.title}</h3>
+                <h3 className="text-base font-semibold">{c.title}</h3>
                 <p className="mt-2 text-mid text-ink-2">{c.copy}</p>
               </div>
             ))}
@@ -41,7 +41,7 @@ export default function Home() {
 
         <section className="border-t border-rule bg-surface">
           <div className="mx-auto max-w-5xl px-6 py-16">
-            <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
+            <h2 className="eyebrow text-ink-3">
               Selected work
             </h2>
             <div className="mt-8 grid gap-x-10 gap-y-12 sm:grid-cols-2">
@@ -67,7 +67,7 @@ export default function Home() {
         </section>
 
         <section className="mx-auto max-w-5xl px-6 py-16">
-          <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
+          <h2 className="eyebrow text-ink-3">
             Twenty years of clients
           </h2>
           <ClientLogos />

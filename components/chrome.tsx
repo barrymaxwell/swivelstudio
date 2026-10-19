@@ -34,7 +34,7 @@ export function Cta() {
   return (
     <section className="border-t border-rule bg-surface">
       <div className="mx-auto max-w-5xl px-6 py-12">
-        <h2 className="font-display text-h2 tracking-tight">Let&rsquo;s work together.</h2>
+        <h2 className="font-display text-h2">Let&rsquo;s work together.</h2>
         <p className="mt-2 max-w-md text-ink-2">
           Tell me about your project or goals &mdash; I look forward to talking.
         </p>

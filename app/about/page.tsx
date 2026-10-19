@@ -50,7 +50,7 @@ export default function About() {
               priority
             />
             <div>
-              <h1 className="font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em]">
+              <h1 className="font-display text-display">
                 Robin Maxwell
               </h1>
               <p className="mt-5 max-w-[46ch] text-lede text-ink-2">
@@ -66,12 +66,12 @@ export default function About() {
           {sections.map((s) => (
             <section key={s.heading} className="border-b border-rule">
               <div className="mx-auto grid max-w-5xl gap-4 px-6 py-12 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
-                <h2 className="font-display text-h2 tracking-tight text-balance">
+                <h2 className="font-display text-h2 text-balance">
                   {s.heading}
                 </h2>
                 <div className="flex max-w-[58ch] flex-col gap-4">
                   {s.body.map((p) => (
-                    <p key={p} className="leading-[1.7] text-ink-2">{p}</p>
+                    <p key={p} className="text-ink-2">{p}</p>
                   ))}
                 </div>
               </div>
@@ -81,9 +81,9 @@ export default function About() {
 
         <section id="clients" className="mx-auto max-w-5xl scroll-mt-28 px-6 py-12">
           <div className="grid gap-4 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
-            <h2 className="font-display text-h2 tracking-tight">Clients</h2>
+            <h2 className="font-display text-h2">Clients</h2>
             <div>
-              <p className="text-base leading-[1.9] text-ink-2">{clients.join("  ·  ")}</p>
+              <p className="text-base text-ink-2">{clients.join("  ·  ")}</p>
               <p className="mt-6 text-mid text-ink-3">
                 Based in Seattle, working with clients anywhere.
               </p>

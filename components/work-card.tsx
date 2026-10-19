@@ -25,7 +25,7 @@ export function WorkCard({
           style={{ objectPosition: p.card.position }}
         />
       </div>
-      <h3 className={`mt-4 font-semibold tracking-tight ${compact ? "text-mid" : "text-base"}`}>
+      <h3 className={`mt-4 font-semibold ${compact ? "text-mid" : "text-base"}`}>
         {p.client}
         {disambiguate && (
           <span className="font-normal text-ink-2"> &mdash; {p.title}</span>
@@ -33,7 +33,7 @@ export function WorkCard({
       </h3>
       {!compact && (
         <>
-          <p className="mt-1 text-xs font-medium uppercase tracking-[0.1em] text-ink-3">
+          <p className="mt-1 eyebrow text-ink-3">
             {p.cardCaption ?? p.disciplines.slice(0, 3).join(" · ")}
           </p>
           <p className="mt-2 max-w-sm text-mid text-ink-2">

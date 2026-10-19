@@ -29,8 +29,8 @@
 
   --color-rule-2:  #eef1f3;
 
-  --font-display: "Iowan Old Style", Charter, "Palatino Linotype", Palatino, Georgia, serif;
-  --font-sans: "Avenir Next", Avenir, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-nunito-sans), system-ui, sans-serif;
 
   /* Type scale. Root is the browser default 16px = 1rem; never overridden,
      so a reader who sets a larger default gets a larger site.
@@ -40,8 +40,10 @@
        base 16px  nav, body, capability copy
        lede 19px  intro paragraphs
        h2   28px  section headings
-       display 52px  page h1
-     Nothing sits between 19 and 28, or 28 and 52 — the jumps are the hierarchy. */
+       display 44–56px  page h1. Fluid: 44px on phones, 56px from 640px wide.
+     base runs at 1.7 line-height: it is the long-form reading size.
+     Nothing sits between 19 and 28, or 28 and 56 — the jumps are the hierarchy. */
+  --text-base--line-height: 1.7;
   --text-mid: 0.9375rem;
   --text-mid--line-height: 1.6;
   --text-lede: 1.1875rem;
@@ -49,13 +51,27 @@
   --text-h2: 1.75rem;
   --text-h2--line-height: 1.15;
   --text-h2--letter-spacing: -0.014em;
-  --text-display: 3.25rem;
+  --text-display: clamp(2.75rem, 1.5rem + 5vw, 3.5rem);
   --text-display--line-height: 1.06;
   --text-display--letter-spacing: -0.021em;
 }
 
 html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-body { background: var(--color-ground); color: var(--color-ink); }
+body { background: var(--color-ground); color: var(--color-ink); line-height: var(--text-base--line-height); }
+/* Headlines are Fraunces Light. In the base layer, so a weight utility still wins. */
+@layer base {
+  .font-display { font-weight: 300; }
+}
+
+/* Eyebrows and meta: xs, uppercase, medium, 0.12em. One definition, used everywhere. */
+@utility eyebrow {
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
 ::selection { background: var(--color-crest-200); }
 
 :focus-visible {

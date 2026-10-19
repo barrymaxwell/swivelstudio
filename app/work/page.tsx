@@ -13,7 +13,7 @@ export default function Work() {
     <>
       <Header />
       <main className="mx-auto max-w-5xl px-6 py-16">
-        <h1 className="font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em]">
+        <h1 className="font-display text-display">
           All work
         </h1>
         <p className="mt-4 max-w-[52ch] text-lede text-ink-2">

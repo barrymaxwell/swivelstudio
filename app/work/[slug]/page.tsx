@@ -120,11 +120,11 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
         {/* Summary block — the five-second read, above the hero. */}
         <div className="mx-auto max-w-5xl px-6 pt-14 pb-10">
           {(p.eyebrow || p.client !== p.title) && (
-            <p className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
+            <p className="eyebrow text-ink-3">
               {p.eyebrow ?? p.client}
             </p>
           )}
-          <h1 className="mt-4 max-w-[20ch] font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-balance sm:text-5xl">
+          <h1 className="mt-4 max-w-[20ch] font-display text-display text-balance">
             {bookTitle(p.title)}
           </h1>
           <p className="mt-5 max-w-[46ch] text-lede text-ink-2">{bookTitle(p.summary)}</p>
@@ -139,14 +139,14 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
         <div className="mx-auto max-w-5xl px-6 py-14">
           <div className="grid gap-6 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
             <div>
-              <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">
+              <h2 className="eyebrow text-ink-3">
                 What I did
               </h2>
               <ul className="mt-3 flex flex-col gap-1 text-mid text-ink-2">
                 {p.disciplines.map((d) => <li key={d}>{d}</li>)}
               </ul>
             </div>
-            <p className="max-w-[58ch] text-lede leading-[1.65] text-ink-2">{bookTitle(p.intro)}</p>
+            <p className="max-w-[58ch] text-lede text-ink-2">{bookTitle(p.intro)}</p>
           </div>
         </div>
 
@@ -164,10 +164,10 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
           >
             <div className="mx-auto max-w-5xl px-6">
               <div className="grid gap-4 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
-                <h2 className="font-display text-h2 tracking-tight text-balance">{bookTitle(s.heading)}</h2>
+                <h2 className="font-display text-h2 text-balance">{bookTitle(s.heading)}</h2>
                 <div className="flex max-w-[58ch] flex-col gap-4">
                   {paras(s.body).filter(Boolean).map((t) => (
-                    <p key={t} className="leading-[1.7] text-ink-2">{bookTitle(t)}</p>
+                    <p key={t} className="text-ink-2">{bookTitle(t)}</p>
                   ))}
                 </div>
               </div>
@@ -277,8 +277,8 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
               {s.subsections?.map((subsection) => (
                 <div key={subsection.heading} className="mt-14 border-t border-rule pt-10">
                   <div className="grid gap-4 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
-                    <h3 className="font-display text-xl tracking-tight">{subsection.heading}</h3>
-                    <p className="max-w-[58ch] leading-[1.7] text-ink-2">{subsection.body}</p>
+                    <h3 className="font-display text-lede">{subsection.heading}</h3>
+                    <p className="max-w-[58ch] text-ink-2">{subsection.body}</p>
                   </div>
                   {subsection.images && (
                     <div className="mt-8 grid gap-x-6 sm:grid-cols-2">
@@ -313,7 +313,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
               <div>
                 {p.credits?.length ? (
                   <>
-                    <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">Credits</h2>
+                    <h2 className="eyebrow text-ink-3">Credits</h2>
                     <ul className="mt-3 flex flex-col gap-2 text-mid text-ink-2">
                       {p.credits.map((credit) => (
                         <li key={credit.role}><span className="font-medium text-ink">{credit.role}:</span> {credit.name}</li>

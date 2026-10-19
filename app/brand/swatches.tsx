@@ -100,7 +100,7 @@ export function Swatches() {
     <div className="space-y-12">
       {groups.map((g) => (
         <div key={g.title}>
-          <h3 className="text-xs font-medium uppercase tracking-[0.12em] text-ink-3">{g.title}</h3>
+          <h3 className="eyebrow text-ink-3">{g.title}</h3>
           <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 lg:grid-cols-6">
             {g.tokens.map((t) => (
               <Swatch key={t.name} {...t} />

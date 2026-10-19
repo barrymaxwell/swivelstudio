@@ -25,10 +25,10 @@ const fits = [
 function List({ title, items, note }: { title: string; items: string[]; note: string }) {
   return (
     <section>
-      <h2 className="font-display text-h2 tracking-tight">{title}</h2>
+      <h2 className="font-display text-h2">{title}</h2>
       <ul className="mt-5 space-y-2.5">
         {items.map((t) => (
-          <li key={t} className="flex gap-3 text-base leading-relaxed text-ink-2">
+          <li key={t} className="flex gap-3 text-base text-ink-2">
             <span aria-hidden="true" className="mt-3 h-px w-3 shrink-0 bg-crest" />
             {t}
           </li>
@@ -44,7 +44,7 @@ export default function Contact() {
     <>
       <Header />
       <main className="mx-auto max-w-5xl px-6 py-16">
-        <h1 className="font-display text-[2.5rem] leading-[1.08] tracking-[-0.02em]">
+        <h1 className="font-display text-display">
           Let&rsquo;s work together.
         </h1>
         <p className="mt-5 max-w-[48ch] text-lede text-ink-2">

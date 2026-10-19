@@ -54,32 +54,41 @@ Neutrals carry a slight crest bias so they read as chosen rather than inherited:
 
 ## Type
 
-| Role | Stack |
-|---|---|
-| Display | Iowan Old Style → Charter → Palatino → Georgia |
-| Body / UI | Avenir Next → Avenir → Segoe UI → system-ui |
+| Role | Typeface | Weight |
+|---|---|---|
+| Display | Fraunces | Light (300) |
+| Body / UI | Nunito Sans | Regular (400), semibold for emphasis |
 
-System stacks for now — no webfont request, no layout shift, and both render
-well on macOS and iOS where most of Robin's traffic will land. **Open decision:**
-licensing a display face would give the site more voice.
+Both are SIL Open Font License, free on Google Fonts. The same files work in
+Illustrator, Figma, the website, and generated images. `lib/fonts.ts` loads
+them through `next/font`, which self-hosts the files.
+
+No proprietary fonts. The site used Iowan Old Style and Avenir Next until
+October 2026. Those are Apple system fonts, so other devices saw Georgia and
+Segoe UI instead.
 
 ### Scale
 
 Root is the browser default **16px = 1rem**, never overridden, so a reader who
 raises their default gets a bigger site.
 
-| Token | Size | Role |
-|---|---|---|
-| `text-xs` | 12px | Eyebrows, card meta — uppercase, weight 500, `0.12em` tracking |
-| `text-sm` | 14px | Fine print, footer |
-| `text-mid` | 15px | Card blurbs, secondary body |
-| `text-base` | 16px | Nav, body, capability copy, client list |
-| `text-lede` | 19px | Intro paragraphs |
-| `text-h2` | 28px | Section headings |
-| `text-display` | 52px | Page h1 |
+| Token | Size | Line height | Role |
+|---|---|---|---|
+| `eyebrow` | 12px | — | Eyebrows and card meta. Uppercase, weight 500, `0.12em` tracking. One utility in `globals.css`. |
+| `text-sm` | 14px | — | Fine print, footer |
+| `text-mid` | 15px | 1.6 | Card blurbs, secondary body |
+| `text-base` | 16px | 1.7 | Nav, body, capability copy, client list |
+| `text-lede` | 19px | 1.6 | Intro paragraphs, subsection headings, the CTA email |
+| `text-h2` | 28px | 1.15 | Section headings |
+| `text-display` | 44–56px | 1.06 | Every page h1. 44px on phones, 56px from 640px wide. |
 
-Nothing sits between 19 and 28, or 28 and 52 — the jumps carry the hierarchy.
+Nothing sits between 19 and 28, or 28 and 56 — the jumps carry the hierarchy.
 Body measure caps at 62 characters.
+
+**Use only these.** No `text-[…]`, `leading-[…]` or `tracking-[…]` values, and
+no Tailwind sizes off the scale (`text-xl`, `text-5xl`). Tracking and line
+height come with the token. If a design needs something the scale doesn't
+have, change the scale here first.
 
 The mark renders at 40px square in the header, on the 4px spacing grid.
 
@@ -111,7 +120,7 @@ resolved.
 2. **Slot 6.** Currently TrueBlue appears twice (conference and the Journey to
    Unification campaign). They are genuinely separate engagements, but current
    work — Gates Ag One or the startup — should take one of those slots.
-3. **Display typeface.** System serif, or license something with more voice.
+3. **Display typeface.** Fraunces Light is in, on trial. The other candidates were Newsreader, Instrument Serif, and Source Serif 4.
 
 ## Header behavior
 

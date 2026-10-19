@@ -75,7 +75,7 @@ export function CopyEmail({
         aria-label={`Copy email address ${email}`}
         className={
           display
-            ? "group inline-flex items-center gap-3 font-display text-2xl text-crest-700 transition-colors hover:text-crest-800"
+            ? "group inline-flex items-center gap-3 font-display text-lede text-crest-700 transition-colors hover:text-crest-800"
             : "group inline-flex items-center gap-2 text-base font-medium text-crest-700 transition-colors hover:text-crest-800"
         }
       >

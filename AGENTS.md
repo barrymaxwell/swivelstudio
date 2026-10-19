@@ -33,6 +33,7 @@ Two people push here. Barry is a designer who codes. Robin is a designer who has
 
 - **Website copy:** read [VOICE-AND-TONE.md](VOICE-AND-TONE.md) before writing or editing copy. Follow it for framing, credit, tone, length and wordplay.
 - **Spelling:** American English. Color, center, gray.
+- **Type:** use only the scale in `DESIGN-SYSTEM.md`. No `text-[…]`, `leading-[…]` or `tracking-[…]` values.
 - **Images:** convert to WebP, max 2000px on the long side. Write real alt text. When replacing an image, give it a new filename, or browsers keep showing the old one.
 - **Brand blue `#24AAE3` fails contrast for text.** Use it for the mark and large fills only. See `DESIGN-SYSTEM.md`.
 - **Leave alone unless Barry asks:** `lib/site.ts` (domain and indexing), the redirects in `next.config.mjs` (old Squarespace URLs), Vercel settings, DNS.

@@ -2,7 +2,6 @@ import { Header, Footer } from "@/components/chrome";
 import { Mark, Lockup, Wordmark } from "@/components/logo";
 import { Swatches } from "./swatches";
 import { Downloads } from "./downloads";
-import { pairings } from "./fonts";
 
 // Internal reference. Unlisted: no nav link, not in the sitemap, noindex.
 // Anyone with the URL can see it, and the repo is public. Nothing here is secret.
@@ -11,7 +10,7 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-const eyebrow = "text-xs font-medium uppercase tracking-[0.12em] text-ink-3";
+const eyebrow = "eyebrow text-ink-3";
 
 function Section({ id, title, intro, children }: { id: string; title: string; intro?: string; children: React.ReactNode }) {
   return (
@@ -30,12 +29,12 @@ const grounds = [
 ];
 
 const scale = [
-  { token: "display", size: "52px", use: "Page headline", sample: "Branding & visual design", className: "font-display text-display" },
+  { token: "display", size: "44–56px", use: "Page headlines. 44px on phones.", sample: "Branding & visual design", className: "font-display text-display" },
   { token: "h2", size: "28px", use: "Section headings", sample: "Cutting trees to grow healthy forests", className: "font-display text-h2" },
   { token: "lede", size: "19px", use: "Intro paragraphs", sample: "For over two decades I’ve helped organizations grow through design.", className: "text-lede" },
   { token: "base", size: "16px", use: "Body, nav", sample: "You get me at every stage — research, strategy, ideation, execution, and delivery.", className: "text-base" },
   { token: "mid", size: "15px", use: "Card text, secondary body", sample: "Collateral, reports, exhibits, signage, packaging.", className: "text-mid" },
-  { token: "xs", size: "12px", use: "Eyebrows and meta. Uppercase, medium, 0.12em tracking.", sample: "Selected work", className: "text-xs font-medium uppercase tracking-[0.12em]" },
+  { token: "xs", size: "12px", use: "Eyebrows and meta. Uppercase, medium, 0.12em tracking.", sample: "Selected work", className: "eyebrow" },
 ];
 
 export default function Brand() {
@@ -55,7 +54,6 @@ export default function Brand() {
               ["#logo", "Logo"],
               ["#color", "Color"],
               ["#type", "Type"],
-              ["#fonts", "Font options"],
               ["#voice", "Voice"],
               ["#open", "Open decisions"],
             ].map(([href, label]) => (
@@ -106,7 +104,7 @@ export default function Brand() {
         <Section
           id="type"
           title="Type"
-          intro="Iowan Old Style for display, Avenir Next for everything else, until an open-license pairing replaces them. The jumps between sizes carry the hierarchy, so nothing sits between 19 and 28px, or 28 and 52px."
+          intro="Fraunces Light for headlines, Nunito Sans for everything else. Both are free on Google Fonts. The jumps between sizes carry the hierarchy, so nothing sits between 19 and 28px, or 28 and 56px."
         >
           <dl className="divide-y divide-rule border-y border-rule">
             {scale.map((s) => (
@@ -119,50 +117,6 @@ export default function Brand() {
               </div>
             ))}
           </dl>
-        </Section>
-
-        <Section
-          id="fonts"
-          title="Font options"
-          intro="The same homepage text in each pairing. An open-license font works everywhere: Illustrator, Figma, the website, and the share images the site generates. Nothing here changes the live site."
-        >
-          <div className="space-y-6">
-            {pairings.map((p) => (
-              <article key={p.name} className="rounded-xs border border-rule bg-surface p-6 sm:p-8">
-                <header className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-rule pb-4">
-                  <h3 className="text-sm">
-                    <span className="font-semibold">{p.name}</span>
-                    <span className="text-ink-2"> · {p.display} + {p.sans}</span>
-                  </h3>
-                  <p className="text-xs text-ink-3">{p.license}</p>
-                </header>
-                <div className="pt-6">
-                  <p className="text-xs uppercase tracking-[0.12em] text-crest-700" style={{ fontFamily: p.sansFamily }}>
-                    <span className="mr-3 font-semibold text-crest">Swivel Studio</span>Seattle, WA
-                  </p>
-                  <p className="mt-3 text-[2.5rem] leading-[1.06] tracking-[-0.021em] sm:text-display" style={{ fontFamily: p.displayFamily }}>
-                    Branding &amp; visual design
-                  </p>
-                  <p className="mt-5 max-w-xl text-lede text-ink-2" style={{ fontFamily: p.sansFamily }}>
-                    I&rsquo;m Robin Maxwell. For over two decades I&rsquo;ve helped organizations grow
-                    through design, from Fortune 500s, biotechs, and banks to the nonprofits doing
-                    some of the hardest work in the city.
-                  </p>
-                  <div className="mt-8 grid gap-6 sm:grid-cols-2">
-                    <p className="text-h2" style={{ fontFamily: p.displayFamily }}>
-                      Cutting trees to grow healthy forests
-                    </p>
-                    <div style={{ fontFamily: p.sansFamily }}>
-                      <p className="text-base font-semibold">Brand &amp; Event Identity Systems</p>
-                      <p className="mt-1 text-mid text-ink-2">Naming, logos and marks, visual systems, standards.</p>
-                      <p className="mt-3 text-mid text-ink-3">0123456789 · &ldquo;Quotes&rdquo; &amp; ampersands</p>
-                    </div>
-                  </div>
-                </div>
-                <p className="mt-6 border-t border-rule pt-4 text-xs text-ink-3">{p.note}</p>
-              </article>
-            ))}
-          </div>
         </Section>
 
         <Section id="voice" title="Voice">
@@ -184,9 +138,8 @@ export default function Brand() {
 
         <Section id="open" title="Open decisions">
           <ul className="max-w-[62ch] list-disc space-y-2 pl-5 text-base text-ink-2">
-            <li>Typeface. Pick an open-license pairing above to replace the baseline.</li>
-            <li>Clear space and minimum size for the lockup.</li>
-            <li>LinkedIn templates for Illustrator and Figma. These wait on the typeface.</li>
+                        <li>Clear space and minimum size for the lockup.</li>
+            <li>LinkedIn templates for Illustrator and Figma.</li>
           </ul>
         </Section>
       </main>
