@@ -3,6 +3,9 @@
 // Builds SVG and PNG downloads from the master files in public/brand, recolored
 // in the browser. One master per asset, so a fix to the vector fixes every download.
 
+// One PNG size. 2400px wide covers a LinkedIn banner and most slides.
+const PNG_WIDTH = 2400;
+
 const colors = [
   { label: "Blue", token: "crest" },
   { label: "Ink", token: "ink" },
@@ -47,22 +50,19 @@ async function png(svg: string, width: number, ratio: number) {
 export function Downloads({
   src,
   slug,
-  baseWidth,
   ratio,
 }: {
   /** Master SVG in public/brand. */
   src: string;
   slug: string;
-  /** PNG width at 1×. */
-  baseWidth: number;
   /** Height ÷ width of the artwork. */
   ratio: number;
 }) {
-  const get = async (token: string, label: string, format: "svg" | number) => {
+  const get = async (token: string, label: string, format: "svg" | "png") => {
     const svg = await recolored(src, tokenHex(token));
     const name = `${slug}-${label.toLowerCase()}`;
     if (format === "svg") return save(new Blob([svg], { type: "image/svg+xml" }), `${name}.svg`);
-    save(await png(svg, baseWidth * format, ratio), `${name}-${baseWidth * format}w.png`);
+    save(await png(svg, PNG_WIDTH, ratio), `${name}-${PNG_WIDTH}w.png`);
   };
 
   return (
@@ -73,14 +73,14 @@ export function Downloads({
             <th scope="row" className="py-2 pr-4 text-left font-medium">
               {c.label}
             </th>
-            {(["svg", 1, 2, 4] as const).map((f) => (
+            {(["svg", "png"] as const).map((f) => (
               <td key={f} className="py-2 pr-4">
                 <button
                   type="button"
                   onClick={() => get(c.token, c.label, f)}
                   className="text-crest-700 underline decoration-crest-200 underline-offset-4 hover:decoration-crest-700"
                 >
-                  {f === "svg" ? "SVG" : `PNG ${baseWidth * f}`}
+                  {f === "svg" ? "SVG" : `PNG ${PNG_WIDTH}`}
                 </button>
               </td>
             ))}

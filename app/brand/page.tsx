@@ -29,8 +29,8 @@ const grounds = [
 ];
 
 const scale = [
-  { token: "display", size: "44–56px", use: "Page headlines. 44px on phones.", sample: "Branding & visual design", className: "font-display text-display" },
-  { token: "h2", size: "28px", use: "Section headings", sample: "Cutting trees to grow healthy forests", className: "font-display text-h2" },
+  { token: "display", size: "44–56px", use: "h1 on every page. 44px on phones.", sample: "Branding & visual design", className: "font-display text-display" },
+  { token: "h2", size: "28px", use: "Section headings (h2)", sample: "Cutting trees to grow healthy forests", className: "font-display text-h2" },
   { token: "lede", size: "19px", use: "Intro paragraphs", sample: "For over two decades I’ve helped organizations grow through design.", className: "text-lede" },
   { token: "base", size: "16px", use: "Body, nav", sample: "You get me at every stage — research, strategy, ideation, execution, and delivery.", className: "text-base" },
   { token: "mid", size: "15px", use: "Card text, secondary body", sample: "Collateral, reports, exhibits, signage, packaging.", className: "text-mid" },
@@ -71,9 +71,9 @@ export default function Brand() {
         >
           <div className="space-y-14">
             {[
-              { name: "Lockup", Art: Lockup, art: "h-auto w-3/4", src: "/brand/swivel-logo.svg", slug: "swivel-lockup", baseWidth: 1200, ratio: 124.126 / 533.978 },
-              { name: "Wordmark", Art: Wordmark, art: "h-auto w-3/5", src: "/brand/swivel-wordmark.svg", slug: "swivel-wordmark", baseWidth: 1200, ratio: 92.533 / 362.107 },
-              { name: "Mark", Art: Mark, art: "h-16 w-16", src: "/brand/swivel-mark.svg", slug: "swivel-mark", baseWidth: 512, ratio: 1 },
+              { name: "Lockup", Art: Lockup, art: "h-auto w-3/4", src: "/brand/swivel-logo.svg", slug: "swivel-lockup", ratio: 124.126 / 533.978 },
+              { name: "Wordmark", Art: Wordmark, art: "h-auto w-3/5", src: "/brand/swivel-wordmark.svg", slug: "swivel-wordmark", ratio: 92.533 / 362.107 },
+              { name: "Mark", Art: Mark, art: "h-16 w-16", src: "/brand/swivel-mark.svg", slug: "swivel-mark", ratio: 1 },
             ].map(({ name, Art, art, ...dl }) => (
               <div key={name}>
                 <h3 className={eyebrow}>{name}</h3>
