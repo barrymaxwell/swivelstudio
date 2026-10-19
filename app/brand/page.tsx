@@ -55,7 +55,6 @@ export default function Brand() {
               ["#color", "Color"],
               ["#type", "Type"],
               ["#voice", "Voice"],
-              ["#open", "Open decisions"],
             ].map(([href, label]) => (
               <a key={href} href={href} className="text-crest-700 underline decoration-crest-200 underline-offset-4 hover:decoration-crest-700">
                 {label}
@@ -134,13 +133,6 @@ export default function Brand() {
               Read the full voice guide
             </a>
           </p>
-        </Section>
-
-        <Section id="open" title="Open decisions">
-          <ul className="max-w-[62ch] list-disc space-y-2 pl-5 text-base text-ink-2">
-                        <li>Clear space and minimum size for the lockup.</li>
-            <li>LinkedIn templates for Illustrator and Figma.</li>
-          </ul>
         </Section>
       </main>
       <Footer />
