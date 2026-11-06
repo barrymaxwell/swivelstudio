@@ -1,5 +1,7 @@
 export type Tag = "Branding" | "Event" | "Environmental" | "Print & editorial" | "Digital";
 
+export type ScrollCapture = { strip: string; nav: string; stripW: number; stripH: number; connectOffset: number; controlOffset: number; endOffset: number };
+
 export type Section = {
   heading: string;
   /** Optional card title used only in the work archive. */
@@ -17,9 +19,9 @@ export type Section = {
   /** Row image counts or column spans, with one column on small screens. */
   imageRows?: (number | number[])[];
   body: string | string[];
-  images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean | "subtle"; galleryScale?: number; caption?: string; credits?: { role: string; name: string }[] }[];
+  images?: { src: string; alt: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; transparent?: boolean; square?: boolean; landscape?: boolean; scale?: number; keyline?: boolean | "subtle" | "hairline"; galleryScale?: number; caption?: string; credits?: { role: string; name: string }[] }[];
   imagePlaceholders?: string[];
-  subsections?: { heading: string; body: string; imagePlaceholders?: string[]; images?: { src: string; alt: string; w: number; h: number; fullWidth?: boolean }[] }[];
+  subsections?: { heading: string; body: string | string[]; imagePlaceholders?: string[]; images?: { id?: string; src: string; frames?: string[]; scroll?: ScrollCapture; alt: string; w: number; h: number; fullWidth?: boolean; fullPage?: boolean; keyline?: boolean | "subtle" | "hairline"; caption?: string }[] }[];
   /** Optional cover art and crop used only in the work archive. */
   archiveCover?: { src?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
 };
@@ -56,6 +58,328 @@ export type Project = {
 const W = "/work";
 
 export const projects: Project[] = [
+  {
+    "slug": "microclimates",
+    "client": "Microclimates",
+    "title": "Design that grows with the business",
+    "summary": "An ongoing design partnership, connecting an evolving brand, website, and product experience.",
+    "blurb": "Brand identity, websites, exhibits, and interface concepts for a growing environmental technology business.",
+    "featured": true,
+    "cardCaption": "Branding · Websites · Exhibits",
+    "archiveTitle": "A growing brand and product family",
+    "archiveFilterSections": {
+      "Branding": {
+        "heading": "A brand with room to grow",
+        "title": "Brand identity and product branding"
+      },
+      "Digital": {
+        "heading": "Making the offering easier to explain",
+        "title": "Website design and copywriting"
+      },
+      "Environmental": {
+        "heading": "The brand in person and on screen",
+        "title": "Exhibit graphics"
+      },
+      "Event": {
+        "heading": "The brand in person and on screen",
+        "title": "Exhibit graphics"
+      }
+    },
+    "disciplines": [
+      "Creative direction",
+      "Brand identity and guidelines",
+      "Product branding and app iconography",
+      "Website design and copywriting",
+      "Exhibit graphics",
+      "UI design concepts"
+    ],
+    "tags": [
+      "Branding",
+      "Digital",
+      "Environmental"
+    ],
+    "card": {
+      "src": "/work/microclimates/software-start-v2.webp",
+      "alt": "EnvOS product identity surrounded by network illustrations",
+      "w": 2000,
+      "h": 1250
+    },
+    "hero": {
+      "src": "/work/microclimates/software-hero-v2.webp",
+      "alt": "EnvOS opening-screen graphic with connected sensors, apps, and network protocols",
+      "w": 2000,
+      "h": 860
+    },
+    "intro": "Over roughly four years, each new Microclimates brief has marked a change in the business: a new product, a new feature, or a different way of explaining its offering. As designer and creative director at Swivel Studio, I’ve helped translate those changes into a connected brand, website, and product experience, working closely with the client as the business grows.",
+    "credits": [
+      {
+        "role": "Design and creative direction",
+        "name": "Robin Maxwell, Swivel Studio"
+      },
+      {
+        "role": "Website development",
+        "name": "Microclimates’ client team"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "A brand with room to grow",
+        "archiveCover": {
+          "src": "/work/microclimates/brand-guideline-spreads-v4.webp",
+          "w": 2000,
+          "h": 1333
+        },
+        "tags": [
+          "Branding"
+        ],
+        "body": "As Microclimates expanded its technology, its simplified presentation needed to communicate a broader offering. A modernized logo and tagline, an expanded color palette that included gradient color pairings for their logo and app icons, and updated typography gave the brand room to grow. A concise set of brand guidelines brought the elements together for consistent use across the company’s materials.",
+        "images": [
+          {
+            "src": "/work/microclimates/logo-tagline-v3.webp",
+            "alt": "Modernized Microclimates logo and Environmental Integration tagline",
+            "w": 2000,
+            "h": 459,
+            "fullWidth": true,
+            "caption": ""
+          },
+          {
+            "src": "/work/microclimates/brand-guideline-spreads-v4.webp",
+            "alt": "Two open Microclimates brand-guide spreads on light gray: the reversed logo on dark blue beside the primary palette, then logo gradients beside Sofia Pro typography",
+            "w": 2000,
+            "h": 1333,
+            "fullWidth": true,
+            "caption": ""
+          }
+        ],
+        "imageRows": [
+          1,
+          1
+        ]
+      },
+      {
+        "heading": "A connected product family",
+        "tags": [
+          "Branding",
+          "Digital"
+        ],
+        "body": [
+          "For EnvOS, short for Environmental Operating System, I developed a distinct product logo, color palette, and network illustrations to support the shift in how Microclimates described its flagship offering.",
+          "Illustrations from [their Web 1.0 site](#2023-lighting-page) became the starting point for a family of 10 icons for the apps that run on EnvOS, carrying a familiar visual language into the product offering."
+        ],
+        "images": [
+          {
+            "src": "/work/microclimates/envos-logo-transparent-v1.webp",
+            "alt": "EnvOS logo with the Environmental O/S tagline",
+            "w": 2000,
+            "h": 459,
+            "fullWidth": true,
+            "transparent": true,
+            "caption": ""
+          },
+          {
+            "src": "/work/microclimates/app-icons-transparent-grid-v1.webp",
+            "alt": "Ten EnvOS app icons in two rows: Substrate, Climate, Energy, Lighting, Fertigation, Weather, Storage, Irrigation, Camera, and Your App",
+            "w": 2000,
+            "h": 640,
+            "fullWidth": true,
+            "transparent": true,
+            "caption": ""
+          },
+          {
+            "src": "/work/microclimates/envos-app-guideline-spreads-v8.webp",
+            "alt": "Two open product-guide spreads on light gray: the EnvOS logo centered in a pale green network illustration beside its gradient palette, then ten app icons beside the app color palette",
+            "w": 2000,
+            "h": 1333,
+            "fullWidth": true,
+            "caption": ""
+          }
+        ],
+        "imageRows": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "heading": "The brand in person and on screen",
+        "archiveCover": {
+          "src": "/work/microclimates/booth-10x10-with-podium-v1.webp",
+          "w": 1448,
+          "h": 1086
+        },
+        "tags": [
+          "Environmental",
+          "Digital",
+          "Event"
+        ],
+        "body": [
+          "I laid out the 10′ × 20′ exhibit around Connect – Control – Grow to guide sales conversations at industry events. Network illustrations, app icons, and product views give the team visual talking points and help visitors picture the system in their own operations.",
+          "Graphics for this booth, its podium, and a 10′ × 10′ booth with a branded shelving kiosk were designed to mix and match, including with elements from earlier exhibits. This kept the presentation consistent across different spaces."
+        ],
+        "images": [
+          {
+            "src": "/work/microclimates/booth-20-render-v2.webp",
+            "alt": "3D rendering of the Microclimates 10-by-20-foot exhibit, with hinged Connect and Grow wings, a central app panel, two demo shelves, and a mounted Microclimates header sign",
+            "w": 1774,
+            "h": 887,
+            "fullWidth": true,
+            "caption": "The 10′ × 20′ exhibit can be used with or without the wings. Messaging echoes the Control – Connect – Grow message from the website homepage."
+          },
+          {
+            "src": "/work/microclimates/booth-10x10-with-podium-v1.webp",
+            "alt": "3D rendering of the Microclimates 10-by-10-foot exhibit, with a branded podium at the far left, an EnvOS backdrop, and a shelving kiosk carrying a monitor and two shelves",
+            "w": 1448,
+            "h": 1086,
+            "fullWidth": true,
+            "caption": "10′ × 10′ exhibit with a shelving kiosk and podium. The logo header from the 10′ × 20′ booth can also be used with this configuration. The booth features the EnvOS app family in use on a mobile device."
+          },
+          {
+            "src": "/work/microclimates/podium-render-v4.webp",
+            "alt": "Three-quarter rendering of the Microclimates exhibit podium on sealed concrete, with the Microclimates logo and green gradient on the front and EnvOS network graphics on the right side",
+            "w": 1448,
+            "h": 1086,
+            "fullWidth": false,
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "heading": "Making the offering easier to explain",
+        "archiveCover": {
+          "src": "/work/microclimates/odoo-home-scroll-poster-v3.webp",
+          "w": 1536,
+          "h": 1024
+        },
+        "tags": [
+          "Digital"
+        ],
+        "body": "Microclimates helps growers monitor, automate, and control agricultural environments and beyond. As its software evolved and growers became more familiar with intelligent agriculture, each iteration of the website had a different job. I shaped the structure, design, and copy around those changing priorities.",
+        "subsections": [
+          {
+            "heading": "Web 1.0: A complete website redesign",
+            "body": [
+              "Microclimates’ earlier site served mainly as a business-card site, product portal, and help desk for existing clients. I reorganized the offering into clear product pages, working from a site map through wireframes to finished layouts. The central message was complete environmental monitoring, automation, and control from anywhere. The client handled development, with my design specifications and close collaboration through the build."
+            ],
+            "images": [
+              {
+                "src": "/work/microclimates/v1-home-carousel-frame-4-v7.webp",
+                "frames": [
+                  "/work/microclimates/v1-home-carousel-frame-4-v7.webp",
+                  "/work/microclimates/v1-home-carousel-frame-2-v7.webp",
+                  "/work/microclimates/v1-home-carousel-frame-1-v7.webp",
+                  "/work/microclimates/v1-home-carousel-frame-3-v7.webp"
+                ],
+                "alt": "Microclimates Web 1.0 homepage carousel on a silver laptop, cycling through Operation at-a-glance, Automated Vigilance, Everything Under Control, and Grow Anywhere, each with a chartreuse Go Wireless LoRaWAN banner",
+                "w": 1536,
+                "h": 1024,
+                "fullWidth": true,
+                "caption": "I designed the homepage carousel to show different data views across devices, locations, and settings, pairing each image with a headline I wrote to underscore the features shown. An updatable chartreuse banner called out new features."
+              },
+              {
+                "id": "2023-lighting-page",
+                "src": "/work/microclimates/v1-lighting-full-page-v3.webp",
+                "alt": "Full Web 1.0 lighting solution page, with a greenhouse map and overlaid cards on the tablet, thermostat cards on the phone, and the original cards interface on the desktop",
+                "w": 649,
+                "h": 2000,
+                "fullWidth": false,
+                "fullPage": true,
+                "keyline": "hairline",
+                "caption": ""
+              },
+              {
+                "src": "/work/microclimates/v1-edge-computing-full-page-v1.webp",
+                "alt": "Full Web 1.0 edge computing partners page, featuring Veea and Opto 22 hardware and partner information",
+                "w": 754,
+                "h": 2000,
+                "fullWidth": false,
+                "fullPage": true,
+                "keyline": "hairline",
+                "caption": ""
+              }
+            ]
+          },
+          {
+            "heading": "Web 2.0: Branching out",
+            "body": [
+              "By the next iteration, growers understood the value of environmental control and were looking for AI-ready data. EnvOS, Microclimates’ open-source, hardware-agnostic operating system, became the central story. It connects equipment growers already use with Microclimates apps and their own custom builds. That flexibility supports operations of different sizes and lets growers start with a single sensor and add capabilities at their own pace.",
+              "The client moved to a new web platform with future online sales in mind. I developed the site map for an initial launch at an industry event and outlined later rollout phases. Using Figma alongside the online web tool, I shaped the homepage flow and page layouts, supplied branded graphics, and developed reusable elements and app page templates the client’s team could populate themselves."
+            ],
+            "images": [
+              {
+                "src": "/work/microclimates/odoo-home-scroll-poster-v3.webp",
+                "scroll": {
+                  "strip": "/work/microclimates/odoo-home-scroll-strip-v2.webp",
+                  "nav": "/work/microclimates/odoo-home-scroll-nav-v2.webp",
+                  "stripW": 1198,
+                  "stripH": 2000,
+                  "connectOffset": 10.732113144758735,
+                  "controlOffset": 40.765391014975044,
+                  "endOffset": 66.69085768143262
+                },
+                "alt": "Microclimates homepage scrolling through Connect, Control, and Grow on a silver laptop, with brief pauses at each section and the site navigation held in place",
+                "w": 1536,
+                "h": 1024,
+                "fullWidth": true,
+                "caption": ""
+              },
+              {
+                "src": "/work/microclimates/climate-laptop-low-angle-v5.webp",
+                "alt": "Climate application page on a realistic silver laptop",
+                "w": 1536,
+                "h": 1024,
+                "fullWidth": true,
+                "caption": ""
+              },
+              {
+                "src": "/work/microclimates/application-pages-triptych-v6.webp",
+                "alt": "Full-page captures of the Fertigation, Substrate, and Irrigation application pages, arranged side by side",
+                "w": 2000,
+                "h": 1558,
+                "fullWidth": true,
+                "caption": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Bringing the brand into the interface",
+        "tags": [
+          "Digital"
+        ],
+        "body": [
+          "I created the EnvOS software startup screen using the product identity and network illustrations. For a planned interface update, I developed concepts that brought the new app branding and colors into a previously monochromatic product. Refined layouts and icons, color-coded app cards, and a proposed AI agent sidebar showed how the existing interface could evolve with the brand. The mockup is used to represent the product experience."
+        ],
+        "images": [
+          {
+            "src": "/work/microclimates/software-startup-facility-v5.webp",
+            "alt": "EnvOS startup screen on the original gray control cabinet at a greenhouse facility",
+            "w": 2000,
+            "h": 1500,
+            "fullWidth": true,
+            "caption": "EnvOS software startup screen in use at a facility."
+          },
+          {
+            "src": "/work/microclimates/interface-app-screen-2-crop-v3.webp",
+            "alt": "A white tablet held in both hands in a greenhouse, showing color-coded app cards and a proposed EnvOS AI agent sidebar",
+            "w": 990,
+            "h": 600,
+            "fullWidth": true,
+            "caption": "Interface concept in context, with color-coded app cards and the proposed AI agent sidebar"
+          }
+        ],
+        "imageRows": [
+          1,
+          1
+        ]
+      },
+      {
+        "heading": "An ongoing conversation",
+        "body": "One of the pleasures of working with Microclimates is seeing what each new conversation brings. As the business grows, the design work grows with it. I’m looking forward to what comes next."
+      }
+    ]
+  },
+
   {
     slug: "breakwater-special-edition",
     archiveTitle: "Book, e-book, & launch graphics",

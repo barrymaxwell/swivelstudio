@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header, Cta, Footer } from "@/components/chrome";
-import { projects, bySlug, sectionId } from "@/lib/work";
+import { ImageCarousel } from "@/components/image-carousel";
+import { ScrollingLaptop } from "@/components/scrolling-laptop";
+import { projects, bySlug, sectionId, type ScrollCapture } from "@/lib/work";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -30,6 +32,17 @@ function bookTitle(text: string) {
   );
 }
 
+function bodyText(text: string) {
+  return text.split(/(\[[^\]]+\]\(#[a-z0-9-]+\))/g).map((part, i) => {
+    const link = part.match(/^\[([^\]]+)\]\((#[a-z0-9-]+)\)$/);
+    return link ? (
+      <a key={i} href={link[2]} className="text-crest-700 underline underline-offset-4 hover:text-crest-800">
+        {bookTitle(link[1])}
+      </a>
+    ) : <span key={i}>{bookTitle(part)}</span>;
+  });
+}
+
 function Arrow({ dir }: { dir: "left" | "right" }) {
   return (
     <svg
@@ -55,7 +68,7 @@ const isWide = (w: number, h: number) => w / h >= 1.9;
  *  other. */
 const isTall = (w: number, h: number) => w / h < 0.6;
 
-type Img = { src: string; alt: string; caption?: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; square?: boolean; landscape?: boolean; keyline?: boolean | "subtle"; credits?: { role: string; name: string }[] };
+type Img = { id?: string; src: string; frames?: string[]; scroll?: ScrollCapture; alt: string; caption?: string; w: number; h: number; breathingRoom?: boolean; fullWidth?: boolean; fullPage?: boolean; transparent?: boolean; square?: boolean; landscape?: boolean; scale?: number; keyline?: boolean | "subtle" | "hairline"; credits?: { role: string; name: string }[] };
 
 /**
  * Group consecutive images by whether they span. A plain two-column grid
@@ -74,29 +87,32 @@ function runs(images: Img[]) {
 }
 
 function Figure({ img, sizes, hideCaption = false, fitCell = false, columnSpan = 1 }: { img: Img; sizes: string; hideCaption?: boolean; fitCell?: boolean; columnSpan?: number }) {
-  const tall = !fitCell && isTall(img.w, img.h);
+  // Full-page website captures fill their column so page details stay legible.
+  const tall = !fitCell && !img.fullPage && isTall(img.w, img.h);
   const caption = img.caption ?? img.alt;
   return (
-    <figure className={"mb-8 break-inside-avoid" + (columnSpan === 2 ? " sm:col-span-2" : "")}>
+    <figure id={img.id} className={"mb-8 break-inside-avoid" + (img.id ? " scroll-mt-28" : "") + (columnSpan === 2 ? " sm:col-span-2" : "")}>
       <div
         className={
           "overflow-hidden " + (img.keyline ? "" : "rounded-xs ") +
-          (img.landscape ? "aspect-4/3 bg-rule-2" : tall ? "flex justify-center" : img.breathingRoom ? "p-5 sm:p-8" : "bg-rule-2")
+          (img.landscape ? "aspect-4/3 bg-rule-2" : tall ? "flex justify-center" : img.breathingRoom ? "p-5 sm:p-8" : img.transparent ? "" : "bg-rule-2")
         }
       >
-        <Image
+        {img.scroll ? <ScrollingLaptop source={img.scroll} poster={img.src} alt={img.alt} width={img.w} height={img.h} sizes={sizes} /> : img.frames ? <ImageCarousel frames={img.frames} alt={img.alt} width={img.w} height={img.h} sizes={sizes} /> : <Image
           src={img.src}
           alt={img.alt}
           width={img.w}
           height={img.h}
           sizes={sizes}
+          unoptimized={img.scale !== undefined}
+          style={img.scale ? { transform: `scale(${img.scale})` } : undefined}
           className={
             // Fixed height, not max-height: a low-res tall source was rendering
             // at its natural 267px beside 476px siblings.
             (img.landscape ? "h-full w-full object-cover" : img.square ? "aspect-square w-full object-cover" : tall ? "h-[40rem] w-auto object-contain" : "h-auto w-full") +
-            (img.keyline ? (img.keyline === "subtle" ? " border border-[#a6a6a6]" : " border border-black") : tall ? " rounded-xs" : "")
+            (img.keyline ? (img.keyline === "hairline" ? " portfolio-hairline" : img.keyline === "subtle" ? " border border-[#a6a6a6]" : " border border-black") : tall ? " rounded-xs" : "")
           }
-        />
+        />}
       </div>
       {!hideCaption && caption && <figcaption className="mt-2.5 text-mid text-ink-3">{bookTitle(caption)}</figcaption>}
     </figure>
@@ -167,7 +183,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                 <h2 className="font-display text-h2 text-balance">{bookTitle(s.heading)}</h2>
                 <div className="flex max-w-[58ch] flex-col gap-4">
                   {paras(s.body).filter(Boolean).map((t) => (
-                    <p key={t} className="text-ink-2">{bookTitle(t)}</p>
+                    <p key={t} className="text-ink-2">{bodyText(t)}</p>
                   ))}
                 </div>
               </div>
@@ -278,7 +294,9 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                 <div key={subsection.heading} className="mt-14 border-t border-rule pt-10">
                   <div className="grid gap-4 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-14">
                     <h3 className="font-display text-lede">{subsection.heading}</h3>
-                    <p className="max-w-[58ch] text-ink-2">{subsection.body}</p>
+                    <div className="flex max-w-[58ch] flex-col gap-4">
+                      {paras(subsection.body).map(t => <p key={t} className="text-ink-2">{bodyText(t)}</p>)}
+                    </div>
                   </div>
                   {subsection.images && (
                     <div className="mt-8 grid gap-x-6 sm:grid-cols-2">
