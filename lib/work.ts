@@ -4,6 +4,8 @@ export type ScrollCapture = { strip: string; nav: string; stripW: number; stripH
 
 export type Section = {
   heading: string;
+  /** Preserve existing deep links when a section heading changes. */
+  id?: string;
   /** Optional card title used only in the work archive. */
   archiveTitle?: string;
   /** Overrides the project's tags. A bank's website is Digital, not Print. */
@@ -73,15 +75,15 @@ export const projects: Project[] = [
         "title": "Brand identity and product branding"
       },
       "Digital": {
-        "heading": "Making the offering easier to explain",
+        "heading": "A startup’s evolving story online",
         "title": "Website design and copywriting"
       },
       "Environmental": {
-        "heading": "The brand in person and on screen",
+        "heading": "Exhibiting listening skills",
         "title": "Exhibit graphics"
       },
       "Event": {
-        "heading": "The brand in person and on screen",
+        "heading": "Exhibiting listening skills",
         "title": "Exhibit graphics"
       }
     },
@@ -91,7 +93,7 @@ export const projects: Project[] = [
       "Product branding and app iconography",
       "Website design and copywriting",
       "Exhibit graphics",
-      "UI design concepts"
+      "UX audit and interface concepts"
     ],
     "tags": [
       "Branding",
@@ -110,7 +112,7 @@ export const projects: Project[] = [
       "w": 2000,
       "h": 860
     },
-    "intro": "Over roughly four years, each new Microclimates brief has marked a change in the business: a new product, a new feature, or a different way of explaining its offering. As designer and creative director at Swivel Studio, I’ve helped translate those changes into a connected brand, website, and product experience, working closely with the client as the business grows.",
+    "intro": "Microclimates is a startup developing technology to monitor, automate, and control agricultural environments and beyond. For roughly four years, I’ve worked with its team as designer and creative director at Swivel Studio. The team brings deep industry knowledge and clear priorities; I help translate those into language, visual systems, and experiences across the brand, websites, exhibits, and product interfaces.",
     "credits": [
       {
         "role": "Design and creative direction",
@@ -118,7 +120,7 @@ export const projects: Project[] = [
       },
       {
         "role": "Website development",
-        "name": "Microclimates’ client team"
+        "name": "Microclimates technology team"
       }
     ],
     "sections": [
@@ -132,7 +134,7 @@ export const projects: Project[] = [
         "tags": [
           "Branding"
         ],
-        "body": "As Microclimates expanded its technology, its simplified presentation needed to communicate a broader offering. A modernized logo and tagline, an expanded color palette that included gradient color pairings for their logo and app icons, and updated typography gave the brand room to grow. A concise set of brand guidelines brought the elements together for consistent use across the company’s materials.",
+        "body": "As Microclimates’ technology expanded, its identity needed to communicate a broader offering. I modernized the logo, incorporated the updated tagline, expanded the color palette with gradient pairings, and updated the typography. Brand guidelines gave the team a consistent foundation for company materials and product assets.",
         "images": [
           {
             "src": "/work/microclimates/logo-tagline-v3.webp",
@@ -162,10 +164,7 @@ export const projects: Project[] = [
           "Branding",
           "Digital"
         ],
-        "body": [
-          "For EnvOS, short for Environmental Operating System, I developed a distinct product logo, color palette, and network illustrations to support the shift in how Microclimates described its flagship offering.",
-          "Illustrations from [their Web 1.0 site](#2023-lighting-page) became the starting point for a family of 10 icons for the apps that run on EnvOS, carrying a familiar visual language into the product offering."
-        ],
+        "body": "Microclimates needed a product identity to support its shift from a software company to an operating system and app company. I researched competitors and other app-based companies, then developed the EnvOS logo, color palette, and ecosystem illustration. Illustrations from the [Web 1.0 website](#2023-lighting-page) became the starting point for 10 app icons, giving the growing suite a cohesive visual language.",
         "images": [
           {
             "src": "/work/microclimates/envos-logo-transparent-v1.webp",
@@ -201,7 +200,8 @@ export const projects: Project[] = [
         ]
       },
       {
-        "heading": "The brand in person and on screen",
+        "heading": "Exhibiting listening skills",
+        "id": "the-brand-in-person-and-on-screen",
         "archiveCover": {
           "src": "/work/microclimates/booth-10x10-with-podium-v1.webp",
           "w": 1448,
@@ -213,8 +213,8 @@ export const projects: Project[] = [
           "Event"
         ],
         "body": [
-          "I laid out the 10′ × 20′ exhibit around Connect – Control – Grow to guide sales conversations at industry events. Network illustrations, app icons, and product views give the team visual talking points and help visitors picture the system in their own operations.",
-          "Graphics for this booth, its podium, and a 10′ × 10′ booth with a branded shelving kiosk were designed to mix and match, including with elements from earlier exhibits. This kept the presentation consistent across different spaces."
+          "The client and I discussed the conversations the team was having on the show floor. I translated those insights into exhibit graphics that gave the team visual talking points about cost, compatibility, and ease of getting started. The 10′ × 20′ layout follows Connect – Control – Grow, echoing the [Web 2.0 website](#v2-website) developed alongside it.",
+          "By the later 10′ × 10′ exhibit, growers were more familiar with environmental control. Together, we emphasized Microclimates’ unique hardware-agnostic model and AI-ready data from existing equipment. Large operations could upgrade without vendor lock-in or costly replacements, while beginners could start with a single sensor and expand. Graphics for both booths, the podium, and shelving kiosk were designed to mix and match with elements from earlier exhibits."
         ],
         "images": [
           {
@@ -223,7 +223,7 @@ export const projects: Project[] = [
             "w": 1774,
             "h": 887,
             "fullWidth": true,
-            "caption": "The 10′ × 20′ exhibit can be used with or without the wings. Messaging echoes the Control – Connect – Grow message from the website homepage."
+            "caption": "The 10′ × 20′ exhibit can be configured with or without the wings to accommodate different exhibit floor plans."
           },
           {
             "src": "/work/microclimates/booth-10x10-with-podium-v1.webp",
@@ -231,12 +231,13 @@ export const projects: Project[] = [
             "w": 1448,
             "h": 1086,
             "fullWidth": true,
-            "caption": "10′ × 10′ exhibit with a shelving kiosk and podium. The logo header from the 10′ × 20′ booth can also be used with this configuration. The booth features the EnvOS app family in use on a mobile device."
+            "caption": "10′ × 10′ exhibit with a shelving kiosk and podium. The logo header from the 10′ × 20′ booth can also be used with this configuration."
           }
         ]
       },
       {
-        "heading": "Making the offering easier to explain",
+        "heading": "A startup’s evolving story online",
+        "id": "making-the-offering-easier-to-explain",
         "archiveCover": {
           "src": "/work/microclimates/odoo-home-scroll-poster-v3.webp",
           "w": 1536,
@@ -245,12 +246,13 @@ export const projects: Project[] = [
         "tags": [
           "Digital"
         ],
-        "body": "Microclimates helps growers monitor, automate, and control agricultural environments and beyond. As its software evolved and growers became more familiar with intelligent agriculture, each iteration of the website had a different job. I shaped the structure, design, and copy around those changing priorities.",
+        "body": "The website evolved in phases as the software developed and growers became more familiar with intelligent agriculture. I shaped each iteration’s structure, design, and copy around a different communication task.",
         "subsections": [
           {
             "heading": "Web 1.0: A complete website redesign",
             "body": [
-              "Microclimates’ earlier site served mainly as a business-card site, product portal, and help desk for existing clients. I reorganized the offering into clear product pages, working from a site map through wireframes to finished layouts. The central message was complete environmental monitoring, automation, and control from anywhere. The client handled development, with my design specifications and close collaboration through the build."
+              "Microclimates’ first site served mainly as a business-card site, product portal, and help desk for existing clients. The team wanted to highlight its growing range of software products and emphasize complete environmental monitoring, automation, and control from anywhere.",
+              "Drawing on existing product flyers and conversations with the team, I shaped a homepage flow that opened with a hero carousel showing the technology in action and guided visitors into clear product pages. I wrote key headlines and used AI for initial drafts of the product copy, then edited extensively and refined the details with the client. I worked from a site map through wireframes to finished layouts, supplying design specifications and collaborating closely with the Microclimates technology team through development."
             ],
             "images": [
               {
@@ -265,7 +267,7 @@ export const projects: Project[] = [
                 "w": 1536,
                 "h": 1024,
                 "fullWidth": true,
-                "caption": "I designed the homepage carousel to show different data views across devices, locations, and settings, pairing each image with a headline I wrote to underscore the features shown. An updatable chartreuse banner called out new features."
+                "caption": "I designed the homepage carousel to show different data views across devices, locations, and settings, pairing each image with a headline I wrote to express the client’s priorities. A bright banner called attention to the latest features."
               },
               {
                 "id": "2023-lighting-page",
@@ -293,11 +295,12 @@ export const projects: Project[] = [
           {
             "heading": "Web 2.0: Branching out",
             "body": [
-              "By the next iteration, growers understood the value of environmental control and were looking for AI-ready data. EnvOS, Microclimates’ open-source, hardware-agnostic operating system, became the central story. It connects equipment growers already use with Microclimates apps and their own custom builds. That flexibility supports operations of different sizes and lets growers start with a single sensor and add capabilities at their own pace.",
-              "The client moved to a new web platform with future online sales in mind. I developed the site map for an initial launch at an industry event and outlined later rollout phases. Using Figma alongside the online web tool, I shaped the homepage flow and page layouts, supplied branded graphics, and developed reusable elements and app page templates the client’s team could populate themselves."
+              "As Microclimates evolved into an operating system and app company, it needed a website and business platform that could support future online sales and growth. The website needed to debut at its next industry show, alongside the booth I was designing.",
+              "I mapped the initial launch and future phases, then used the new EnvOS identity and app suite to shape a homepage flow emphasizing control and the open-source, hardware-agnostic model. Working in Adobe, Figma, and the new web tool, I created branded graphics and reusable elements, including app page templates the technology team could populate. The graphics were also designed for use in sales literature, social media, and presentations."
             ],
             "images": [
               {
+                "id": "v2-website",
                 "src": "/work/microclimates/odoo-home-scroll-poster-v3.webp",
                 "scroll": {
                   "strip": "/work/microclimates/odoo-home-scroll-strip-v2.webp",
@@ -335,12 +338,14 @@ export const projects: Project[] = [
         ]
       },
       {
-        "heading": "Bringing the brand into the interface",
+        "heading": "Interfacing with the brand",
+        "id": "bringing-the-brand-into-the-interface",
         "tags": [
           "Digital"
         ],
         "body": [
-          "I created the EnvOS software startup screen using the product identity and network illustrations. For a planned interface update, I developed concepts that brought the new app branding and colors into a previously monochromatic product. Refined layouts and icons, color-coded app cards, and a proposed AI agent sidebar showed how the existing interface could evolve with the brand. The mockup is used to represent the product experience."
+          "I created the EnvOS software startup screen using the product identity and network illustrations, carrying the brand into the software.",
+          "I also audited the product UX and made short- and long-term usability recommendations. The interface mockup explored the first phase of those recommendations, bringing refined layouts and icons, color-coded app cards, and a proposed AI agent sidebar into a previously monochromatic interface."
         ],
         "images": [
           {
@@ -357,7 +362,7 @@ export const projects: Project[] = [
             "w": 990,
             "h": 600,
             "fullWidth": true,
-            "caption": "Interface concept in context, with color-coded app cards and the proposed AI agent sidebar"
+            "caption": "Interface concept exploring the first phase of UX recommendations, with color-coded app cards and a proposed AI agent sidebar"
           }
         ],
         "imageRows": [
@@ -366,8 +371,9 @@ export const projects: Project[] = [
         ]
       },
       {
-        "heading": "An ongoing conversation",
-        "body": "One of the pleasures of working with Microclimates is seeing what each new conversation brings. As the business grows, the design work grows with it. I’m looking forward to what comes next."
+        "heading": "A visual vocabulary",
+        "id": "an-ongoing-conversation",
+        "body": "The collaboration has given Microclimates a visual vocabulary and a suite of product assets to use and expand upon. Brand guidelines, reusable website templates, and adaptable exhibit graphics give the team a foundation for carrying that language into new applications as the business evolves."
       }
     ]
   },
@@ -524,12 +530,12 @@ export const projects: Project[] = [
     blurb:
       "A community bank’s full overhaul — logo, standards, collateral, website, apps, and in-branch signage.",
     disciplines: ["Brand identity", "Voice and Style Guidelines", "Campaigns and Collateral", "Website", "App", "Signage"],
-    cardCaption: "Brand identity · Web Site · Signage",
+    cardCaption: "Brand identity · Website · Signage",
     tags: ["Branding", "Digital", "Print & editorial"],
     card: { src: `${W}/pacific-crest-savings-bank/pcsbstationery.webp`, w: 1646, h: 948 },
     hero: { src: `${W}/pacific-crest-savings-bank/paccrest.webp`, alt: "Pacific Crest Savings Bank identity", w: 2000, h: 1000 },
     intro:
-      "Pacific Crest Savings Bank is a local, independently owned community bank who wanted to build out their brand but first needed to bring it up to date. They wanted their logo, collateral materials, and web site modernized to reflect current best design practices and trends, and to support the new financial technologies they were embracing and offering to their clients.",
+      "Pacific Crest Savings Bank is a local, independently owned community bank who wanted to build out their brand but first needed to bring it up to date. They wanted their logo, collateral materials, and website modernized to reflect current best design practices and trends, and to support the new financial technologies they were embracing and offering to their clients.",
     creditNote: "Work completed at Graphica, Inc.",
     featured: true,
     sections: [
@@ -554,7 +560,7 @@ export const projects: Project[] = [
         leftColumnImages: 3,
         tags: ["Digital"],
         body: [
-          "The web site was rebuilt in phases, including full-screen images of local scenery to reflect their Northwest roots, a responsive layout, employee highlights, and an easy login to mobile and business banking.",
+          "The website was rebuilt in phases, including full-screen images of local scenery to reflect their Northwest roots, a responsive layout, employee highlights, and an easy login to mobile and business banking.",
           "A case study section — with an in-print companion — was developed to help differentiate what makes them special: the bank’s nimble and custom vetting process, funding unique loans for projects that are often overlooked by traditional institutions.",
         ],
         images: [
@@ -873,11 +879,11 @@ export type ArchiveEntry = {
 
 function archiveSection(p: Project, s: Section): ArchiveEntry {
   return {
-    key: `${p.slug}#${sectionId(s.heading)}`,
+    key: `${p.slug}#${s.id ?? sectionId(s.heading)}`,
     title: s.archiveTitle ?? s.heading,
     client: p.client,
     eyebrow: p.eyebrow,
-    href: `/work/${p.slug}#${sectionId(s.heading)}`,
+    href: `/work/${p.slug}#${s.id ?? sectionId(s.heading)}`,
     tags: s.tags ?? p.tags,
     image: {
       src: s.archiveCover?.src ?? s.images?.[0]?.src ?? p.card.src,

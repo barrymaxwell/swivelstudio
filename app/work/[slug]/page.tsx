@@ -114,7 +114,7 @@ function Figure({ img, sizes, hideCaption = false, fitCell = false, columnSpan =
           }
         />}
       </div>
-      {!hideCaption && caption && <figcaption className="mt-2.5 text-mid text-ink-3">{bookTitle(caption)}</figcaption>}
+      {!hideCaption && caption && <figcaption className="mt-2.5 text-mid text-ink-3">{bodyText(caption)}</figcaption>}
     </figure>
   );
 }
@@ -169,7 +169,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
         {p.sections.map((s) => (
           <section
             key={s.heading}
-            id={sectionId(s.heading)}
+            id={s.id ?? sectionId(s.heading)}
             className={
               "scroll-mt-28 border-t border-rule py-14 " +
               // Marks are white-backed rasters; on the off-white ground each one

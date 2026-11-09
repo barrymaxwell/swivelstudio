@@ -23,6 +23,8 @@ Let the images carry the portfolio. Use a brief introduction and usually one or 
 Headings should be clear or offer an intriguing hook. If the heading doesn’t identify the project, the first sentence should. Answer the hook quickly.
 
 ## Language and playfulness
+Write “website” as one word. For the Microclimates website iterations, use “Web 1.0” and “Web 2.0” in reader-facing copy.
+
 Use serial (Oxford) commas throughout website copy. Include a comma before the final “and” or “or” in a list of three or more items, as in “character, purpose, and audience.”
 
 Use em dashes sparingly, with one space on each side — like this.
