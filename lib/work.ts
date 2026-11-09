@@ -232,14 +232,6 @@ export const projects: Project[] = [
             "h": 1086,
             "fullWidth": true,
             "caption": "10′ × 10′ exhibit with a shelving kiosk and podium. The logo header from the 10′ × 20′ booth can also be used with this configuration. The booth features the EnvOS app family in use on a mobile device."
-          },
-          {
-            "src": "/work/microclimates/podium-render-v4.webp",
-            "alt": "Three-quarter rendering of the Microclimates exhibit podium on sealed concrete, with the Microclimates logo and green gradient on the front and EnvOS network graphics on the right side",
-            "w": 1448,
-            "h": 1086,
-            "fullWidth": false,
-            "caption": ""
           }
         ]
       },
