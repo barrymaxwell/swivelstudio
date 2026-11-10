@@ -86,7 +86,7 @@ export const projects: Project[] = [
         "heading": "Exhibiting listening skills",
         "title": "Exhibit graphics",
         "archiveCover": {
-          "src": "/work/microclimates/booth-20-connect-exact-photo-v9.webp",
+          "src": "/work/microclimates/booth-20-connect-exact-photo-v15.webp",
           "alt": "Close-up of the original Microclimates 10-by-20-foot booth artwork, with Connect your environment in focus and the wider Control panel receding behind it",
           "w": 2000,
           "h": 1500
@@ -227,8 +227,8 @@ export const projects: Project[] = [
         ],
         "images": [
           {
-            "src": "/work/microclimates/booth-20-connect-exact-photo-v9.webp",
-            "alt": "Close-up of the Connect and Control booth panels with rounded fabric edges, silver join clips, and a demo shelf beside the EnvOS artwork",
+            "src": "/work/microclimates/booth-20-connect-exact-photo-v15.webp",
+            "alt": "Close-up of the EnvOS booth artwork with rounded wing corners, silver join brackets, and a low aluminum foot at the Control and Grow joint",
             "w": 2000,
             "h": 1500,
             "fullWidth": true,
