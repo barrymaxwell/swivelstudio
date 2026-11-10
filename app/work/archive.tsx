@@ -20,6 +20,11 @@ export function Archive() {
     ? archive
     : archive.filter((e) => e.tags.includes(filter)).map((e) => e.filterViews?.[filter] ?? e);
 
+  if (filter === "Branding") {
+    const identitiesIndex = shown.findIndex((e) => e.key === "identities");
+    if (identitiesIndex > 0) shown.unshift(...shown.splice(identitiesIndex, 1));
+  }
+
   return (
     <>
       <div className="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter work">
@@ -58,7 +63,7 @@ export function Archive() {
               <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-[1.03]">
                 <Image
                   src={e.image.src}
-                  alt=""
+                  alt={e.image.alt ?? ""}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover"

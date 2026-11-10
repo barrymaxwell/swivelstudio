@@ -25,7 +25,7 @@ export type Section = {
   imagePlaceholders?: string[];
   subsections?: { heading: string; body: string | string[]; imagePlaceholders?: string[]; images?: { id?: string; src: string; frames?: string[]; scroll?: ScrollCapture; alt: string; w: number; h: number; fullWidth?: boolean; fullPage?: boolean; keyline?: boolean | "subtle" | "hairline"; caption?: string }[] }[];
   /** Optional cover art and crop used only in the work archive. */
-  archiveCover?: { src?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
+  archiveCover?: { src?: string; alt?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
 };
 
 export type Project = {
@@ -46,7 +46,7 @@ export type Project = {
   /** A title here consolidates all sections into one work archive card. */
   archiveTitle?: string;
   /** Show a specific section of a consolidated project under a category. */
-  archiveFilterSections?: Partial<Record<Tag, { heading: string; title?: string }>>;
+  archiveFilterSections?: Partial<Record<Tag, { heading: string; title?: string; archiveCover?: Section["archiveCover"] }>>;
   /** Optional cover art and crop used only in the work archive. */
   archiveCover?: { src?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
   hero: { src: string; alt: string; w: number; h: number; position?: string; scale?: number };
@@ -84,7 +84,13 @@ export const projects: Project[] = [
       },
       "Event": {
         "heading": "Exhibiting listening skills",
-        "title": "Exhibit graphics"
+        "title": "Exhibit graphics",
+        "archiveCover": {
+          "src": "/work/microclimates/booth-20-connect-exact-photo-v9.webp",
+          "alt": "Close-up of the original Microclimates 10-by-20-foot booth artwork, with Connect your environment in focus and the wider Control panel receding behind it",
+          "w": 2000,
+          "h": 1500
+        }
       }
     },
     "disciplines": [
@@ -205,7 +211,8 @@ export const projects: Project[] = [
         "heading": "Exhibiting listening skills",
         "id": "the-brand-in-person-and-on-screen",
         "archiveCover": {
-          "src": "/work/microclimates/booth-10x10-with-podium-v1.webp",
+          "src": "/work/microclimates/booth-10x10-art-photo-v1.webp",
+          "alt": "Angled close-up of Microclimates’ matte booth graphics, featuring the Everything connects here headline and EnvOS app icons",
           "w": 1448,
           "h": 1086
         },
@@ -220,12 +227,28 @@ export const projects: Project[] = [
         ],
         "images": [
           {
+            "src": "/work/microclimates/booth-20-connect-exact-photo-v9.webp",
+            "alt": "Close-up of the Connect and Control booth panels with rounded fabric edges, silver join clips, and a demo shelf beside the EnvOS artwork",
+            "w": 2000,
+            "h": 1500,
+            "fullWidth": true,
+            "caption": ""
+          },
+          {
             "src": "/work/microclimates/booth-20-render-v2.webp",
             "alt": "3D rendering of the Microclimates 10-by-20-foot exhibit, with hinged Connect and Grow wings, a central app panel, two demo shelves, and a mounted Microclimates header sign",
             "w": 1774,
             "h": 887,
             "fullWidth": true,
             "caption": "The 10′ × 20′ exhibit can be configured with or without the wings to accommodate different exhibit floor plans."
+          },
+          {
+            "src": "/work/microclimates/booth-10x10-art-photo-v1.webp",
+            "alt": "Photographic close-up of the 10-by-10-foot booth graphics, with the Everything connects here headline and EnvOS phone artwork on a matte printed surface",
+            "w": 1448,
+            "h": 1086,
+            "fullWidth": true,
+            "caption": ""
           },
           {
             "src": "/work/microclimates/booth-10x10-with-podium-v1.webp",
@@ -241,7 +264,7 @@ export const projects: Project[] = [
         "heading": "A startup’s evolving story online",
         "id": "making-the-offering-easier-to-explain",
         "archiveCover": {
-          "src": "/work/microclimates/odoo-home-scroll-poster-v3.webp",
+          "src": "/work/microclimates/web2-connect-card-v1.webp",
           "w": 1536,
           "h": 1024
         },
@@ -860,7 +883,7 @@ export type ArchiveEntry = {
   eyebrow?: string;
   href: string;
   tags: Project["tags"];
-  image: { src: string; w: number; h: number };
+  image: { src: string; alt?: string; w: number; h: number };
   imagePosition?: string;
   imageScale?: number;
   imageOrigin?: string;
@@ -877,6 +900,7 @@ function archiveSection(p: Project, s: Section): ArchiveEntry {
     tags: s.tags ?? p.tags,
     image: {
       src: s.archiveCover?.src ?? s.images?.[0]?.src ?? p.card.src,
+      alt: s.archiveCover?.alt,
       w: s.archiveCover?.w ?? s.images?.[0]?.w ?? p.card.w,
       h: s.archiveCover?.h ?? s.images?.[0]?.h ?? p.card.h,
     },
@@ -916,7 +940,13 @@ export const archive: ArchiveEntry[] = projects.flatMap((p) =>
           Object.entries(p.archiveFilterSections ?? {}).map(([tag, view]) => {
             const section = p.sections.find((s) => s.heading === view.heading);
             if (!section) throw new Error(`Missing archive section: ${p.slug}/${view.heading}`);
-            return [tag, { ...archiveSection(p, section), title: view.title ?? section.heading }];
+            return [tag, {
+              ...archiveSection(p, {
+                ...section,
+                archiveCover: { ...section.archiveCover, ...view.archiveCover },
+              }),
+              title: view.title ?? section.heading,
+            }];
           })
         ),
       }]
