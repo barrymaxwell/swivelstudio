@@ -42,7 +42,7 @@ export type Project = {
   cardCaption?: string;
   disciplines: string[];
   tags: Tag[];
-  card: { src: string; w: number; h: number; alt?: string; position?: string };
+  card: { src: string; w: number; h: number; alt?: string; position?: string; scale?: number; origin?: string };
   /** A title here consolidates all sections into one work archive card. */
   archiveTitle?: string;
   /** Show a specific section of a consolidated project under a category. */
@@ -65,10 +65,10 @@ export const projects: Project[] = [
     "client": "Microclimates",
     "title": "Design that grows with the business",
     "summary": "An ongoing design partnership, connecting an evolving brand, website, and product experience.",
-    "blurb": "Brand identity, websites, exhibits, and interface concepts for a growing environmental technology business.",
+    "blurb": "Brand identity, websites, exhibits, and interface concepts for a growing environmental technology startup.",
     "featured": true,
     "cardCaption": "Branding · Websites · Exhibits",
-    "archiveTitle": "A growing brand and product family",
+    "archiveTitle": "A growing startup’s brand and product family",
     "archiveFilterSections": {
       "Branding": {
         "heading": "A brand with room to grow",
@@ -104,7 +104,9 @@ export const projects: Project[] = [
       "src": "/work/microclimates/software-start-v2.webp",
       "alt": "EnvOS product identity surrounded by network illustrations",
       "w": 2000,
-      "h": 1250
+      "h": 1250,
+      "scale": 1.05,
+      "origin": "center top"
     },
     "hero": {
       "src": "/work/microclimates/software-hero-v2.webp",
@@ -213,8 +215,8 @@ export const projects: Project[] = [
           "Event"
         ],
         "body": [
-          "The client and I discussed the conversations the team was having on the show floor. I translated those insights into exhibit graphics that gave the team visual talking points about cost, compatibility, and ease of getting started. The 10′ × 20′ layout follows Connect – Control – Grow, echoing the [Web 2.0 website](#v2-website) developed alongside it.",
-          "By the later 10′ × 10′ exhibit, growers were more familiar with environmental control. Together, we emphasized Microclimates’ unique hardware-agnostic model and AI-ready data from existing equipment. Large operations could upgrade without vendor lock-in or costly replacements, while beginners could start with a single sensor and expand. Graphics for both booths, the podium, and shelving kiosk were designed to mix and match with elements from earlier exhibits."
+          "The client and I discussed the conversations the team was having on the show floor. I translated those insights into exhibit graphics that gave the team visual talking points about simplifying operations on one platform, connecting existing technology, using app-driven data, and getting started easily. The 10′ × 20′ layout follows Connect – Control – Grow, echoing the [Web 2.0 website](#v2-website) developed alongside it.",
+          "By the later 10′ × 10′ exhibit, growers were more familiar with environmental control. Our conversations helped focus the message on Microclimates’ differentiator: Environmental Integration, which brings disparate data streams, hardware, and AI analytics together in a unified system. Large operations could upgrade without vendor lock-in or costly replacements, while beginners could start with a single sensor and expand. We developed concise copy for a quick read on the show floor, letting the headline, arrow, and graphic do the talking."
         ],
         "images": [
           {
@@ -231,7 +233,7 @@ export const projects: Project[] = [
             "w": 1448,
             "h": 1086,
             "fullWidth": true,
-            "caption": "10′ × 10′ exhibit with a shelving kiosk and podium. The logo header from the 10′ × 20′ booth can also be used with this configuration."
+            "caption": "10′ × 10′ exhibit with a shelving kiosk and podium. Graphics for both booths, the podium, logo header, and shelving kiosk were designed to mix and match with elements from earlier exhibits."
           }
         ]
       },
@@ -252,7 +254,7 @@ export const projects: Project[] = [
             "heading": "Web 1.0: A complete website redesign",
             "body": [
               "Microclimates’ first site served mainly as a business-card site, product portal, and help desk for existing clients. The team wanted to highlight its growing range of software products and emphasize complete environmental monitoring, automation, and control from anywhere.",
-              "Drawing on existing product flyers and conversations with the team, I shaped a homepage flow that opened with a hero carousel showing the technology in action and guided visitors into clear product pages. I wrote key headlines and used AI for initial drafts of the product copy, then edited extensively and refined the details with the client. I worked from a site map through wireframes to finished layouts, supplying design specifications and collaborating closely with the Microclimates technology team through development."
+              "Drawing on existing product flyers and conversations with the team, I shaped a homepage flow that opened with a hero carousel showing their product in use across a range of settings, then guided visitors into clear product pages. I wrote key headlines and used AI for initial drafts of the product copy, then edited extensively and refined the details with the client. I worked from a site map through wireframes to finished layouts, supplying design specifications and collaborating closely with the Microclimates technology team through development."
             ],
             "images": [
               {
@@ -267,27 +269,15 @@ export const projects: Project[] = [
                 "w": 1536,
                 "h": 1024,
                 "fullWidth": true,
-                "caption": "I designed the homepage carousel to show different data views across devices, locations, and settings, pairing each image with a headline I wrote to express the client’s priorities. A bright banner called attention to the latest features."
-              },
-              {
-                "id": "2023-lighting-page",
-                "src": "/work/microclimates/v1-lighting-full-page-v3.webp",
-                "alt": "Full Web 1.0 lighting solution page, with a greenhouse map and overlaid cards on the tablet, thermostat cards on the phone, and the original cards interface on the desktop",
-                "w": 649,
-                "h": 2000,
-                "fullWidth": false,
-                "fullPage": true,
-                "keyline": "hairline",
                 "caption": ""
               },
               {
-                "src": "/work/microclimates/v1-edge-computing-full-page-v1.webp",
-                "alt": "Full Web 1.0 edge computing partners page, featuring Veea and Opto 22 hardware and partner information",
-                "w": 754,
-                "h": 2000,
-                "fullWidth": false,
-                "fullPage": true,
-                "keyline": "hairline",
+                "id": "2023-lighting-page",
+                "src": "/work/microclimates/web1-pages-triptych-v1.webp",
+                "alt": "Web 1.0 homepage, Lighting Control, and Edge Computing layouts, with a play symbol over the homepage greenhouse image and a fade through its portrait tablet",
+                "w": 2000,
+                "h": 1944,
+                "fullWidth": true,
                 "caption": ""
               }
             ]
@@ -296,7 +286,7 @@ export const projects: Project[] = [
             "heading": "Web 2.0: Branching out",
             "body": [
               "As Microclimates evolved into an operating system and app company, it needed a website and business platform that could support future online sales and growth. The website needed to debut at its next industry show, alongside the booth I was designing.",
-              "I mapped the initial launch and future phases, then used the new EnvOS identity and app suite to shape a homepage flow emphasizing control and the open-source, hardware-agnostic model. Working in Adobe, Figma, and the new web tool, I created branded graphics and reusable elements, including app page templates the technology team could populate. The graphics were also designed for use in sales literature, social media, and presentations."
+              "To use my time efficiently, their team migrated and added content while I oversaw branding and advised on messaging and key page flows. I applied the EnvOS identity and app suite graphics, established color and text styles, and refined imported layouts and imagery to keep the site clear, inviting, cohesive, and on brand. Reusable app page, module, and footer templates helped their team expand the site, while graphics they could repurpose in sales literature, social media, and presentations gave them assets to build the brand across media."
             ],
             "images": [
               {
@@ -920,8 +910,8 @@ export const archive: ArchiveEntry[] = projects.flatMap((p) =>
           h: p.archiveCover?.h ?? p.card.h,
         },
         imagePosition: p.archiveCover?.position,
-        imageScale: p.archiveCover?.scale,
-        imageOrigin: p.archiveCover?.origin,
+        imageScale: p.archiveCover?.scale ?? p.card.scale,
+        imageOrigin: p.archiveCover?.origin ?? p.card.origin,
         filterViews: Object.fromEntries(
           Object.entries(p.archiveFilterSections ?? {}).map(([tag, view]) => {
             const section = p.sections.find((s) => s.heading === view.heading);

@@ -22,7 +22,11 @@ export function WorkCard({
           fill
           sizes={compact ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 100vw, 50vw"}
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-          style={{ objectPosition: p.card.position }}
+          style={{
+            objectPosition: p.card.position,
+            transform: p.card.scale ? `scale(${p.card.scale})` : undefined,
+            transformOrigin: p.card.origin,
+          }}
         />
       </div>
       <h3 className={`mt-4 font-semibold ${compact ? "text-mid" : "text-base"}`}>
