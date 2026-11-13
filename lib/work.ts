@@ -556,6 +556,12 @@ export const projects: Project[] = [
     hero: { src: `${W}/pacific-crest-savings-bank/paccrest.webp`, alt: "Pacific Crest Savings Bank identity", w: 2000, h: 1000 },
     intro:
       "Pacific Crest Savings Bank is a local, independently owned community bank who wanted to build out their brand but first needed to bring it up to date. They wanted their logo, collateral materials, and website modernized to reflect current best design practices and trends, and to support the new financial technologies they were embracing and offering to their clients.",
+    testimonial: {
+      quote:
+        "Robin has the ability to take minimal instructions and create exactly what I’m looking for. She is always willing to put the time and effort into a project to make sure every aspect has been developed with excellent attention to detail.",
+      name: "Sheryl Nilson",
+      role: "President and CEO | Pacific Crest Savings Bank",
+    },
     creditNote: "Work completed at Graphica, Inc.",
     featured: true,
     sections: [
