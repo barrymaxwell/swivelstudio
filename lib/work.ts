@@ -793,6 +793,12 @@ export const projects: Project[] = [
     hero: { src: `${W}/trueblue/tb-slc2013.webp`, alt: "Sales Leadership Conference branding", w: 2000, h: 1334 },
     intro:
       "Over many years, our team worked as an extension of TrueBlue’s in-house design team, supporting the company and its family of brands. The projects shown here are a small selection from that relationship, spanning recurring conferences, annual reports, and employee communications.",
+    testimonial: {
+      quote:
+        "I would also describe Robin as a professional collaborator — she delivers work on time, is very open to feedback, and always has our best visual design interest at heart. … Projects just seemed to go smoother when Robin was involved.",
+      name: "Stacy Burke",
+      role: "Vice President, Corporate Communications | TrueBlue Inc.",
+    },
     creditNote: "Work completed at Graphica, Inc.",
     featured: true,
     sections: [
