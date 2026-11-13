@@ -436,6 +436,12 @@ export const projects: Project[] = [
     },
     intro:
       "In a near-future dystopia where rising seawater is overtaking South Florida, Breakwater follows a pregnant woman weighing her ties to home against her need for safety, medical care, and survival. As she resists pressure to leave, relatives, close friends, and unexpected ties redefine her family. Nature is a character in its own right, informing the colors, imagery, and materials across all editions.",
+    testimonial: {
+      quote:
+        "I really can’t thank you enough for the beautiful work you’ve done on Breakwater. I appreciate all the learning and flexibility and creativity that went into this project.",
+      name: "Edith Bishop",
+      role: "Founder, Owner, Author | Songborne & Seabound Press",
+    },
     credits: [
       { role: "Illustrations", name: "Molly Pearce" },
       { role: "Editing", name: "Kyra Freestar" },
