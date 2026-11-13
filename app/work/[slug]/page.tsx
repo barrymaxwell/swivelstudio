@@ -162,7 +162,21 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
                 {p.disciplines.map((d) => <li key={d}>{d}</li>)}
               </ul>
             </div>
-            <p className="max-w-[58ch] text-lede text-ink-2">{bookTitle(p.intro)}</p>
+            <div>
+              <p className="max-w-[58ch] text-lede text-ink-2">{bookTitle(p.intro)}</p>
+              {p.testimonial && (
+                <figure id="testimonial" className="mt-8 max-w-[36rem] scroll-mt-28 border-l-2 border-current pl-5 text-crest-700"
+                  style={{ color: p.testimonial.color }}>
+                  <blockquote className="font-display text-h2">
+                    <p>“{p.testimonial.quote}”</p>
+                  </blockquote>
+                  <figcaption className="mt-4 text-mid text-ink-2">
+                    <span className="block font-semibold text-ink">{p.testimonial.name}</span>
+                    {p.testimonial.role}
+                  </figcaption>
+                </figure>
+              )}
+            </div>
           </div>
         </div>
 

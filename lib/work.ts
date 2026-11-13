@@ -51,6 +51,7 @@ export type Project = {
   archiveCover?: { src?: string; w?: number; h?: number; position?: string; scale?: number; origin?: string };
   hero: { src: string; alt: string; w: number; h: number; position?: string; scale?: number };
   intro: string;
+  testimonial?: { quote: string; name: string; role: string; color?: string };
   sections: Section[];
   credits?: { role: string; name: string }[];
   creditNote?: string;
@@ -121,6 +122,12 @@ export const projects: Project[] = [
       "h": 860
     },
     "intro": "Microclimates is a startup developing technology to monitor, automate, and control agricultural environments and beyond. For roughly four years, I’ve worked with its team as designer and creative director at Swivel Studio. The team brings deep industry knowledge and clear priorities; I help translate those into language, visual systems, and experiences across the brand, websites, exhibits, and product interfaces.",
+    "testimonial": {
+      "quote": "Robin has an exceptional ability to take something technically complex and make it simple, intuitive, and visually compelling without losing the substance behind it.",
+      "name": "Neda Vaseghi",
+      "role": "CEO & Founder | Microclimates Inc.",
+      "color": "#407e9d"
+    },
     "credits": [
       {
         "role": "Design and creative direction",
