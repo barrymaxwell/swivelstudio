@@ -71,7 +71,7 @@ export default function Contact() {
         </div>
 
       </main>
-      <Footer />
+      <Footer cta={false} />
     </>
   );
 }

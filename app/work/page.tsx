@@ -1,4 +1,4 @@
-import { Header, Cta, Footer } from "@/components/chrome";
+import { Header, Footer } from "@/components/chrome";
 import { Archive } from "./archive";
 
 export const metadata = {
@@ -24,7 +24,6 @@ export default function Work() {
         </p>
         <Archive />
       </main>
-      <Cta />
       <Footer />
     </>
   );

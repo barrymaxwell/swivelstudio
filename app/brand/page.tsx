@@ -135,7 +135,7 @@ export default function Brand() {
           </p>
         </Section>
       </main>
-      <Footer />
+      <Footer cta={false} />
     </>
   );
 }

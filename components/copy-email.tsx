@@ -68,7 +68,7 @@ export function CopyEmail({
       : "Ctrl+";
 
   return (
-    <span className={display ? "inline-flex flex-wrap items-center gap-x-3 gap-y-1" : "inline-flex items-center gap-2"}>
+    <span className={display ? "inline-flex flex-wrap items-center gap-x-3 gap-y-1" : "relative inline-flex items-center"}>
       <button
         type="button"
         onClick={onClick}
@@ -112,7 +112,7 @@ export function CopyEmail({
 
       {/* Always mounted so screen readers announce the change; the text itself
           is what appears and disappears. An opacity toggle was unreliable. */}
-      <span aria-live="polite" className={display ? "text-sm" : "text-xs"}>
+      <span aria-live="polite" className={display ? "text-sm" : "absolute top-full left-0 mt-1 text-xs"}>
         {done && (
           <span className="inline-flex items-center gap-1.5 text-crest-700">
             Copied
