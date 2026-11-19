@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Header, Cta, Footer } from "@/components/chrome";
+import { Header, Footer } from "@/components/chrome";
 import { clients } from "@/lib/work";
 
 export const metadata = {
@@ -91,7 +91,6 @@ export default function About() {
           </div>
         </section>
       </main>
-      <Cta />
       <Footer />
     </>
   );

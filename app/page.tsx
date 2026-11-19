@@ -1,4 +1,4 @@
-import { Header, Cta, Footer } from "@/components/chrome";
+import { Header, Footer } from "@/components/chrome";
 import { WorkCard } from "@/components/work-card";
 import { ClientLogos } from "@/components/client-logos";
 import Link from "next/link";
@@ -81,7 +81,6 @@ export default function Home() {
           </p>
         </section>
       </main>
-      <Cta />
       <Footer />
     </>
   );

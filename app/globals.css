@@ -128,3 +128,16 @@ body { background: var(--color-ground); color: var(--color-ink); line-height: va
 @media (prefers-reduced-motion: reduce) {
   .portfolio-scroll-image { animation: none !important; }
 }
+
+/* A section rule that stops at the content column (max-w-5xl less px-6),
+   for dividers inside a page. Page-level bands, like the footer, run full width. */
+.rule-contained { position: relative; }
+.rule-contained::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  width: min(100% - 3rem, 61rem);
+  border-top: 1px solid var(--color-rule);
+}
